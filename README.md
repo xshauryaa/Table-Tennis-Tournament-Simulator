@@ -1,5 +1,5 @@
 # Table Tennis Tournament Simulator
-My personal project for CPSC 210 in the term 2024W1 is going to be a Table Tennis Tournament Simulator Application. This will allow users to enter a list of *any* number of **matches** with players of their choice, arranging them into an *opening bracket* for the **tournament**. The top 8 players (from a ranking board based on their statistics after the opening bracket) will then proceed to the *quarter-finals*, and the tournament bracket will then be simulated further until a player wins the *tournament final*.
+My personal project for CPSC 210 in the term 2024W1 is going to be a Table Tennis Tournament Simulator Application. This will allow users to enter a list of *any* number of **matches** with players of their choice, arranging them into an *opening bracket* for the **tournament**. Depending on the amount of matches entered, a tournament bracket will be designed. For example, 1 match will mean only a final, 2 will mean semi-finals and then a final, and so on. In case of multiple matches, the top 8 players (from a ranking board based on their statistics after the opening bracket) will then proceed to the *quarter-finals*, and the tournament bracket will then be simulated further until a player wins the *tournament final*.
 
 ## Who will use it?
 The application can be used the following classes of users:
