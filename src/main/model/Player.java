@@ -65,15 +65,17 @@ public class Player {
     }
 
     // MODIFIES: this
-    // EFFECTS: increments the number of matches won and 
-    //          adds 2 to the ranking points
-    public void winMatch() {
+    // EFFECTS: increments the number of matches won, 
+    //          adds 2 to the ranking points, and
+    //          increases overall ability by given number.
+    public void winMatch(int inc) {
         // stub
     }
 
     // MODIFIES: this
-    // EFFECTS: increments the number of matches lost
-    public void loseMatch() {
+    // EFFECTS: increments the number of matches lost and
+    //          decreases overall ability by given number.
+    public void loseMatch(int dec) {
         // stub
     }
 
