@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a player in the table tennis tournament, with statistics
  * such as points won/lost, matches won/lost, overall ability,ranking points, 
@@ -12,7 +14,7 @@ public class Player {
     //          age, overall ability, and country of origin,
     //          sets the ranking table points to 0, and sets
     //          the matches and points win-loss records to 0-0 each.
-    public Player(String name, int age, int overallAbility String country) {
+    public Player(String name, int age, int overallAbility, String country) {
         // stub
     }
 
@@ -92,6 +94,13 @@ public class Player {
     // EFFECTS: decreases the number of points conceeded 
     //          by given points
     public void concedePoints(int points) {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: gives player eliminated from tournament
+    //          status
+    public void eliminate() {
         // stub
     }
 }

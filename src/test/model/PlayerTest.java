@@ -2,6 +2,8 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +27,7 @@ public class PlayerTest {
         assertEquals(0, testPlayer.getPointsDifference());
         assertEquals(0, testPlayer.getMatchesWon());
         assertEquals(0, testPlayer.getMatchesLost());
+        assertEquals(new ArrayList<Match>(), testPlayer.getMatchHistory());
         assertFalse(testPlayer.isEliminated());
     }
 
@@ -79,17 +82,24 @@ public class PlayerTest {
         assertEquals(30, testPlayer.getPointsWon());
     }
 
+
     @Test
     void testLosePointsOnce() {
-        testPlayer.concedePointsPoints(10);
-        assertEquals(10, testPlayer.getPointsLost());
+        testPlayer.concedePoints(10);
+        assertEquals(10, testPlayer.getPointsConceeded());
     }
 
     @Test
     void testLosePointsMultiple() {
-        testPlayer.concedePointsPoints(10);
-        assertEquals(10, testPlayer.getPointsLost());
-        testPlayer.concedePointsPoints(20);
-        assertEquals(30, testPlayer.getPointsLost());
+        testPlayer.concedePoints(10);
+        assertEquals(10, testPlayer.getPointsConceeded());
+        testPlayer.concedePoints(20);
+        assertEquals(30, testPlayer.getPointsConceeded());
+    }
+
+    @Test
+    void testEliminate() {
+        testPlayer.eliminate();
+        assertTrue(testPlayer.isEliminated());
     }
 }
