@@ -8,6 +8,17 @@ import java.util.ArrayList;
  * and information such as name, age, country of origin, and match history.
  */
 public class Player {
+    private String name;
+    private int age;
+    private int overallAbility;
+    private String country;
+    private int matchesWon;
+    private int matchesLost;
+    private int pointsWon;
+    private int pointsConceeded;
+    private int rankingPoints;
+    private boolean isEliminated;
+    private ArrayList<Match> matchHistory;
 
     // REQUIRES: age > 0 && overallAbility > 0
     // EFFECTS: Creates a new Player object with given name,
@@ -15,55 +26,65 @@ public class Player {
     //          sets the ranking table points to 0, and sets
     //          the matches and points win-loss records to 0-0 each.
     public Player(String name, int age, int overallAbility, String country) {
-        // stub
+        this.name = name;
+        this.age = age;
+        this.overallAbility = overallAbility;
+        this.country = country;
+        matchesWon = 0;
+        matchesLost = 0;
+        pointsWon = 0;
+        pointsConceeded = 0;
+        rankingPoints = 0;
+        isEliminated = false;
+        matchHistory = new ArrayList<Match>();
     }
 
     public String getName() {
-        return ""; // stub
+        return this.name; // stub
     }
 
     public int getAge() {
-        return 0; // stub
+        return this.age; // stub
     }
 
     public String getCountry() {
-        return ""; // stub
+        return this.country; // stub
     }
 
     public int getPointsWon() {
-        return 0; // stub
+        return this.pointsWon; // stub
     }
 
     public int getPointsConceeded() {
-        return 0; // stub
+        return this.pointsConceeded; // stub
     }
 
     public int getPointsDifference() {
-        return 0; // stub
+        return this.pointsWon - this.pointsConceeded; // stub
     }
 
     public int getMatchesWon() {
-        return 0; // stub
+        return this.matchesWon; // stub
     }
 
     public int getMatchesLost() {
-        return 0; // stub
+        return this.matchesLost; // stub
     }
 
     public int getRankingPoints() {
-        return 0; // stub
+        return this.rankingPoints; // stub
     }
 
     public int getOverallAbility() {
-        return 0; // stub
+        return this.overallAbility; // stub
     }
 
     public boolean isEliminated() {
-        return false; // stub
+        return this.isEliminated; // stub
     }
 
     public ArrayList<Match> getMatchHistory() {
-        return null; // stub
+        return this.matchHistory; // stub
     }
 
     // MODIFIES: this
@@ -71,14 +92,17 @@ public class Player {
     //          adds 2 to the ranking points, and
     //          increases overall ability by given number.
     public void winMatch(int inc) {
-        // stub
+        this.matchesWon++;
+        this.rankingPoints += 2;
+        this.overallAbility += inc;
     }
 
     // MODIFIES: this
     // EFFECTS: increments the number of matches lost and
     //          decreases overall ability by given number.
     public void loseMatch(int dec) {
-        // stub
+        this.matchesLost++;
+        this.overallAbility -= dec;
     }
 
     // REQUIRES: points > 0
@@ -86,7 +110,7 @@ public class Player {
     // EFFECTS: increases the number of points won by 
     //          given points
     public void addPoints(int points) {
-        // stub
+        this.pointsWon += points;
     }
 
     // REQUIRES: points > 0
@@ -94,13 +118,14 @@ public class Player {
     // EFFECTS: decreases the number of points conceeded 
     //          by given points
     public void concedePoints(int points) {
-        // stub
+        this.pointsConceeded += points;
     }
 
     // MODIFIES: this
     // EFFECTS: gives player eliminated from tournament
     //          status
     public void eliminate() {
-        // stub
+        this.isEliminated = true;
     }
+    
 }
