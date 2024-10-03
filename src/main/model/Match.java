@@ -34,6 +34,7 @@ public class Match {
         return null; // stub
     }
 
+    // REQUIRES: playMatch() must have been run prior
     public Player getWinner() {
         return null; // stub
     }
