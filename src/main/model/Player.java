@@ -55,7 +55,7 @@ public class Player {
         return this.pointsWon; // stub
     }
 
-    public int getPointsConceeded() {
+    public int getPointsConceded() {
         return this.pointsConceeded; // stub
     }
 

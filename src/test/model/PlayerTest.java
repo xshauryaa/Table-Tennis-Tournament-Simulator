@@ -23,7 +23,7 @@ public class PlayerTest {
         assertEquals("Italy", testPlayer.getCountry());
         assertEquals(0, testPlayer.getRankingPoints());
         assertEquals(0, testPlayer.getPointsWon());
-        assertEquals(0, testPlayer.getPointsConceeded());
+        assertEquals(0, testPlayer.getPointsConceded());
         assertEquals(0, testPlayer.getPointsDifference());
         assertEquals(0, testPlayer.getMatchesWon());
         assertEquals(0, testPlayer.getMatchesLost());
@@ -86,15 +86,15 @@ public class PlayerTest {
     @Test
     void testLosePointsOnce() {
         testPlayer.concedePoints(10);
-        assertEquals(10, testPlayer.getPointsConceeded());
+        assertEquals(10, testPlayer.getPointsConceded());
     }
 
     @Test
     void testLosePointsMultiple() {
         testPlayer.concedePoints(10);
-        assertEquals(10, testPlayer.getPointsConceeded());
+        assertEquals(10, testPlayer.getPointsConceded());
         testPlayer.concedePoints(20);
-        assertEquals(30, testPlayer.getPointsConceeded());
+        assertEquals(30, testPlayer.getPointsConceded());
     }
 
     @Test
