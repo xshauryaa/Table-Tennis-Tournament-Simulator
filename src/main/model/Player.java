@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Represents a player in the table tennis tournament, with statistics
- * such as points won/lost, matches won/lost, overall ability,ranking points, 
- * and information such as name, age, country of origin, and match history.
+ * such as points won/lost, matches won/lost, overall ability, and 
+ * information such as name, age, country of origin, and match history.
  */
 public class Player {
     private String name;
@@ -16,15 +16,14 @@ public class Player {
     private int matchesLost;
     private int pointsWon;
     private int pointsConceeded;
-    private int rankingPoints;
     private boolean isEliminated;
     private ArrayList<Match> matchHistory;
 
     // REQUIRES: age > 0 && overallAbility > 0
     // EFFECTS: Creates a new Player object with given name,
     //          age, overall ability, and country of origin,
-    //          sets the ranking table points to 0, and sets
-    //          the matches and points win-loss records to 0-0 each.
+    //          and sets the matches and points win-loss records 
+    //          to 0-0 each.
     public Player(String name, int age, int overallAbility, String country) {
         this.name = name;
         this.age = age;
@@ -34,7 +33,6 @@ public class Player {
         matchesLost = 0;
         pointsWon = 0;
         pointsConceeded = 0;
-        rankingPoints = 0;
         isEliminated = false;
         matchHistory = new ArrayList<Match>();
     }
@@ -71,10 +69,6 @@ public class Player {
         return this.matchesLost; // stub
     }
 
-    public int getRankingPoints() {
-        return this.rankingPoints; // stub
-    }
-
     public int getOverallAbility() {
         return this.overallAbility; // stub
     }
@@ -89,11 +83,9 @@ public class Player {
 
     // MODIFIES: this
     // EFFECTS: increments the number of matches won, 
-    //          adds 2 to the ranking points, and
-    //          increases overall ability by given number.
+    //          and increases overall ability by given number.
     public void winMatch(int inc) {
         this.matchesWon++;
-        this.rankingPoints += 2;
         this.overallAbility += inc;
     }
 

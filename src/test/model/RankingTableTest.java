@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RankingTableTest {
     private RankingTable testRT;
@@ -51,6 +52,7 @@ public class RankingTableTest {
         assertEquals(4, testRT.getPlayerRanking("Luigi"));
     }
 
+    // Helper
     private void addWinsAndPoints(Player p, int wins, int losses, int pointsWon, int pointsLost) {
         for (int i=0; i<wins; i++) {
             p.winMatch(1);
@@ -88,6 +90,21 @@ public class RankingTableTest {
         assertEquals(2, testRT.getPlayerRanking("Luigi"));
         assertEquals(3, testRT.getPlayerRanking("Alex"));
         assertEquals(4, testRT.getPlayerRanking("Marvin"));
+    }
+
+    @Test
+    void testGetPlayerAtRank() {
+        assertEquals("Alex", testRT.getPlayerAtRank(1));
+        assertEquals("Rohan", testRT.getPlayerAtRank(4));
+    }
+
+    @Test
+    void testGetTopPlayers() {
+        HashMap<String, Integer> temp = testRT.getTopPlayers(3);
+        assertEquals(3, temp.size());
+        assertEquals(1, temp.get("Alex"));
+        assertEquals(2, temp.get("Luigi"));
+        assertEquals(3, temp.get("Marvin"));
     }
 
 }

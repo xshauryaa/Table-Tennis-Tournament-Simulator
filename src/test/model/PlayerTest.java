@@ -21,7 +21,6 @@ public class PlayerTest {
         assertEquals(29, testPlayer.getAge());
         assertEquals(93, testPlayer.getOverallAbility());
         assertEquals("Italy", testPlayer.getCountry());
-        assertEquals(0, testPlayer.getRankingPoints());
         assertEquals(0, testPlayer.getPointsWon());
         assertEquals(0, testPlayer.getPointsConceded());
         assertEquals(0, testPlayer.getPointsDifference());
@@ -35,7 +34,6 @@ public class PlayerTest {
     void testWinOneMatch() {
         testPlayer.winMatch(2);
         assertEquals(1, testPlayer.getMatchesWon());
-        assertEquals(2, testPlayer.getRankingPoints());
         assertEquals(95, testPlayer.getOverallAbility());
     }
 
@@ -43,11 +41,9 @@ public class PlayerTest {
     void testWinMultipleMatches() {
         testPlayer.winMatch(2);
         assertEquals(1, testPlayer.getMatchesWon());
-        assertEquals(2, testPlayer.getRankingPoints());
         assertEquals(95, testPlayer.getOverallAbility());
         testPlayer.winMatch(1);
         assertEquals(2, testPlayer.getMatchesWon());
-        assertEquals(4, testPlayer.getRankingPoints());
         assertEquals(96, testPlayer.getOverallAbility());
     }
 

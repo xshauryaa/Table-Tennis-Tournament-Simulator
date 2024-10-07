@@ -68,7 +68,7 @@ public class Match {
         int p1SetsWon = 0;
         int p2SetsWon = 0;
         int overallChange = 0;
-        for (int i=1; i<=3; i++) {
+        for (int i = 1; i <= 3; i++) {
             playSet(i);
             int score1 = getSetScore(i).get(this.player1.getName());
             int score2 = getSetScore(i).get(this.player2.getName());
@@ -95,11 +95,11 @@ public class Match {
     // MODIFIES: this
     // EFFECTS: plays the set of the given number, adds each player's points
     //          to their tournament tally, and sets the scores for that set.
-    public void playSet(int setNum) {
+    protected void playSet(int setNum) {
         int player1Score;
         int player2Score;
         int[] thisSetScores = new int[2];
-        for (int i=1; i<=21; i++) {
+        for (int i = 1; i <= 21; i++) {
             if (thisSetScores[0] == 11 || thisSetScores[1] == 11) {
                 break;
             }
@@ -124,9 +124,9 @@ public class Match {
         Random random = new Random();
         int chance = random.nextInt(2);
         if (chance == 0) {
-                setScore[0]++;
+            setScore[0]++;
         } else {
-                setScore[1]++;
+            setScore[1]++;
         }
     }
 }
