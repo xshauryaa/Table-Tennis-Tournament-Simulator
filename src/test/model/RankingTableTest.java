@@ -70,7 +70,7 @@ public class RankingTableTest {
         addWinsAndPoints(p4, 3, 1, 115, 105);
         addWinsAndPoints(p2, 3, 1, 97, 91);
         addWinsAndPoints(p1, 2, 2, 122, 122);
-        addWinsAndPoints(p3, 1, 3, 104, 112);
+        addWinsAndPoints(p3, 2, 2, 104, 112);
         testRT.updateRankings();
         assertEquals(1, testRT.getPlayerRanking("Marvin"));
         assertEquals(2, testRT.getPlayerRanking("Rohan"));
@@ -84,7 +84,7 @@ public class RankingTableTest {
         addWinsAndPoints(p2, 3, 1, 115, 109);
         addWinsAndPoints(p1, 3, 1, 97, 91);
         addWinsAndPoints(p3, 2, 2, 122, 122);
-        addWinsAndPoints(p4, 1, 3, 104, 112);
+        addWinsAndPoints(p4, 2, 2, 104, 104);
         testRT.updateRankings();
         assertEquals(1, testRT.getPlayerRanking("Rohan"));
         assertEquals(2, testRT.getPlayerRanking("Luigi"));

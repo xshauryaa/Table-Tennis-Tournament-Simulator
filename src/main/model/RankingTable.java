@@ -44,7 +44,6 @@ public class RankingTable {
         for (Map.Entry<String, Integer> entry : this.rankingTable.entrySet()) {
             if (entry.getValue() == rank) {
                 name = entry.getKey();
-                break;
             }
         }
         return name;
