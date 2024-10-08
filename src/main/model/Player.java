@@ -119,5 +119,12 @@ public class Player {
     public void eliminate() {
         this.isEliminated = true;
     }
+
+    // REQUIRES: this player must be in given match
+    // MODIFIES: this
+    // EFFECTS: Adds given match to player's match history
+    public void addMatchToHistory(Match match) {
+        this.matchHistory.add(match);
+    }
     
 }

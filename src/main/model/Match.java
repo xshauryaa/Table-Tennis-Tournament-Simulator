@@ -120,6 +120,8 @@ public class Match {
         this.player2.concedePoints(player1Score);
     }
 
+    // MODIFIES: setScore
+    // EFFECTS: adds one point to either player's tally at random
     protected void playPoint(int[] setScore) {
         Random random = new Random();
         int chance = random.nextInt(2);

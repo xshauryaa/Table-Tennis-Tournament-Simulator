@@ -98,4 +98,13 @@ public class PlayerTest {
         testPlayer.eliminate();
         assertTrue(testPlayer.isEliminated());
     }
+
+    @Test
+    void testAddMatch() {
+        Player testPlayer2 = new Player("Rohan", 26, 89, "India");
+        Match newMatch = new Match(testPlayer, testPlayer2);
+        testPlayer.addMatchToHistory(newMatch);
+        assertEquals(1, testPlayer.getMatchHistory().size());
+        assertEquals(newMatch, testPlayer.getMatchHistory().get(0));
+    }
 }
