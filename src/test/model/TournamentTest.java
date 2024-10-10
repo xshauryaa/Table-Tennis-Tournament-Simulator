@@ -1,6 +1,6 @@
 package model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,7 +29,7 @@ public class TournamentTest {
     Match m6;
 
     @BeforeEach
-    void runBefore() {
+    public void runBefore() {
         testTournament = new Tournament("World Championship");
         p1 = new Player("A", 29, 92, "USA");
         p2 = new Player("B", 28, 91, "Canada");
@@ -52,7 +52,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testConstructor() {
+    public void testConstructor() {
         assertEquals("World Championship", testTournament.getName());
         assertEquals(0, testTournament.getListOfPlayers().size());
         assertEquals(null, testTournament.getRankingTable());
@@ -64,7 +64,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testAddMatch() {
+    public void testAddMatch() {
         testTournament.addMatch(m1);
         assertEquals(1, testTournament.getOpeningRoundMatches().size());
         assertEquals(m1, testTournament.getOpeningRoundMatches().get(0));
@@ -78,7 +78,7 @@ public class TournamentTest {
     }
 
     @Test
-    void AddMultiplesMatches() {
+    public void AddMultiplesMatches() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         assertEquals(2, testTournament.getOpeningRoundMatches().size());
@@ -100,7 +100,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testInitiateTournamentCondition1() {
+    public void testInitiateTournamentCondition1() {
         testTournament.addMatch(m1);
         assertEquals(1, testTournament.initiateTournament());
         assertEquals(1, testTournament.getRankingTable().getPlayerRanking("A"));
@@ -108,7 +108,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testInitiateTournamentCondition2() {
+    public void testInitiateTournamentCondition2() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         assertEquals(2, testTournament.initiateTournament());
@@ -119,7 +119,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testInitiateTournamentCondition3() {
+    public void testInitiateTournamentCondition3() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
@@ -133,7 +133,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testInitiateTournamentCondition4() {
+    public void testInitiateTournamentCondition4() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
@@ -153,13 +153,14 @@ public class TournamentTest {
     }
 
     @Test
-    void testPlayOpeningBracket() {
+    public void testPlayOpeningBracket() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
         testTournament.addMatch(m4);
         testTournament.addMatch(m5);
         testTournament.addMatch(m6);
+        testTournament.initiateTournament();
         testTournament.playOpeningBracket();
         assertTrue(m1.getWinner() != null);
         assertTrue(m2.getWinner() != null);
@@ -169,7 +170,7 @@ public class TournamentTest {
         assertTrue(m6.getWinner() != null);
     }
     @Test
-    void testMakeQF() {
+    public void testMakeQF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p3);
@@ -192,7 +193,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testMakeSF() {
+    public void testMakeSF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p6);
@@ -207,7 +208,7 @@ public class TournamentTest {
     }
 
     @Test
-    void testPlayQF() {
+    public void testPlayQF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p3);
@@ -224,33 +225,69 @@ public class TournamentTest {
         assertTrue(testTournament.getQuarterFinalMatches().get(2).getWinner() != null);
         assertTrue(testTournament.getQuarterFinalMatches().get(3).getWinner() != null);
         assertEquals(2, testTournament.getSemiFinalMatches().size());
+        for (int i = 0; i < 4; i++) {
+            Player winner = testTournament.getQuarterFinalMatches().get(i).getWinner();
+            Player loser = null;
+            if (testTournament.getQuarterFinalMatches().get(i).getPlayer1().equals(winner)) {
+                loser = testTournament.getQuarterFinalMatches().get(i).getPlayer2();
+            } else {
+                loser = testTournament.getQuarterFinalMatches().get(i).getPlayer1();
+            }
+            assertTrue(loser.isEliminated());
+        }
     }
 
     @Test
-    void testPlaySF() {
+    public void testPlaySF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p6);
         players.add(p8);
         players.add(p11);
         testTournament.makeSemiFinals(players);
+        testTournament.playSemiFinals();
         assertTrue(testTournament.getSemiFinalMatches().get(0).getWinner() != null);
         assertTrue(testTournament.getSemiFinalMatches().get(1).getWinner() != null);
         assertTrue(testTournament.getFinalMatch().getPlayer1() != null);
         assertTrue(testTournament.getFinalMatch().getPlayer2() != null);
+        for (int i = 0; i < 2; i++) {
+            Player winner = testTournament.getSemiFinalMatches().get(i).getWinner();
+            Player loser = null;
+            if (testTournament.getSemiFinalMatches().get(i).getPlayer1().equals(winner)) {
+                loser = testTournament.getSemiFinalMatches().get(i).getPlayer2();
+            } else {
+                loser = testTournament.getSemiFinalMatches().get(i).getPlayer1();
+            }
+            assertTrue(loser.isEliminated());
+        }
     }
 
     @Test
-    void testPlayFinalMatch() {
+    public void testPlaySFMultipleTimes() {
+        for (int i = 0; i < 3; i++) {
+            testPlaySF();
+        }
+    }
+
+    @Test
+    public void testPlayFinalMatch() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p6);
         players.add(p8);
         players.add(p11);
         testTournament.makeSemiFinals(players);
+        testTournament.playSemiFinals();
         testTournament.playFinalMatch();
         assertTrue(testTournament.getChampion() != null);
         assertTrue(testTournament.getFinalMatch().getWinner() != null);
         assertEquals(testTournament.getChampion(), testTournament.getFinalMatch().getWinner());
+    }
+
+    @Test
+    public void testPlayFinalMatchMultipleTimes() {
+        for (int i = 0; i < 5; i++) {
+            testPlayFinalMatch();
+        }
     }
 }
