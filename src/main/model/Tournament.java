@@ -13,7 +13,7 @@ public class Tournament {
     //          matches, empty bracket for opening round, and 
     //          empty brackets for quarter-, semi-, and
     //          final matches.
-    public Tournament() {
+    public Tournament(String name) {
         // stub
     }
 
@@ -66,6 +66,12 @@ public class Tournament {
         return 0;// stub
     }
 
+    // MODIFIES: this
+    // EFFECTS: simulates all matches in the opening bracket
+    public void playOpeningBracket() {
+        // stub
+    }
+    
     // MODIFIES: this
     // EFFECTS: arranges the top 8 players given after the opening bracket
     //          into the quarter-finals bracket
