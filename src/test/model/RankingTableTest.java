@@ -100,11 +100,11 @@ public class RankingTableTest {
 
     @Test
     void testGetTopPlayers() {
-        HashMap<String, Integer> temp = testRT.getTopPlayers(3);
+        ArrayList<Player> temp = testRT.getTopPlayers(3);
         assertEquals(3, temp.size());
-        assertEquals(1, temp.get("Alex"));
-        assertEquals(2, temp.get("Luigi"));
-        assertEquals(3, temp.get("Marvin"));
+        assertTrue(temp.contains(p1));
+        assertTrue(temp.contains(p3));
+        assertTrue(temp.contains(p4));
     }
 
 }

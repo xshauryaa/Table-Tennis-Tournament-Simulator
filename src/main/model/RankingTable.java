@@ -50,11 +50,16 @@ public class RankingTable {
     }
 
     // REQUIRES: numTopPlayers <= number of players
-    public HashMap<String, Integer> getTopPlayers(int numTopPlayers) {
-        HashMap<String, Integer> topNPlayers = new HashMap<String, Integer>();
+    public ArrayList<Player> getTopPlayers(int numTopPlayers) {
+        ArrayList<Player> topNPlayers = new ArrayList<Player>();
         for (Map.Entry<String, Integer> entry : this.rankingTable.entrySet()) {
             if (entry.getValue() <= numTopPlayers) {
-                topNPlayers.put(entry.getKey(), entry.getValue());
+                // topNPlayers.add(entry.getKey(), entry.getValue());
+                for (Player p : this.players) {
+                    if (p.getName().equals(entry.getKey())) {
+                        topNPlayers.add(p);
+                    }
+                }
             }
         }
         return topNPlayers;
