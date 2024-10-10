@@ -120,6 +120,8 @@ public class Tournament {
     public void playQuarterFinals() {
         ArrayList<Player> advancedToSF = new ArrayList<Player>();
         for (Match m : this.quarterFinalMatches) {
+            m.getPlayer1().addMatchToHistory(m);
+            m.getPlayer2().addMatchToHistory(m);
             m.playMatch();
             advancedToSF.add(m.getWinner());
             if (m.getPlayer1().equals(m.getWinner())) {
@@ -149,6 +151,8 @@ public class Tournament {
     public void playSemiFinals() {
         ArrayList<Player> advancedToFinals = new ArrayList<Player>();
         for (Match m : this.semiFinalMatches) {
+            m.getPlayer1().addMatchToHistory(m);
+            m.getPlayer2().addMatchToHistory(m);
             m.playMatch();
             advancedToFinals.add(m.getWinner());
             if (m.getPlayer1().equals(m.getWinner())) {
@@ -164,6 +168,8 @@ public class Tournament {
     // EFFECTS: simulates the final match and sets the winner
     //          of that match as the tournament's champion
     public void playFinalMatch() {
+        this.finalMatch.getPlayer1().addMatchToHistory(this.finalMatch);
+        this.finalMatch.getPlayer2().addMatchToHistory(this.finalMatch);
         this.finalMatch.playMatch();
         this.champion = this.finalMatch.getWinner();
         if (this.finalMatch.getPlayer1().equals(this.champion)) {

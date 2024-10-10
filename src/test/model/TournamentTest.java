@@ -29,7 +29,7 @@ public class TournamentTest {
     Match m6;
 
     @BeforeEach
-    public void runBefore() {
+    void runBefore() {
         testTournament = new Tournament("World Championship");
         p1 = new Player("A", 29, 92, "USA");
         p2 = new Player("B", 28, 91, "Canada");
@@ -52,7 +52,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         assertEquals("World Championship", testTournament.getName());
         assertEquals(0, testTournament.getListOfPlayers().size());
         assertEquals(null, testTournament.getRankingTable());
@@ -64,7 +64,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testAddMatch() {
+    void testAddMatch() {
         testTournament.addMatch(m1);
         assertEquals(1, testTournament.getOpeningRoundMatches().size());
         assertEquals(m1, testTournament.getOpeningRoundMatches().get(0));
@@ -78,7 +78,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void AddMultiplesMatches() {
+    void AddMultiplesMatches() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         assertEquals(2, testTournament.getOpeningRoundMatches().size());
@@ -100,7 +100,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testInitiateTournamentCondition1() {
+    void testInitiateTournamentCondition1() {
         testTournament.addMatch(m1);
         assertEquals(1, testTournament.initiateTournament());
         assertEquals(1, testTournament.getRankingTable().getPlayerRanking("A"));
@@ -108,7 +108,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testInitiateTournamentCondition2() {
+    void testInitiateTournamentCondition2() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         assertEquals(2, testTournament.initiateTournament());
@@ -119,7 +119,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testInitiateTournamentCondition3() {
+    void testInitiateTournamentCondition3() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
@@ -133,7 +133,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testInitiateTournamentCondition4() {
+    void testInitiateTournamentCondition4() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
@@ -153,7 +153,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testPlayOpeningBracket() {
+    void testPlayOpeningBracket() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
@@ -170,7 +170,7 @@ public class TournamentTest {
         assertTrue(m6.getWinner() != null);
     }
     @Test
-    public void testMakeQF() {
+    void testMakeQF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p3);
@@ -193,7 +193,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testMakeSF() {
+    void testMakeSF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p6);
@@ -208,7 +208,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testPlayQF() {
+    void testPlayQF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p3);
@@ -238,7 +238,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testPlaySF() {
+    void testPlaySF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p6);
@@ -263,14 +263,14 @@ public class TournamentTest {
     }
 
     @Test
-    public void testPlaySFMultipleTimes() {
+    void testPlaySFMultipleTimes() {
         for (int i = 0; i < 3; i++) {
             testPlaySF();
         }
     }
 
     @Test
-    public void testPlayFinalMatch() {
+    void testPlayFinalMatch() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
         players.add(p6);
@@ -285,7 +285,7 @@ public class TournamentTest {
     }
 
     @Test
-    public void testPlayFinalMatchMultipleTimes() {
+    void testPlayFinalMatchMultipleTimes() {
         for (int i = 0; i < 5; i++) {
             testPlayFinalMatch();
         }
