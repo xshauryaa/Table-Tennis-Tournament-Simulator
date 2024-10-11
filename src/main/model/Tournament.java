@@ -109,11 +109,17 @@ public class Tournament {
     // REQUIRES: players.size() == 8
     // MODIFIES: this
     // EFFECTS: arranges the top 8 players given after the opening bracket
-    //          into the quarter-finals bracket
+    //          into the quarter-finals bracket and eliminates all players
+    //          who don't qualify for quarter finals
     public void makeQuarterFinals(ArrayList<Player> players) {
         for (int i = 0; i < 4; i++) {
             Match match = new Match(players.get(i * 2), players.get(i * 2 + 1));
             this.quarterFinalMatches.add(match);
+        }
+        for (Player p : this.listOfPlayers) {
+            if (!players.contains(p)) {
+                p.eliminate();
+            }
         }
     }
 

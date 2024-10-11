@@ -209,15 +209,16 @@ public class TournamentTest {
 
     @Test
     void testPlayQF() {
-        ArrayList<Player> players = new ArrayList<Player>();
-        players.add(p1);
-        players.add(p3);
-        players.add(p4);
-        players.add(p6);
-        players.add(p8);
-        players.add(p9);
-        players.add(p10);
-        players.add(p11);
+        testTournament.addMatch(m1);
+        testTournament.addMatch(m2);
+        testTournament.addMatch(m3);
+        testTournament.addMatch(m4);
+        testTournament.addMatch(m5);
+        testTournament.addMatch(m6);
+        testTournament.initiateTournament();
+        testTournament.playOpeningBracket();
+        testTournament.getRankingTable().updateRankings();
+        ArrayList<Player> players = testTournament.getRankingTable().getTopPlayers(8);
         testTournament.makeQuarterFinals(players);
         testTournament.playQuarterFinals();
         assertTrue(testTournament.getQuarterFinalMatches().get(0).getWinner() != null);
@@ -234,6 +235,11 @@ public class TournamentTest {
                 loser = testTournament.getQuarterFinalMatches().get(i).getPlayer1();
             }
             assertTrue(loser.isEliminated());
+        }
+        for (Player p : testTournament.getListOfPlayers()) {
+            if (!players.contains(p)) {
+                assertTrue(p.isEliminated());
+            }
         }
     }
 

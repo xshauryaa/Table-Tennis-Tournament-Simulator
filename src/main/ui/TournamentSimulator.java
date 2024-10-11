@@ -16,7 +16,7 @@ public class TournamentSimulator {
 
     // EFFECTS: runs the simulator application
     public TournamentSimulator() {
-        System.out.println("Welcome to the Table Tennis Tournament Simulator!\n" + divider);
+        System.out.println("Welcome to the Table Tennis Tournament Simulator!");
         runTournamentSimulator();
     }
 
@@ -137,6 +137,16 @@ public class TournamentSimulator {
         tournament.playOpeningBracket();
         Player finalist1 = tournament.getOpeningRoundMatches().get(0).getWinner();
         Player finalist2 = tournament.getOpeningRoundMatches().get(1).getWinner();
+        if (tournament.getOpeningRoundMatches().get(0).getPlayer1().equals(finalist1)) {
+            tournament.getOpeningRoundMatches().get(0).getPlayer2().eliminate();
+        } else {
+            tournament.getOpeningRoundMatches().get(0).getPlayer1().eliminate();
+        }
+        if (tournament.getOpeningRoundMatches().get(1).getPlayer1().equals(finalist1)) {
+            tournament.getOpeningRoundMatches().get(1).getPlayer2().eliminate();
+        } else {
+            tournament.getOpeningRoundMatches().get(1).getPlayer1().eliminate();
+        }
         tournament.setFinalMatch(new Match(finalist1, finalist2));
         System.out.println("The opening matches have been played!");
         duringTournamentMenu();
@@ -156,6 +166,11 @@ public class TournamentSimulator {
         duringTournamentMenu();
         System.out.println(divider);
         ArrayList<Player> top4 = tournament.getRankingTable().getTopPlayers(4);
+        for (Player p : tournament.getListOfPlayers()) {
+            if (!top4.contains(p)) {
+                p.eliminate();
+            }
+        }
         tournament.makeSemiFinals(top4);
         tournament.playSemiFinals();
         System.out.println("The semi-final matches have been played!");
@@ -258,7 +273,7 @@ public class TournamentSimulator {
             System.out.println(i + ". " + m);
             i++;
         }
-        int numOpeningMatches = i - 1;
+        i = 1;
         if (tournament.getQuarterFinalMatches().size() != 0) {
             System.out.println("Quarter Final Matches:");
             for (Match m : tournament.getQuarterFinalMatches()) {
@@ -266,6 +281,7 @@ public class TournamentSimulator {
                 i++;
             }
         }
+        i = 1;
         if (tournament.getSemiFinalMatches().size() != 0) {
             System.out.println("Semi Final Matches:");
             for (Match m : tournament.getSemiFinalMatches()) {
@@ -273,23 +289,27 @@ public class TournamentSimulator {
                 i++;
             }
         }
+        i = 1;
         if (tournament.getFinalMatch() != null) {
             System.out.println("Final Match:");
             System.out.println(i + ". " + tournament.getFinalMatch());
         }
+        System.out.println("Choose match round (O / QF / SF / F): ");
+        String matchRound = input.next();
+        System.out.println("Choose match number: ");
         int matchNumber = input.nextInt();
-        selectMatch(matchNumber, numOpeningMatches);
+        selectMatch(matchRound, matchNumber);
     }
 
     // EFFECTS: selects a match based on the number given
-    private void selectMatch(int matchNum, int openingMatchesNum) {
-        if (matchNum <= openingMatchesNum) {
+    private void selectMatch(String matchRound, int matchNum) {
+        if (matchRound.equals("O")) {
             displayMatchDetails(tournament.getOpeningRoundMatches().get(matchNum - 1));
-        } else if (matchNum <= openingMatchesNum + 4) {
-            displayMatchDetails(tournament.getQuarterFinalMatches().get(matchNum - openingMatchesNum - 1));
-        } else if (matchNum <= openingMatchesNum + 6) {
-            displayMatchDetails(tournament.getSemiFinalMatches().get(matchNum - openingMatchesNum - 5));
-        } else if (matchNum == openingMatchesNum + 7) {
+        } else if (matchRound.equals("QF")) {
+            displayMatchDetails(tournament.getQuarterFinalMatches().get(matchNum - 1));
+        } else if (matchRound.equals("SF")) {
+            displayMatchDetails(tournament.getSemiFinalMatches().get(matchNum - 1));
+        } else if (matchRound.equals("F")) {
             displayMatchDetails(tournament.getFinalMatch());
         }
     }
