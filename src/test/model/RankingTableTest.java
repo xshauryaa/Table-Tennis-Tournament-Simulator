@@ -58,10 +58,10 @@ public class RankingTableTest {
 
     // Helper
     private void addWinsAndPoints(Player p, int wins, int losses, int pointsWon, int pointsLost) {
-        for (int i=0; i<wins; i++) {
+        for (int i = 0; i < wins; i++) {
             p.winMatch(1);
         }
-        for (int i=0; i<losses; i++) {
+        for (int i = 0; i < losses; i++) {
             p.loseMatch(1);
         }
         p.addPoints(pointsWon);
