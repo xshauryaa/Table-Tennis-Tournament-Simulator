@@ -38,6 +38,11 @@ public class RankingTableTest {
     }
 
     @Test
+    void testToString() {
+        assertEquals("1. Alex\n2. Luigi\n3. Marvin\n4. Rohan", testRT.toString());
+    }
+
+    @Test
     // First criteria for ranking: Higher number of wins
     void testUpdateBasedOnWins() {
         addWinsAndPoints(p3, 4, 0, 120, 100);

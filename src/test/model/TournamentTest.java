@@ -271,13 +271,7 @@ public class TournamentTest {
 
     @Test
     void testPlayFinalMatch() {
-        ArrayList<Player> players = new ArrayList<Player>();
-        players.add(p1);
-        players.add(p6);
-        players.add(p8);
-        players.add(p11);
-        testTournament.makeSemiFinals(players);
-        testTournament.playSemiFinals();
+        testTournament.setFinalMatch(new Match(p10, p1));
         testTournament.playFinalMatch();
         assertTrue(testTournament.getChampion() != null);
         assertTrue(testTournament.getFinalMatch().getWinner() != null);

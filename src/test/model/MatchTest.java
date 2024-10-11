@@ -36,6 +36,12 @@ public class MatchTest {
     }
 
     @Test
+    void testToString() {
+        assertEquals("Luigi vs. Rohan", testMatch1.toString());
+        assertEquals("Alex vs. Marvin", testMatch2.toString());
+    }
+
+    @Test
     void testPlayPoint() {
         int[] set = new int[2];
         testMatch1.playPoint(set);

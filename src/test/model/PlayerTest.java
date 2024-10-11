@@ -29,6 +29,11 @@ public class PlayerTest {
     }
 
     @Test
+    void testToString() {
+        assertEquals("Name: Luigi, OVR: 93", testPlayer.toString());
+    }
+
+    @Test
     void testWinOneMatch() {
         testPlayer.winMatch(2);
         assertEquals(1, testPlayer.getMatchesWon());
