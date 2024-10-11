@@ -39,7 +39,7 @@ public class RankingTableTest {
 
     @Test
     void testToString() {
-        assertEquals("1. Alex\n2. Luigi\n3. Marvin\n4. Rohan", testRT.toString());
+        assertEquals("1. Alex\n2. Luigi\n3. Marvin\n4. Rohan\n", testRT.toString());
     }
 
     @Test
