@@ -32,6 +32,11 @@ public class Match {
         set3Score.put(player2.getName(), 0);
     }
 
+    @Override
+    public String toString() {
+        return this.player1.getName() + " vs. " + this.player2.getName();
+    }
+
     public Player getPlayer1() {
         return this.player1;
     }

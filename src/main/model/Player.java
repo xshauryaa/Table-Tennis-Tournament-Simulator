@@ -37,6 +37,11 @@ public class Player {
         matchHistory = new ArrayList<Match>();
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + this.name + ", Age: " + this.age + ", OVR: " + this.overallAbility + ", Country: " + this.country;
+    }
+
     public String getName() {
         return this.name; // stub
     }

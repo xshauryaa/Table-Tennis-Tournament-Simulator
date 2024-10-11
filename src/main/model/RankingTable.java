@@ -29,6 +29,19 @@ public class RankingTable {
         }
     }
 
+    @Override
+    public String toString() {
+        String rankString = "";
+        for (int i = 1; i <= this.rankingTable.size(); i++) {
+            for (Map.Entry<String, Integer> entry : this.rankingTable.entrySet()) {
+                if (entry.getValue() == i) {
+                    rankString = rankString + entry.getValue() + ". " + entry.getKey() + "\n";
+                }
+            }
+        }
+        return rankString;
+    }
+
     public HashMap<String, Integer> getRankings() {
         return this.rankingTable;
     }
