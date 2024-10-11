@@ -91,8 +91,8 @@ public class RankingTable {
     }
 
     protected Player getNextHighestRankedPlayer(HashMap<String, Integer> newRankings) {
-        Player nextHighestRankedPlayer = this.players.get(0);
-        int maxWins = 0;
+        Player nextHighestRankedPlayer = new Player("X", 60);
+        int maxWins = -1;
         for (Player p : this.players) {
             if (!(newRankings.keySet().contains(p.getName()))) {
                 if (p.getMatchesWon() > maxWins) {

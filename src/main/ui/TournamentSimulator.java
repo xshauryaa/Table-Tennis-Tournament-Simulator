@@ -28,6 +28,7 @@ public class TournamentSimulator {
         boolean continueProgram = true;
 
         while (continueProgram) {
+            System.out.println(divider);
             System.out.println("Start new tournament? (Y/N)");
             String command = input.next();
             command = command.toUpperCase();
@@ -224,7 +225,7 @@ public class TournamentSimulator {
         }
         System.out.println("Select number of player to view: ");
         int playerNumber = input.nextInt();
-        displayPlayerStats(tournament.getListOfPlayers().get(playerNumber));
+        displayPlayerStats(tournament.getListOfPlayers().get(playerNumber-1));
     }
 
     // EFFECTS: displays statistics of given player
@@ -264,17 +265,17 @@ public class TournamentSimulator {
                 System.out.println(i + ". " + m);
                 i++;
             }
-            if (tournament.getSemiFinalMatches().size() != 0) {
-                System.out.println("Semi Final Matches:");
-                for (Match m : tournament.getSemiFinalMatches()) {
-                    System.out.println(i + ". " + m);
-                    i++;
-                }
-                if (tournament.getFinalMatch() != null) {
-                    System.out.println("Final Match:");
-                    System.out.println(i + ". " + tournament.getFinalMatch());
-                }
+        }
+        if (tournament.getSemiFinalMatches().size() != 0) {
+            System.out.println("Semi Final Matches:");
+            for (Match m : tournament.getSemiFinalMatches()) {
+                System.out.println(i + ". " + m);
+                i++;
             }
+        }
+        if (tournament.getFinalMatch() != null) {
+            System.out.println("Final Match:");
+            System.out.println(i + ". " + tournament.getFinalMatch());
         }
         int matchNumber = input.nextInt();
         selectMatch(matchNumber, numOpeningMatches);
