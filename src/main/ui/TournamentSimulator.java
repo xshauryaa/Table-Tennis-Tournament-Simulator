@@ -65,6 +65,7 @@ public class TournamentSimulator {
 
     // EFFECTS: displays menu of possible options while creating tournament to user
     private void displayTournamentCreationMenu() {
+        System.out.println(divider);
         System.out.println("Add new match to your tournament (a)");
         System.out.println("View all matches in your tournament so far (v)");
         System.out.println("Begin tournament (b)");
@@ -73,6 +74,7 @@ public class TournamentSimulator {
     // MODIFIES: this
     // EFFECTS: creates a match based on user input and adds it to tournament
     private void consoleAddMatch() {
+        System.out.println(divider);
         System.out.println("Enter details for Player 1:");
         Player p1 = consoleAddPlayer();
         System.out.println("Enter details for Player 2:");
@@ -94,6 +96,7 @@ public class TournamentSimulator {
 
     // EFFECTS: enlists all matches added to tournament at the time of calling
     private void consoleViewMatches() {
+        System.out.println(divider);
         System.out.println("Current matches in the tournament's opening bracket:");
         for (Match m : tournament.getOpeningRoundMatches()) {
             System.out.println(m);
@@ -134,6 +137,7 @@ public class TournamentSimulator {
         Player finalist1 = tournament.getOpeningRoundMatches().get(0).getWinner();
         Player finalist2 = tournament.getOpeningRoundMatches().get(1).getWinner();
         tournament.setFinalMatch(new Match(finalist1, finalist2));
+        System.out.println("The opening matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);
         tournament.playFinalMatch();
@@ -147,11 +151,13 @@ public class TournamentSimulator {
         System.out.println(divider);
         tournament.playOpeningBracket();
         tournament.getRankingTable().updateRankings();
+        System.out.println("The opening matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);
         ArrayList<Player> top4 = tournament.getRankingTable().getTopPlayers(4);
         tournament.makeSemiFinals(top4);
         tournament.playSemiFinals();
+        System.out.println("The semi-final matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);
         tournament.playFinalMatch();
@@ -165,14 +171,17 @@ public class TournamentSimulator {
         System.out.println(divider);
         tournament.playOpeningBracket();
         tournament.getRankingTable().updateRankings();
+        System.out.println("The opening matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);
         ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
         tournament.makeQuarterFinals(top8);
         tournament.playQuarterFinals();
+        System.out.println("The quarter-final matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);
         tournament.playSemiFinals();
+        System.out.println("The semi-final matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);
         tournament.playFinalMatch();
@@ -286,7 +295,7 @@ public class TournamentSimulator {
 
     // EFFECTS: displays the details of given match
     private void displayMatchDetails(Match m) {
-        System.out.println(m + "\n");
+        System.out.println(m);
         System.out.println("Set 1: " + m.getSetScore(1));
         System.out.println("Set 2: " + m.getSetScore(2));
         System.out.println("Set 3: " + m.getSetScore(3));
