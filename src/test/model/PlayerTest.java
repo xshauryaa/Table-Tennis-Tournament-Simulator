@@ -12,15 +12,13 @@ public class PlayerTest {
     
     @BeforeEach
     void runBefore() {
-        testPlayer = new Player("Luigi", 29, 93, "Italy");
+        testPlayer = new Player("Luigi", 93);
     }
 
     @Test
     void testConstructor() {
         assertEquals("Luigi", testPlayer.getName());
-        assertEquals(29, testPlayer.getAge());
         assertEquals(93, testPlayer.getOverallAbility());
-        assertEquals("Italy", testPlayer.getCountry());
         assertEquals(0, testPlayer.getPointsWon());
         assertEquals(0, testPlayer.getPointsConceded());
         assertEquals(0, testPlayer.getPointsDifference());
@@ -101,7 +99,7 @@ public class PlayerTest {
 
     @Test
     void testAddMatch() {
-        Player testPlayer2 = new Player("Rohan", 26, 89, "India");
+        Player testPlayer2 = new Player("Rohan", 89);
         Match newMatch = new Match(testPlayer, testPlayer2);
         testPlayer.addMatchToHistory(newMatch);
         assertEquals(1, testPlayer.getMatchHistory().size());

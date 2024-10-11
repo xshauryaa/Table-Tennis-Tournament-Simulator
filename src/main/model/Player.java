@@ -9,9 +9,7 @@ import java.util.ArrayList;
  */
 public class Player {
     private String name;
-    private int age;
     private int overallAbility;
-    private String country;
     private int matchesWon;
     private int matchesLost;
     private int pointsWon;
@@ -24,11 +22,9 @@ public class Player {
     //          age, overall ability, and country of origin,
     //          and sets the matches and points win-loss records 
     //          to 0-0 each.
-    public Player(String name, int age, int overallAbility, String country) {
+    public Player(String name, int overallAbility) {
         this.name = name;
-        this.age = age;
         this.overallAbility = overallAbility;
-        this.country = country;
         matchesWon = 0;
         matchesLost = 0;
         pointsWon = 0;
@@ -39,19 +35,11 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Name: " + this.name + ", Age: " + this.age + ", OVR: " + this.overallAbility + ", Country: " + this.country;
+        return "Name: " + this.name + ", OVR: " + this.overallAbility;
     }
 
     public String getName() {
         return this.name; // stub
-    }
-
-    public int getAge() {
-        return this.age; // stub
-    }
-
-    public String getCountry() {
-        return this.country; // stub
     }
 
     public int getPointsWon() {

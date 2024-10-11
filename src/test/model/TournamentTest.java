@@ -31,18 +31,18 @@ public class TournamentTest {
     @BeforeEach
     void runBefore() {
         testTournament = new Tournament("World Championship");
-        p1 = new Player("A", 29, 92, "USA");
-        p2 = new Player("B", 28, 91, "Canada");
-        p3 = new Player("C", 29, 92, "India");
-        p4 = new Player("D", 28, 91, "Uganda");
-        p5 = new Player("E", 29, 92, "Nigeria");
-        p6 = new Player("F", 28, 91, "Mexico");
-        p7 = new Player("G", 29, 92, "Italy");
-        p8 = new Player("H", 28, 91, "France");
-        p9 = new Player("I", 29, 92, "Germany");
-        p10 = new Player("J", 28, 91, "Spain");
-        p11 = new Player("K", 29, 92, "England");
-        p12 = new Player("L", 28, 91, "Australia");
+        p1 = new Player("A", 92);
+        p2 = new Player("B", 91);
+        p3 = new Player("C", 92);
+        p4 = new Player("D", 91);
+        p5 = new Player("E", 92);
+        p6 = new Player("F", 91);
+        p7 = new Player("G", 92);
+        p8 = new Player("H", 91);
+        p9 = new Player("I", 91);
+        p10 = new Player("J", 91);
+        p11 = new Player("K", 92);
+        p12 = new Player("L", 91);
         m1 = new Match(p1, p2);
         m2 = new Match(p3, p4);
         m3 = new Match(p5, p6);

@@ -15,11 +15,11 @@ public class MatchTest {
 
     @BeforeEach
     void runBefore() {
-        p1 = new Player("Luigi", 29, 93, "Italy");
-        p2 = new Player("Rohan", 26, 88, "India");
+        p1 = new Player("Luigi", 93);
+        p2 = new Player("Rohan", 88);
         testMatch1 = new Match(p1, p2);
-        p3 = new Player("Alex", 31, 90, "USA");
-        p4 = new Player("Marvin", 29, 86, "Canada");
+        p3 = new Player("Alex", 90);
+        p4 = new Player("Marvin", 86);
         testMatch2 = new Match(p3, p4);
     }
 

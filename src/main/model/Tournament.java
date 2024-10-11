@@ -64,6 +64,10 @@ public class Tournament {
         return this.champion;
     }
 
+    public void setFinalMatch(Match match) {
+        this.finalMatch = match;
+    }
+
     // REQUIRES: match must not already be in tournament
     // MODIFIES: this
     // EFFECTS: Adds given match to the opening bracket, adds

@@ -16,10 +16,10 @@ public class RankingTableTest {
 
     @BeforeEach
     void runBefore() {
-        p1 = new Player("Luigi", 29, 93, "Italy");
-        p2 = new Player("Rohan", 26, 88, "India");
-        p3 = new Player("Alex", 31, 90, "USA");
-        p4 = new Player("Marvin", 29, 86, "Canada");
+        p1 = new Player("Luigi", 93);
+        p2 = new Player("Rohan", 88);
+        p3 = new Player("Alex", 90);
+        p4 = new Player("Marvin", 86);
         ArrayList<Player> list = new ArrayList<Player>();
         list.add(p1);
         list.add(p2);
