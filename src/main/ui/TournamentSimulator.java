@@ -35,7 +35,7 @@ public class TournamentSimulator {
             if (command.equals("N")) {
                 continueProgram = false;
             } else {
-                System.out.println("Enter a name for your tournament: ");
+                System.out.println("Enter a name for your tournament (no spaces!): ");
                 String tournamentName = input.next();
                 tournament = new Tournament(tournamentName);
                 createTournament();
