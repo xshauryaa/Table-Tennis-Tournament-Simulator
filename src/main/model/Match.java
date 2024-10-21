@@ -3,7 +3,6 @@ package model;
 import java.util.HashMap;
 import java.util.Random;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;

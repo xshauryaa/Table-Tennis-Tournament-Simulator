@@ -2,6 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Map;
+
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 import java.util.HashMap;
 import java.util.Arrays;
 
@@ -9,7 +14,7 @@ import java.util.Arrays;
  * Represents a ranking table for a tournament that ranks
  * all the players based on their statistics.
  */
-public class RankingTable {
+public class RankingTable implements Writable {
     private HashMap<String, Integer> rankingTable;
     private ArrayList<Player> players;
 
@@ -112,5 +117,24 @@ public class RankingTable {
             }
         }
         return nextHighestRankedPlayer;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        for (int i = 0; i < players.size(); i++) {
+            json.put("Rank " + i, playerLookup(getPlayerAtRank(i)).toJson());
+        }
+        return json;
+    }
+
+    // EFFECTS: returns player with given name, returns null if player not found
+    private Player playerLookup(String name) {
+        for (Player p : players) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
+        return null;
     }
 }
