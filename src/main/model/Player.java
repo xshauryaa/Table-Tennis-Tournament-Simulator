@@ -2,18 +2,23 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 /**
  * Represents a player in the table tennis tournament, with statistics
  * such as points won/lost, matches won/lost, overall ability, and 
  * information such as name, age, country of origin, and match history.
  */
-public class Player {
+public class Player implements Writable {
     private String name;
     private int overallAbility;
     private int matchesWon;
     private int matchesLost;
     private int pointsWon;
-    private int pointsConceeded;
+    private int pointsConceded;
     private boolean isEliminated;
     private ArrayList<Match> matchHistory;
 
@@ -28,7 +33,7 @@ public class Player {
         matchesWon = 0;
         matchesLost = 0;
         pointsWon = 0;
-        pointsConceeded = 0;
+        pointsConceded = 0;
         isEliminated = false;
         matchHistory = new ArrayList<Match>();
     }
@@ -47,11 +52,11 @@ public class Player {
     }
 
     public int getPointsConceded() {
-        return this.pointsConceeded; // stub
+        return this.pointsConceded; // stub
     }
 
     public int getPointsDifference() {
-        return this.pointsWon - this.pointsConceeded; // stub
+        return this.pointsWon - this.pointsConceded; // stub
     }
 
     public int getMatchesWon() {
@@ -103,7 +108,7 @@ public class Player {
     // EFFECTS: decreases the number of points conceeded 
     //          by given points
     public void concedePoints(int points) {
-        this.pointsConceeded += points;
+        this.pointsConceded += points;
     }
 
     // MODIFIES: this
@@ -119,5 +124,30 @@ public class Player {
     public void addMatchToHistory(Match match) {
         this.matchHistory.add(match);
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("overall ability", overallAbility);
+        json.put("matches won", matchesWon);
+        json.put("matches lost", matchesLost);
+        json.put("points won", pointsWon);
+        json.put("points conceded", pointsConceded);
+        json.put("eliminated", isEliminated);
+        json.put("match history", matchHistoryToJson());
+        return json;
+    }
+
+    // EFFECTS: returns matches in this player's match history as a JSON array
+    private JSONArray matchHistoryToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Match m : matchHistory) {
+            jsonArray.put(m.toJson());
+        }
+
+        return jsonArray;
+    } 
     
 }
