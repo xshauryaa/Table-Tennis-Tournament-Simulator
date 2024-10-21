@@ -2,12 +2,17 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 /**
  * Represents a tournament with a list of players, an opening 
  * bracket of matches, a quarter finals bracket, a semi finals 
  * bracket, a final match, and a ranking table.
  */
-public class Tournament {
+public class Tournament implements Writable {
     private String name;
     private ArrayList<Player> listOfPlayers;
     private RankingTable rankingTable;
@@ -187,5 +192,37 @@ public class Tournament {
         } else {
             this.finalMatch.getPlayer1().eliminate();
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("players", playersToJson());
+        json.put("ranking table", rankingTable.toJson());
+        json.put("opening bracket", matchesToJson(openingRoundMatches));
+        json.put("quarter finals", matchesToJson(quarterFinalMatches));
+        json.put("semi finals", matchesToJson(semiFinalMatches));
+        json.put("final", finalMatch.toJson());
+        json.put("champion", champion.toJson());
+        return json;
+    }
+
+    // EFFECTS: returns players in this tournament as a JSON array
+    private JSONArray playersToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Player p : listOfPlayers) {
+            jsonArray.put(p.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns matches in given bracket of this tournament as a JSON array
+    private JSONArray matchesToJson(ArrayList<Match> matches) {
+        JSONArray jsonArray = new JSONArray();
+        for (Match m : matches) {
+            jsonArray.put(m.toJson());
+        }
+        return jsonArray;
     }
 }
