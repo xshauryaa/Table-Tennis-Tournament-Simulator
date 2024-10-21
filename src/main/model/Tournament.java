@@ -199,12 +199,24 @@ public class Tournament implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", name);
         json.put("players", playersToJson());
-        json.put("ranking table", rankingTable.toJson());
+        if (this.rankingTable != null) {
+            json.put("ranking table", rankingTable.toJson());
+        } else {
+            json.put("ranking table", "not initiated");
+        }
         json.put("opening bracket", matchesToJson(openingRoundMatches));
         json.put("quarter finals", matchesToJson(quarterFinalMatches));
         json.put("semi finals", matchesToJson(semiFinalMatches));
-        json.put("final", finalMatch.toJson());
-        json.put("champion", champion.toJson());
+        if (this.finalMatch != null) {
+            json.put("final", finalMatch.toJson());
+        } else {
+            json.put("final", "not set");
+        }
+        if (this.champion != null) {
+            json.put("champion", champion.toJson());
+        } else {
+            json.put("champion", "not set");
+        }
         return json;
     }
 

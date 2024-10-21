@@ -102,16 +102,18 @@ class JsonWriterTest extends JsonTest {
             t.addMatch(m1);
             Match m2 = new Match(p3, p4);
             t.addMatch(m2);
+            t.initiateTournament();
             t.playOpeningBracket();
+            t.getRankingTable().updateRankings();
             JsonWriter writer = new JsonWriter("./data/testWriterTournamentPlayedMatches.json");
             writer.open();
             writer.write(t);
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterTournamentPlayedMatches.json");
-            t = reader.read();
-            assertEquals("TableTennisWorldChampionship", t.getName());
-            List<Match> matches = t.getOpeningRoundMatches();
+            Tournament t2 = reader.read();
+            assertEquals("TableTennisWorldChampionship", t2.getName());
+            List<Match> matches = t2.getOpeningRoundMatches();
             assertEquals(2, matches.size());
             checkMatch(p1, p2, m1.getWinner(), m1.getSetScore(1), m1.getSetScore(2), m1.getSetScore(3), matches.get(0));
             checkMatch(p3, p4, m2.getWinner(), m2.getSetScore(1), m2.getSetScore(2), m2.getSetScore(3), matches.get(1));
@@ -141,6 +143,14 @@ class JsonWriterTest extends JsonTest {
                 checkPlayer("C", 92, 0, 1, pw3, pw4, pw3-pw4, false, listWithM2, writtenP3);
                 checkPlayer("D", 91, 1, 0, pw4, pw3, pw4-pw3, false, listWithM2, writtenP4);
             }
+            String rank1Player = t2.getRankingTable().getPlayerAtRank(1);
+            String rank2Player = t2.getRankingTable().getPlayerAtRank(2);
+            String rank3Player = t2.getRankingTable().getPlayerAtRank(3);
+            String rank4Player = t2.getRankingTable().getPlayerAtRank(4);
+            assertEquals(rank1Player, t.getRankingTable().getPlayerAtRank(1));
+            assertEquals(rank2Player, t.getRankingTable().getPlayerAtRank(2));
+            assertEquals(rank3Player, t.getRankingTable().getPlayerAtRank(3));
+            assertEquals(rank4Player, t.getRankingTable().getPlayerAtRank(4));
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
