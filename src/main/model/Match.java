@@ -2,13 +2,19 @@ package model;
 
 import java.util.HashMap;
 import java.util.Random;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 import static java.lang.Math.abs;
 
 /**
  * Represents a match in the tournament, consisting of 2 players,
  * 3 sets, and a winner.
  */
-public class Match {
+public class Match implements Writable {
     private Player player1;
     private Player player2;
     private HashMap<String, Integer> set1Score;
@@ -135,5 +141,17 @@ public class Match {
         } else {
             setScore[1]++;
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("player 1", player1.toJson());
+        json.put("player 2", player2.toJson());
+        json.put("set 1 score", set1Score.toString());
+        json.put("set 2 score", set2Score.toString());
+        json.put("set 3 score", set3Score.toString());
+        json.put("winner", winner.toJson());
+        return json;
     }
 }

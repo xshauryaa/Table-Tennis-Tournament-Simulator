@@ -142,11 +142,9 @@ public class Player implements Writable {
     // EFFECTS: returns matches in this player's match history as a JSON array
     private JSONArray matchHistoryToJson() {
         JSONArray jsonArray = new JSONArray();
-
         for (Match m : matchHistory) {
             jsonArray.put(m.toJson());
         }
-
         return jsonArray;
     } 
     
