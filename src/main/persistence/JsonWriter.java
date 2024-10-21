@@ -1,5 +1,7 @@
 package persistence;
 
+import java.io.FileNotFoundException;
+
 import model.Tournament;
 
 // Referenced by JsonSerializationDemo
@@ -15,7 +17,7 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: opens writer
-    public void open() {
+    public void open() throws FileNotFoundException {
         // stub
     }
 
