@@ -16,6 +16,7 @@ public class Tournament implements Writable {
     private String name;
     private ArrayList<Player> listOfPlayers;
     private RankingTable rankingTable;
+    private int openingMatchId = 1;
     private ArrayList<Match> openingRoundMatches;
     private ArrayList<Match> quarterFinalMatches;
     private ArrayList<Match> semiFinalMatches;
@@ -79,11 +80,13 @@ public class Tournament implements Writable {
     //          the players of the match to the list of players,
     //          and adds this match to each player's match history
     public void addMatch(Match match) {
+        match.setId("O" + openingMatchId);
         this.openingRoundMatches.add(match);
         this.listOfPlayers.add(match.getPlayer1());
         this.listOfPlayers.add(match.getPlayer2());
         match.getPlayer1().addMatchToHistory(match);
         match.getPlayer2().addMatchToHistory(match);
+        this.openingMatchId++;
     }
 
     // MODIFIES: this
@@ -118,7 +121,7 @@ public class Tournament implements Writable {
     //          who don't qualify for quarter finals
     public void makeQuarterFinals(ArrayList<Player> players) {
         for (int i = 0; i < 4; i++) {
-            Match match = new Match(players.get(i * 2), players.get(i * 2 + 1));
+            Match match = new Match("QF" + (i + 1), players.get(i * 2), players.get(i * 2 + 1));
             this.quarterFinalMatches.add(match);
         }
         for (Player p : this.listOfPlayers) {
@@ -154,7 +157,7 @@ public class Tournament implements Writable {
     //          into the semi-finals bracket
     public void makeSemiFinals(ArrayList<Player> players) {
         for (int i = 0; i < 2; i++) {
-            Match match = new Match(players.get(i * 2), players.get(i * 2 + 1));
+            Match match = new Match("SF" + (i + 1), players.get(i * 2), players.get(i * 2 + 1));
             this.semiFinalMatches.add(match);
         }
     }
@@ -176,7 +179,7 @@ public class Tournament implements Writable {
                 m.getPlayer1().eliminate();
             }
         }
-        this.finalMatch = new Match(advancedToFinals.get(0), advancedToFinals.get(1));
+        this.finalMatch = new Match("F", advancedToFinals.get(0), advancedToFinals.get(1));
     }
 
     // MODIFIES: this

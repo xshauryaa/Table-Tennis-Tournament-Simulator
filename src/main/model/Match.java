@@ -14,6 +14,7 @@ import static java.lang.Math.abs;
  * 3 sets, and a winner.
  */
 public class Match implements Writable {
+    private String id;
     private Player player1;
     private Player player2;
     private HashMap<String, Integer> set1Score;
@@ -23,7 +24,8 @@ public class Match implements Writable {
 
     // EFFECTS: creates a match with two given players, with no sets 
     //          won, and scores start at 0-0 for all sets.
-    public Match(Player player1, Player player2) {
+    public Match(String id, Player player1, Player player2) {
+        this.id = id;
         this.player1 = player1;
         this.player2 = player2;
         set1Score = new HashMap<String, Integer>();
@@ -40,7 +42,15 @@ public class Match implements Writable {
 
     @Override
     public String toString() {
-        return this.player1.getName() + " vs. " + this.player2.getName();
+        return this.id + ": " + this.player1.getName() + " vs. " + this.player2.getName();
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Player getPlayer1() {
@@ -146,6 +156,7 @@ public class Match implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
+        json.put("id", id);
         json.put("player 1", player1.toJson());
         json.put("player 2", player2.toJson());
         json.put("set 1 score", set1Score.toString());

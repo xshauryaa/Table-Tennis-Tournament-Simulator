@@ -80,7 +80,7 @@ public class TournamentSimulator {
         Player p1 = consoleAddPlayer();
         System.out.println("Enter details for Player 2:");
         Player p2 = consoleAddPlayer();
-        Match m = new Match(p1, p2);
+        Match m = new Match("x", p1, p2);
         tournament.addMatch(m);
         System.out.println("Match has been added!");
     }
@@ -147,7 +147,7 @@ public class TournamentSimulator {
         } else {
             tournament.getOpeningRoundMatches().get(1).getPlayer1().eliminate();
         }
-        tournament.setFinalMatch(new Match(finalist1, finalist2));
+        tournament.setFinalMatch(new Match("F", finalist1, finalist2));
         System.out.println("The opening matches have been played!");
         duringTournamentMenu();
         System.out.println(divider);

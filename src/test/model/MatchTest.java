@@ -17,14 +17,15 @@ public class MatchTest {
     void runBefore() {
         p1 = new Player("Luigi", 93);
         p2 = new Player("Rohan", 88);
-        testMatch1 = new Match(p1, p2);
+        testMatch1 = new Match("123", p1, p2);
         p3 = new Player("Alex", 90);
         p4 = new Player("Marvin", 86);
-        testMatch2 = new Match(p3, p4);
+        testMatch2 = new Match("456", p3, p4);
     }
 
     @Test
     void testConstructor() {
+        assertEquals("123", testMatch1.getId());
         assertEquals(p1, testMatch1.getPlayer1());
         assertEquals(p2, testMatch1.getPlayer2());
         assertEquals(0, testMatch1.getSetScore(1).get(p1.getName()));
@@ -33,6 +34,12 @@ public class MatchTest {
         assertEquals(0, testMatch1.getSetScore(2).get(p2.getName()));
         assertEquals(0, testMatch1.getSetScore(3).get(p1.getName()));
         assertEquals(0, testMatch1.getSetScore(3).get(p2.getName()));
+    }
+
+    @Test
+    void testSetId() {
+        testMatch1.setId("204");
+        assertEquals("204", testMatch1.getId());
     }
 
     @Test

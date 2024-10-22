@@ -57,8 +57,8 @@ class JsonWriterTest extends JsonTest {
             Player p2 = new Player("B", 91);
             Player p3 = new Player("C", 92);
             Player p4 = new Player("D", 91);
-            t.addMatch(new Match(p1, p2));
-            t.addMatch(new Match(p3, p4));
+            t.addMatch(new Match("x", p1, p2));
+            t.addMatch(new Match("x", p3, p4));
             JsonWriter writer = new JsonWriter("./data/testWriterTournamentUnplayedMatches.json");
             writer.open();
             writer.write(t);
@@ -98,9 +98,9 @@ class JsonWriterTest extends JsonTest {
             Player p2 = new Player("B", 91);
             Player p3 = new Player("C", 92);
             Player p4 = new Player("D", 91);
-            Match m1 = new Match(p1, p2);
+            Match m1 = new Match("x", p1, p2);
             t.addMatch(m1);
-            Match m2 = new Match(p3, p4);
+            Match m2 = new Match("x", p3, p4);
             t.addMatch(m2);
             t.initiateTournament();
             t.playOpeningBracket();

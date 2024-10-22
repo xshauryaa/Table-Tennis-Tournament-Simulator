@@ -105,7 +105,7 @@ public class PlayerTest {
     @Test
     void testAddMatch() {
         Player testPlayer2 = new Player("Rohan", 89);
-        Match newMatch = new Match(testPlayer, testPlayer2);
+        Match newMatch = new Match("random", testPlayer, testPlayer2);
         testPlayer.addMatchToHistory(newMatch);
         assertEquals(1, testPlayer.getMatchHistory().size());
         assertEquals(newMatch, testPlayer.getMatchHistory().get(0));

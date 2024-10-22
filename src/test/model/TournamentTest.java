@@ -43,12 +43,12 @@ public class TournamentTest {
         p10 = new Player("J", 91);
         p11 = new Player("K", 92);
         p12 = new Player("L", 91);
-        m1 = new Match(p1, p2);
-        m2 = new Match(p3, p4);
-        m3 = new Match(p5, p6);
-        m4 = new Match(p7, p8);
-        m5 = new Match(p9, p10);
-        m6 = new Match(p11, p12);
+        m1 = new Match("1", p1, p2);
+        m2 = new Match("2", p3, p4);
+        m3 = new Match("3", p5, p6);
+        m4 = new Match("4", p7, p8);
+        m5 = new Match("5", p9, p10);
+        m6 = new Match("6", p11, p12);
     }
 
     @Test
@@ -277,7 +277,7 @@ public class TournamentTest {
 
     @Test
     void testPlayFinalMatch() {
-        testTournament.setFinalMatch(new Match(p10, p1));
+        testTournament.setFinalMatch(new Match("F", p10, p1));
         testTournament.playFinalMatch();
         assertTrue(testTournament.getChampion() != null);
         assertTrue(testTournament.getFinalMatch().getWinner() != null);
