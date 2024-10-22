@@ -35,6 +35,7 @@ public class Match implements Writable {
         set2Score.put(player2.getName(), 0);
         set3Score.put(player1.getName(), 0);
         set3Score.put(player2.getName(), 0);
+        this.winner = null;
     }
 
     @Override
@@ -150,7 +151,11 @@ public class Match implements Writable {
         json.put("set 1 score", set1Score.toString());
         json.put("set 2 score", set2Score.toString());
         json.put("set 3 score", set3Score.toString());
-        json.put("winner", winner.toJson());
+        if (this.winner != null) {
+            json.put("winner", winner.toJson());
+        } else {
+            json.put("winner", "not set");
+        }
         return json;
     }
 }

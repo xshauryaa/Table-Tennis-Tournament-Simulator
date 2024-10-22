@@ -130,18 +130,18 @@ class JsonWriterTest extends JsonTest {
             listWithM1.add(m1);
             listWithM2.add(m2);
             if (m1.getWinner().equals(p1)) {
-                checkPlayer("A", 92, 1, 0, pw1, pw2, pw1-pw2, false, listWithM1, writtenP1);
-                checkPlayer("B", 91, 0, 1, pw2, pw1, pw2-pw1, false, listWithM1, writtenP2);
+                checkPlayer("A", 92, 1, 0, pw1, pw2, pw1 - pw2, false, listWithM1, writtenP1);
+                checkPlayer("B", 91, 0, 1, pw2, pw1, pw2 - pw1, false, listWithM1, writtenP2);
             } else {
-                checkPlayer("A", 92, 0, 1, pw1, pw2, pw1-pw2, false, listWithM1, writtenP1);
-                checkPlayer("B", 91, 1, 0, pw2, pw1, pw2-pw1, false, listWithM1, writtenP2);
+                checkPlayer("A", 92, 0, 1, pw1, pw2, pw1 - pw2, false, listWithM1, writtenP1);
+                checkPlayer("B", 91, 1, 0, pw2, pw1, pw2 - pw1, false, listWithM1, writtenP2);
             }
             if (m2.getWinner().equals(p3)) {
-                checkPlayer("C", 92, 1, 0, pw3, pw4, pw3-pw4, false, listWithM2, writtenP3);
-                checkPlayer("D", 91, 0, 1, pw4, pw3, pw4-pw3, false, listWithM2, writtenP4);
+                checkPlayer("C", 92, 1, 0, pw3, pw4, pw3 - pw4, false, listWithM2, writtenP3);
+                checkPlayer("D", 91, 0, 1, pw4, pw3, pw4 - pw3, false, listWithM2, writtenP4);
             } else {
-                checkPlayer("C", 92, 0, 1, pw3, pw4, pw3-pw4, false, listWithM2, writtenP3);
-                checkPlayer("D", 91, 1, 0, pw4, pw3, pw4-pw3, false, listWithM2, writtenP4);
+                checkPlayer("C", 92, 0, 1, pw3, pw4, pw3 - pw4, false, listWithM2, writtenP3);
+                checkPlayer("D", 91, 1, 0, pw4, pw3, pw4 - pw3, false, listWithM2, writtenP4);
             }
             String rank1Player = t2.getRankingTable().getPlayerAtRank(1);
             String rank2Player = t2.getRankingTable().getPlayerAtRank(2);
