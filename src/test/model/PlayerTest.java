@@ -29,6 +29,20 @@ public class PlayerTest {
     }
 
     @Test
+    void testAltConstructor() {
+        Player alex = new Player("Alex", 90, 5, 4, 100, 87, true, new ArrayList<Match>());
+        assertEquals("Alex", alex.getName());
+        assertEquals(90, alex.getOverallAbility());
+        assertEquals(100, alex.getPointsWon());
+        assertEquals(87, alex.getPointsConceded());
+        assertEquals(13, testPlayer.getPointsDifference());
+        assertEquals(5, alex.getMatchesWon());
+        assertEquals(4, alex.getMatchesLost());
+        assertEquals(new ArrayList<Match>(), testPlayer.getMatchHistory());
+        assertTrue(testPlayer.isEliminated());
+    }
+
+    @Test
     void testToString() {
         assertEquals("Name: Luigi, OVR: 93", testPlayer.toString());
     }

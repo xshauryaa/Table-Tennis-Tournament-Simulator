@@ -22,11 +22,10 @@ public class Player implements Writable {
     private boolean isEliminated;
     private ArrayList<Match> matchHistory;
 
-    // REQUIRES: age > 0 && overallAbility > 0
-    // EFFECTS: Creates a new Player object with given name,
-    //          age, overall ability, and country of origin,
-    //          and sets the matches and points win-loss records 
-    //          to 0-0 each.
+    // REQUIRES: overallAbility > 0
+    // EFFECTS: Creates a new Player object with given name
+    //          and overall ability, and sets the matches 
+    //          and points win-loss records to 0-0 each.
     public Player(String name, int overallAbility) {
         this.name = name;
         this.overallAbility = overallAbility;
@@ -36,6 +35,22 @@ public class Player implements Writable {
         pointsConceded = 0;
         isEliminated = false;
         matchHistory = new ArrayList<Match>();
+    }
+
+    // REQUIRES: overallAbility > 0 && matchesWon > 0 && matchesLost > 0 && pointsWon > 0 && pointsConceded > 0
+    // EFFECTS: Creates a new Player object with given name,
+    //          overall ability, matches won, matches lost, 
+    //          points won, points conceded, elimination status
+    //          and match history
+    public Player(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, boolean eliminated, ArrayList<Match> history) {
+        this.name = name;
+        this.overallAbility = overallAbility;
+        this.matchesWon = matchesWon;
+        this.matchesLost = matchesLost;
+        this.pointsWon = pointsWon;
+        this.pointsConceded = pointsConceded;
+        this.isEliminated = eliminated;
+        this.matchHistory = history;
     }
 
     @Override
