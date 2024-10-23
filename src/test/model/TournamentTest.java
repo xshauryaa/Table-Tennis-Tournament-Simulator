@@ -83,7 +83,9 @@ public class TournamentTest {
         testTournament.addMatch(m2);
         assertEquals(2, testTournament.getOpeningRoundMatches().size());
         assertEquals(m1, testTournament.getOpeningRoundMatches().get(0));
+        assertEquals("O1", m1.getId());
         assertEquals(m2, testTournament.getOpeningRoundMatches().get(1));
+        assertEquals("O2", m2.getId());
         assertEquals(4, testTournament.getListOfPlayers().size());
         assertEquals(p1, testTournament.getListOfPlayers().get(0));
         assertEquals(p2, testTournament.getListOfPlayers().get(1));
@@ -197,6 +199,20 @@ public class TournamentTest {
     }
 
     @Test
+    void testSetQF() {
+        ArrayList<Match> qf = new ArrayList<Match>();
+        qf.add(m1);
+        qf.add(m3);
+        qf.add(m5);
+        qf.add(m6);
+        testTournament.setQuarterFinals(qf);
+        assertEquals(m1, testTournament.getQuarterFinalMatches().get(0));
+        assertEquals(m3, testTournament.getQuarterFinalMatches().get(1));
+        assertEquals(m5, testTournament.getQuarterFinalMatches().get(2));
+        assertEquals(m6, testTournament.getQuarterFinalMatches().get(3));
+    }
+
+    @Test
     void testMakeSF() {
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(p1);
@@ -209,6 +225,16 @@ public class TournamentTest {
         assertTrue(players.contains(testTournament.getSemiFinalMatches().get(0).getPlayer2()));
         assertTrue(players.contains(testTournament.getSemiFinalMatches().get(1).getPlayer1()));
         assertTrue(players.contains(testTournament.getSemiFinalMatches().get(1).getPlayer2()));
+    }
+
+    @Test
+    void testSetSF() {
+        ArrayList<Match> sf = new ArrayList<Match>();
+        sf.add(m1);
+        sf.add(m5);
+        testTournament.setSemiFinals(sf);
+        assertEquals(m1, testTournament.getSemiFinalMatches().get(0));
+        assertEquals(m5, testTournament.getSemiFinalMatches().get(1));
     }
 
     @Test
@@ -293,5 +319,11 @@ public class TournamentTest {
         for (int i = 0; i < 5; i++) {
             testPlayFinalMatch();
         }
+    }
+
+    @Test
+    void testSetChampion() {
+        testTournament.setChampion(p1);
+        assertEquals(p1, testTournament.getChampion());
     }
 }

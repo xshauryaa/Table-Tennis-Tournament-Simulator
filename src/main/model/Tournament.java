@@ -63,8 +63,18 @@ public class Tournament implements Writable {
         return this.quarterFinalMatches;
     }
 
+    // REQUIRES: qf.size() == 4
+    public void setQuarterFinals(ArrayList<Match> qf) {
+        this.quarterFinalMatches = qf;
+    }
+
     public ArrayList<Match> getSemiFinalMatches() {
         return this.semiFinalMatches;
+    }
+
+    // REQUIRES: sf.size() == 2
+    public void setSemiFinals(ArrayList<Match> sf) {
+        this.semiFinalMatches = sf;
     }
 
     public Match getFinalMatch() {
@@ -77,6 +87,10 @@ public class Tournament implements Writable {
 
     public void setFinalMatch(Match match) {
         this.finalMatch = match;
+    }
+
+    public void setChampion(Player champion) {
+        this.champion = champion;
     }
 
     // REQUIRES: match must not already be in tournament
