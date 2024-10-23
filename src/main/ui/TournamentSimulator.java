@@ -107,12 +107,12 @@ public class TournamentSimulator {
     // MODIFIES: this
     // EFFECTS: simulates the entire tournament in the console round by round
     private void simulateTournament() {
-        int designType = tournament.initiateTournament();
-        if (designType == 1) {
+        tournament.initiateTournament();
+        if (tournament.getDesignType() == 1) {
             playCondition1();
-        } else if (designType == 2) {
+        } else if (tournament.getDesignType() == 2) {
             playCondition2();
-        } else if (designType == 3) {
+        } else if (tournament.getDesignType() == 3) {
             playCondition3();
         } else {
             playCondition4();

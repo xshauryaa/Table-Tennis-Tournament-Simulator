@@ -35,11 +35,11 @@ public class PlayerTest {
         assertEquals(90, alex.getOverallAbility());
         assertEquals(100, alex.getPointsWon());
         assertEquals(87, alex.getPointsConceded());
-        assertEquals(13, testPlayer.getPointsDifference());
+        assertEquals(13, alex.getPointsDifference());
         assertEquals(5, alex.getMatchesWon());
         assertEquals(4, alex.getMatchesLost());
-        assertEquals(new ArrayList<Match>(), testPlayer.getMatchHistory());
-        assertTrue(testPlayer.isEliminated());
+        assertEquals(new ArrayList<Match>(), alex.getMatchHistory());
+        assertTrue(alex.isEliminated());
     }
 
     @Test

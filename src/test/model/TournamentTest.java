@@ -102,7 +102,8 @@ public class TournamentTest {
     @Test
     void testInitiateTournamentCondition1() {
         testTournament.addMatch(m1);
-        assertEquals(1, testTournament.initiateTournament());
+        testTournament.initiateTournament();
+        assertEquals(1, testTournament.getDesignType());
         assertEquals(1, testTournament.getRankingTable().getPlayerRanking("A"));
         assertEquals(2, testTournament.getRankingTable().getPlayerRanking("B"));
     }
@@ -111,7 +112,8 @@ public class TournamentTest {
     void testInitiateTournamentCondition2() {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
-        assertEquals(2, testTournament.initiateTournament());
+        testTournament.initiateTournament();
+        assertEquals(2, testTournament.getDesignType());
         assertEquals(1, testTournament.getRankingTable().getPlayerRanking("A"));
         assertEquals(2, testTournament.getRankingTable().getPlayerRanking("B"));
         assertEquals(3, testTournament.getRankingTable().getPlayerRanking("C"));
@@ -123,7 +125,8 @@ public class TournamentTest {
         testTournament.addMatch(m1);
         testTournament.addMatch(m2);
         testTournament.addMatch(m3);
-        assertEquals(3, testTournament.initiateTournament());
+        testTournament.initiateTournament();
+        assertEquals(3, testTournament.getDesignType());
         assertEquals(1, testTournament.getRankingTable().getPlayerRanking("A"));
         assertEquals(2, testTournament.getRankingTable().getPlayerRanking("B"));
         assertEquals(3, testTournament.getRankingTable().getPlayerRanking("C"));
@@ -139,7 +142,8 @@ public class TournamentTest {
         testTournament.addMatch(m3);
         testTournament.addMatch(m4);
         testTournament.addMatch(m5);
-        assertEquals(4, testTournament.initiateTournament());
+        testTournament.initiateTournament();
+        assertEquals(4, testTournament.getDesignType());
         assertEquals(1, testTournament.getRankingTable().getPlayerRanking("A"));
         assertEquals(2, testTournament.getRankingTable().getPlayerRanking("B"));
         assertEquals(3, testTournament.getRankingTable().getPlayerRanking("C"));

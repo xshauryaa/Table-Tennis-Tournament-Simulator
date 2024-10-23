@@ -14,6 +14,7 @@ import persistence.Writable;
  */
 public class Tournament implements Writable {
     private String name;
+    private int designType;
     private ArrayList<Player> listOfPlayers;
     private RankingTable rankingTable;
     private int openingMatchId = 1;
@@ -40,6 +41,10 @@ public class Tournament implements Writable {
 
     public String getName() {
         return this.name; 
+    }
+
+    public int getDesignType() {
+        return this.designType;
     }
 
     public ArrayList<Player> getListOfPlayers() {
@@ -91,18 +96,18 @@ public class Tournament implements Writable {
 
     // MODIFIES: this
     // EFFECTS: initializes the ranking table for the tournament by putting in,
-    //          and returns a number referring to the design of the tournament
-    //          based on the number of matches added.
-    public int initiateTournament() {
+    //          and sets the design type to a number referring to the design 
+    //          of the tournament based on the number of matches added.
+    public void initiateTournament() {
         this.rankingTable = new RankingTable(this.listOfPlayers);
         if (this.openingRoundMatches.size() == 1) {
-            return 1;
+            this.designType = 1;
         } else if (this.openingRoundMatches.size() == 2) {
-            return 2;
+            this.designType = 2;
         } else if (this.openingRoundMatches.size() < 5) {
-            return 3;
+            this.designType = 3;
         } else {
-            return 4;
+            this.designType = 4;
         }
     }
 
@@ -201,6 +206,7 @@ public class Tournament implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
+        json.put("design type", designType);
         json.put("players", playersToJson());
         if (this.rankingTable != null) {
             json.put("ranking table", rankingTable.toJson());

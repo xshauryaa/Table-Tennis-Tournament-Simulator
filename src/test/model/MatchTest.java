@@ -70,8 +70,8 @@ public class MatchTest {
 
     @Test
     void testToString() {
-        assertEquals("Luigi vs. Rohan", testMatch1.toString());
-        assertEquals("Alex vs. Marvin", testMatch2.toString());
+        assertEquals("123: Luigi vs. Rohan", testMatch1.toString());
+        assertEquals("456: Alex vs. Marvin", testMatch2.toString());
     }
 
     @Test
