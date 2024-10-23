@@ -34,6 +34,17 @@ public class RankingTable implements Writable {
         }
     }
 
+    // REQUIRES: rankedNames.size() > 0 && listOfPlayers.size() > 0
+    // EFFECTS: Creates a ranking table of all given players, 
+    //          ranked in given order.
+    public RankingTable(ArrayList<String> rankedNames, ArrayList<Player> listOfPlayers) {
+        this.rankingTable = new HashMap<String, Integer>();
+        this.players = listOfPlayers;
+        for (int i = 0; i < rankedNames.size(); i++) {
+            this.rankingTable.put(rankedNames.get(i), i + 1);
+        }
+    }
+
     @Override
     public String toString() {
         String rankString = "";

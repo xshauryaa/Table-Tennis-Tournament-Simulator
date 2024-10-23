@@ -59,7 +59,7 @@ public class TournamentSimulator {
                 System.out.println("Goodbye!");
                 continueProgram = false;
             } else {
-
+                System.out.println("Invalid input! Please try again!");
             }
         }
     }

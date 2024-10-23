@@ -64,6 +64,10 @@ public class Tournament implements Writable {
     public RankingTable getRankingTable() {
         return this.rankingTable;
     }
+
+    public void setRankingTable(RankingTable rt) {
+        this.rankingTable = rt;
+    }
     
     public ArrayList<Match> getOpeningRoundMatches() {
         return this.openingRoundMatches;

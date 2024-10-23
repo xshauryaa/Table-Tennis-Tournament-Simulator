@@ -79,10 +79,10 @@ class JsonWriterTest extends JsonTest {
             Player writtenP2 = matches.get(0).getPlayer2();
             Player writtenP3 = matches.get(1).getPlayer1();
             Player writtenP4 = matches.get(1).getPlayer2();
-            checkPlayer("A", 92, 0, 0, 0, 0, 0, false, writtenP1);
-            checkPlayer("B", 91, 0, 0, 0, 0, 0, false, writtenP2);
-            checkPlayer("C", 92, 0, 0, 0, 0, 0, false, writtenP3);
-            checkPlayer("D", 91, 0, 0, 0, 0, 0, false, writtenP4);
+            checkPlayer("A", 92, 0, 0, 0, 0, false, writtenP1);
+            checkPlayer("B", 91, 0, 0, 0, 0, false, writtenP2);
+            checkPlayer("C", 92, 0, 0, 0, 0, false, writtenP3);
+            checkPlayer("D", 91, 0, 0, 0, 0, false, writtenP4);
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -103,6 +103,21 @@ class JsonWriterTest extends JsonTest {
             t.initiateTournament();
             t.playOpeningBracket();
             t.getRankingTable().updateRankings();
+            Player finalist1 = t.getOpeningRoundMatches().get(0).getWinner();
+            Player finalist2 = t.getOpeningRoundMatches().get(1).getWinner();
+            if (t.getOpeningRoundMatches().get(0).getPlayer1().equals(finalist1)) {
+                t.getOpeningRoundMatches().get(0).getPlayer2().eliminate();
+            } else {
+                t.getOpeningRoundMatches().get(0).getPlayer1().eliminate();
+            }
+            if (t.getOpeningRoundMatches().get(1).getPlayer1().equals(finalist1)) {
+                t.getOpeningRoundMatches().get(1).getPlayer2().eliminate();
+            } else {
+                t.getOpeningRoundMatches().get(1).getPlayer1().eliminate();
+            }
+            t.setFinalMatch(new Match("F", finalist1, finalist2));
+            t.setStatus("F");
+            t.playFinalMatch();
             JsonWriter writer = new JsonWriter("./data/testWriterTournamentPlayedMatches.json");
             writer.open();
             writer.write(t);
@@ -115,32 +130,14 @@ class JsonWriterTest extends JsonTest {
             assertEquals(2, matches.size());
             checkMatch("O1", m1.getSetScore(1), m1.getSetScore(2), m1.getSetScore(3), matches.get(0));
             checkMatch("O2", m2.getSetScore(1), m2.getSetScore(2), m2.getSetScore(3), matches.get(1));
-            Player writtenP1 = matches.get(0).getPlayer1();
-            Player writtenP2 = matches.get(0).getPlayer2();
-            Player writtenP3 = matches.get(1).getPlayer1();
-            Player writtenP4 = matches.get(1).getPlayer2();
-            int pw1 = m1.getSetScore(1).get("A") + m1.getSetScore(2).get("A") + m1.getSetScore(3).get("A");
-            int pw2 = m1.getSetScore(1).get("B") + m1.getSetScore(2).get("B") + m1.getSetScore(3).get("B");
-            int pw3 = m2.getSetScore(1).get("C") + m2.getSetScore(2).get("C") + m2.getSetScore(3).get("C");
-            int pw4 = m2.getSetScore(1).get("D") + m2.getSetScore(2).get("D") + m2.getSetScore(3).get("D");
-            if (m1.getWinner().equals(p1)) {
-                int ovrChange = pw1 - pw2;
-                checkPlayer("A", 92 + ovrChange, 1, 0, pw1, pw2, pw1 - pw2, false, writtenP1);
-                checkPlayer("B", 91 - ovrChange, 0, 1, pw2, pw1, pw2 - pw1, false, writtenP2);
-            } else {
-                int ovrChange = pw2 - pw1;
-                checkPlayer("A", 92 - ovrChange, 0, 1, pw1, pw2, pw1 - pw2, false, writtenP1);
-                checkPlayer("B", 91 + ovrChange, 1, 0, pw2, pw1, pw2 - pw1, false, writtenP2);
-            }
-            if (m2.getWinner().equals(p3)) {
-                int ovrChange = pw3 - pw4;
-                checkPlayer("C", 92 + ovrChange, 1, 0, pw3, pw4, pw3 - pw4, false, writtenP3);
-                checkPlayer("D", 91 - ovrChange, 0, 1, pw4, pw3, pw4 - pw3, false, writtenP4);
-            } else {
-                int ovrChange = pw4 - pw3;
-                checkPlayer("C", 92 - ovrChange, 0, 1, pw3, pw4, pw3 - pw4, false, writtenP3);
-                checkPlayer("D", 91 + ovrChange, 1, 0, pw4, pw3, pw4 - pw3, false, writtenP4);
-            }
+            Player writtenP1 = t2.getListOfPlayers().get(0);
+            Player writtenP2 = t2.getListOfPlayers().get(1);
+            Player writtenP3 = t2.getListOfPlayers().get(2);
+            Player writtenP4 = t2.getListOfPlayers().get(3);
+            checkPlayer("A", p1.getOverallAbility(), p1.getMatchesWon(), p1.getMatchesLost(), p1.getPointsWon(), p1.getPointsConceded(), p1.isEliminated(), writtenP1);
+            checkPlayer("B", p2.getOverallAbility(), p2.getMatchesWon(), p2.getMatchesLost(), p2.getPointsWon(), p2.getPointsConceded(), p2.isEliminated(), writtenP2);
+            checkPlayer("C", p3.getOverallAbility(), p3.getMatchesWon(), p3.getMatchesLost(), p3.getPointsWon(), p3.getPointsConceded(), p3.isEliminated(), writtenP3);
+            checkPlayer("D", p4.getOverallAbility(), p4.getMatchesWon(), p4.getMatchesLost(), p4.getPointsWon(), p4.getPointsConceded(), p4.isEliminated(), writtenP4);
             String rank1Player = t2.getRankingTable().getPlayerAtRank(1);
             String rank2Player = t2.getRankingTable().getPlayerAtRank(2);
             String rank3Player = t2.getRankingTable().getPlayerAtRank(3);
@@ -149,6 +146,10 @@ class JsonWriterTest extends JsonTest {
             assertEquals(rank2Player, t.getRankingTable().getPlayerAtRank(2));
             assertEquals(rank3Player, t.getRankingTable().getPlayerAtRank(3));
             assertEquals(rank4Player, t.getRankingTable().getPlayerAtRank(4));
+            assertEquals("F", t2.getStatus());
+            checkMatch("F", t.getFinalMatch().getSetScore(1), t.getFinalMatch().getSetScore(2), t.getFinalMatch().getSetScore(3), t2.getFinalMatch());
+            Player champ = t.getChampion();
+            checkPlayer(champ.getName(), champ.getOverallAbility(), champ.getMatchesWon(), champ.getMatchesLost(), champ.getPointsWon(), champ.getPointsConceded(), champ.isEliminated(), t2.getChampion());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

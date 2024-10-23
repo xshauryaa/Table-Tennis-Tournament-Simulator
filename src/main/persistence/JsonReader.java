@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Player;
+import model.RankingTable;
 import model.Match;
 import model.Tournament;
 
@@ -60,7 +61,12 @@ public class JsonReader {
             t.setFinalMatch(parseMatch(finalMatch));
         }
         t.initiateTournament();
-        t.getRankingTable().updateRankings();
+        if (jsonObject.get("ranking table").equals("not initiated")) {
+            // pass
+        } else {
+            JSONObject rankingTable = (JSONObject) jsonObject.get("ranking table");
+            t.setRankingTable(parseRankingTable(t, rankingTable));;
+        }
         if (jsonObject.get("champion").equals("not set")) {
             // pass
         } else {
@@ -102,6 +108,22 @@ public class JsonReader {
             sf.add(parseMatch(nextMatch));
         }
         t.setSemiFinals(sf);
+    }
+
+    // MODIFIES: t
+    // EFFECTS: parses the ranking table from JSON object and returns it
+    private RankingTable parseRankingTable(Tournament t, JSONObject jsonObject) {
+        ArrayList<String> rankedNames = new ArrayList<String>();
+        ArrayList<Player> players = new ArrayList<Player>();
+        int length = t.getListOfPlayers().size();
+        for (int i = 1; i <= length; i++) {
+            JSONObject next = (JSONObject) jsonObject.get("Rank " + i);
+            Player nextPlayer = parsePlayer(next);
+            players.add(nextPlayer);
+            rankedNames.add(nextPlayer.getName());
+        }
+        RankingTable rt = new RankingTable(rankedNames, players);
+        return rt;
     }
 
     // MODIFIES: t

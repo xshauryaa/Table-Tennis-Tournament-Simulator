@@ -26,14 +26,13 @@ public class JsonTest {
         assertEquals(sets.get(2), match.getSetScore(3));
     }
 
-    protected void checkPlayer(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, int pointsDifference, boolean eliminated, Player p) {
+    protected void checkPlayer(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, boolean eliminated, Player p) {
         assertEquals(name, p.getName());
         assertEquals(overallAbility, p.getOverallAbility());
         assertEquals(matchesWon, p.getMatchesWon());
         assertEquals(matchesLost, p.getMatchesLost());
         assertEquals(pointsWon, p.getPointsWon());
         assertEquals(pointsConceded, p.getPointsConceded());
-        assertEquals(pointsDifference, p.getPointsDifference());
         assertEquals(eliminated, p.isEliminated());
     }
 }

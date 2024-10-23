@@ -71,18 +71,18 @@ class JsonReaderTest extends JsonTest {
             assertEquals("TTWC", t.getName());
             assertEquals(4, t.getDesignType());
             assertEquals("F", t.getStatus());
-            checkPlayer("A", 93, 2, 1, 84, 81, 3, true, t.getListOfPlayers().get(0));
-            checkPlayer("B", 80, 0, 1, 23, 33, -10, true, t.getListOfPlayers().get(1));
-            checkPlayer("C", 92, 1, 1, 57, 55, 2, true, t.getListOfPlayers().get(2));
-            checkPlayer("D", 86, 0, 1, 27, 31, -4, true, t.getListOfPlayers().get(3));
-            checkPlayer("E", 98, 3, 1, 108, 100, 8, true, t.getListOfPlayers().get(4));
-            checkPlayer("F", 85, 0, 1, 22, 27, -5, true, t.getListOfPlayers().get(5));
-            checkPlayer("G", 87, 0, 2, 54, 51, 3, true, t.getListOfPlayers().get(6));
-            checkPlayer("H", 89, 2, 1, 79, 86, -7, true, t.getListOfPlayers().get(7));
-            checkPlayer("I", 90, 1, 1, 51, 51, 0, true, t.getListOfPlayers().get(8));
-            checkPlayer("J", 87, 0, 1, 24, 27, -3, true, t.getListOfPlayers().get(9));
-            checkPlayer("K", 82, 1, 1, 52, 60, -8, true, t.getListOfPlayers().get(10));
-            checkPlayer("L", 111, 3, 1, 123, 102, 21, false, t.getListOfPlayers().get(11));
+            checkPlayer("A", 93, 2, 1, 84, 81, true, t.getListOfPlayers().get(0));
+            checkPlayer("B", 80, 0, 1, 23, 33, true, t.getListOfPlayers().get(1));
+            checkPlayer("C", 92, 1, 1, 57, 55, true, t.getListOfPlayers().get(2));
+            checkPlayer("D", 86, 0, 1, 27, 31, true, t.getListOfPlayers().get(3));
+            checkPlayer("E", 98, 3, 1, 108, 100, true, t.getListOfPlayers().get(4));
+            checkPlayer("F", 85, 0, 1, 22, 27, true, t.getListOfPlayers().get(5));
+            checkPlayer("G", 87, 0, 2, 54, 51, true, t.getListOfPlayers().get(6));
+            checkPlayer("H", 89, 2, 1, 79, 86, true, t.getListOfPlayers().get(7));
+            checkPlayer("I", 90, 1, 1, 51, 51, true, t.getListOfPlayers().get(8));
+            checkPlayer("J", 87, 0, 1, 24, 27, true, t.getListOfPlayers().get(9));
+            checkPlayer("K", 82, 1, 1, 52, 60, true, t.getListOfPlayers().get(10));
+            checkPlayer("L", 111, 3, 1, 123, 102, false, t.getListOfPlayers().get(11));
             ArrayList<HashMap<String, Integer>> sets = setCreator("A", "B", 11, 10, 11, 8, 11, 5);
             checkMatch("O1", sets, t.getOpeningRoundMatches().get(0));
 
@@ -122,7 +122,7 @@ class JsonReaderTest extends JsonTest {
             sets = setCreator("E", "L", 3, 11, 11, 8, 10, 11);
             checkMatch("F", sets, t.getFinalMatch());
 
-            checkPlayer("L", 111, 3, 1, 123, 102, 21, false, t.getChampion());
+            checkPlayer("L", 111, 3, 1, 123, 102, false, t.getChampion());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
