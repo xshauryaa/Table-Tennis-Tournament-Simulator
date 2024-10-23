@@ -1,0 +1,125 @@
+{
+    "design type": 0,
+    "players": [
+        {
+            "eliminated": false,
+            "overall ability": 92,
+            "points won": 0,
+            "name": "A",
+            "matches won": 0,
+            "matches lost": 0,
+            "match history": ["O1: A vs. B"],
+            "points conceded": 0
+        },
+        {
+            "eliminated": false,
+            "overall ability": 91,
+            "points won": 0,
+            "name": "B",
+            "matches won": 0,
+            "matches lost": 0,
+            "match history": ["O1: A vs. B"],
+            "points conceded": 0
+        },
+        {
+            "eliminated": false,
+            "overall ability": 92,
+            "points won": 0,
+            "name": "C",
+            "matches won": 0,
+            "matches lost": 0,
+            "match history": ["O2: C vs. D"],
+            "points conceded": 0
+        },
+        {
+            "eliminated": false,
+            "overall ability": 91,
+            "points won": 0,
+            "name": "D",
+            "matches won": 0,
+            "matches lost": 0,
+            "match history": ["O2: C vs. D"],
+            "points conceded": 0
+        }
+    ],
+    "name": "TableTennisWorldChampionship",
+    "final": "not set",
+    "semi finals": [],
+    "ranking table": "not initiated",
+    "opening bracket": [
+        {
+            "player 2": {
+                "eliminated": false,
+                "overall ability": 91,
+                "points won": 0,
+                "name": "B",
+                "matches won": 0,
+                "matches lost": 0,
+                "match history": ["O1: A vs. B"],
+                "points conceded": 0
+            },
+            "player 1": {
+                "eliminated": false,
+                "overall ability": 92,
+                "points won": 0,
+                "name": "A",
+                "matches won": 0,
+                "matches lost": 0,
+                "match history": ["O1: A vs. B"],
+                "points conceded": 0
+            },
+            "winner": "not set",
+            "set 2 score": {
+                "A": 0,
+                "B": 0
+            },
+            "set 1 score": {
+                "A": 0,
+                "B": 0
+            },
+            "id": "O1",
+            "set 3 score": {
+                "A": 0,
+                "B": 0
+            }
+        },
+        {
+            "player 2": {
+                "eliminated": false,
+                "overall ability": 91,
+                "points won": 0,
+                "name": "D",
+                "matches won": 0,
+                "matches lost": 0,
+                "match history": ["O2: C vs. D"],
+                "points conceded": 0
+            },
+            "player 1": {
+                "eliminated": false,
+                "overall ability": 92,
+                "points won": 0,
+                "name": "C",
+                "matches won": 0,
+                "matches lost": 0,
+                "match history": ["O2: C vs. D"],
+                "points conceded": 0
+            },
+            "winner": "not set",
+            "set 2 score": {
+                "C": 0,
+                "D": 0
+            },
+            "set 1 score": {
+                "C": 0,
+                "D": 0
+            },
+            "id": "O2",
+            "set 3 score": {
+                "C": 0,
+                "D": 0
+            }
+        }
+    ],
+    "quarter finals": [],
+    "champion": "not set"
+}

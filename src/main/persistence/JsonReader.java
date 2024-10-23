@@ -69,21 +69,6 @@ public class JsonReader {
         return t;
     }
 
-    // // MODIFIES: t
-    // // EFFECTS: parses the ranking table from JSON object and sets it to the tournament
-    // private void setRankingTable(Tournament t, JSONObject jsonObject) {
-    //     if (jsonObject.get("ranking table)").equals("not set")) {
-    //         // pass
-    //     } else {
-    //         ArrayList<String> rankedNames = new ArrayList<String>();
-    //         ArrayList<Player> players = new ArrayList<Player>();
-    //         int length = t.getListOfPlayers().size();
-    //         for (int i = 1; i <= length; i++) {
-
-    //         }
-    //     }
-    // }
-
     // MODIFIES: t
     // EFFECTS: parses opening matches from JSON object and adds them to tournament
     private void addOpeningMatches(Tournament t, JSONObject jsonObject) {
