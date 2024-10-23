@@ -130,6 +130,7 @@ public class JsonReader {
         return m;
     }
 
+    // EFFECTS: parses a set score from JSON object and returns it
     private HashMap<String, Integer> parseSet(String name1, String name2, JSONObject set) {
         int score1 = set.getInt(name1);
         int score2 = set.getInt(name2);

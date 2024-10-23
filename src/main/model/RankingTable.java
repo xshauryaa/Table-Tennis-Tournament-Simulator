@@ -129,7 +129,7 @@ public class RankingTable implements Writable {
     }
 
     // EFFECTS: returns player with given name, returns null if player not found
-    private Player playerLookup(String name) {
+    public Player playerLookup(String name) {
         for (Player p : players) {
             if (p.getName().equals(name)) {
                 return p;

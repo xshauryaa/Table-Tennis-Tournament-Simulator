@@ -77,18 +77,14 @@ class JsonWriterTest extends JsonTest {
             emptySetScores2.put(p4.getName(), 0);
             checkMatch("O1", emptySetScores1, emptySetScores1, emptySetScores1, matches.get(0));
             checkMatch("O2", emptySetScores2, emptySetScores2, emptySetScores2, matches.get(1));
-            ArrayList<String> listWithM1 = new ArrayList<String>();
-            ArrayList<String> listWithM2 = new ArrayList<String>();
-            listWithM1.add(matches.get(0).toString());
-            listWithM2.add(matches.get(1).toString());
             Player writtenP1 = matches.get(0).getPlayer1();
             Player writtenP2 = matches.get(0).getPlayer2();
             Player writtenP3 = matches.get(1).getPlayer1();
             Player writtenP4 = matches.get(1).getPlayer2();
-            checkPlayer("A", 92, 0, 0, 0, 0, 0, false, listWithM1, writtenP1);
-            checkPlayer("B", 91, 0, 0, 0, 0, 0, false, listWithM1, writtenP2);
-            checkPlayer("C", 92, 0, 0, 0, 0, 0, false, listWithM2, writtenP3);
-            checkPlayer("D", 91, 0, 0, 0, 0, 0, false, listWithM2, writtenP4);
+            checkPlayer("A", 92, 0, 0, 0, 0, 0, false, writtenP1);
+            checkPlayer("B", 91, 0, 0, 0, 0, 0, false, writtenP2);
+            checkPlayer("C", 92, 0, 0, 0, 0, 0, false, writtenP3);
+            checkPlayer("D", 91, 0, 0, 0, 0, 0, false, writtenP4);
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
@@ -129,27 +125,23 @@ class JsonWriterTest extends JsonTest {
             int pw2 = m1.getSetScore(1).get("B") + m1.getSetScore(2).get("B") + m1.getSetScore(3).get("B");
             int pw3 = m2.getSetScore(1).get("C") + m2.getSetScore(2).get("C") + m2.getSetScore(3).get("C");
             int pw4 = m2.getSetScore(1).get("D") + m2.getSetScore(2).get("D") + m2.getSetScore(3).get("D");
-            ArrayList<String> listWithM1 = new ArrayList<String>();
-            ArrayList<String> listWithM2 = new ArrayList<String>();
-            listWithM1.add(m1.toString());
-            listWithM2.add(m2.toString());
             if (m1.getWinner().equals(p1)) {
                 int ovrChange = pw1 - pw2;
-                checkPlayer("A", 92 + ovrChange, 1, 0, pw1, pw2, pw1 - pw2, false, listWithM1, writtenP1);
-                checkPlayer("B", 91 - ovrChange, 0, 1, pw2, pw1, pw2 - pw1, false, listWithM1, writtenP2);
+                checkPlayer("A", 92 + ovrChange, 1, 0, pw1, pw2, pw1 - pw2, false, writtenP1);
+                checkPlayer("B", 91 - ovrChange, 0, 1, pw2, pw1, pw2 - pw1, false, writtenP2);
             } else {
                 int ovrChange = pw2 - pw1;
-                checkPlayer("A", 92 - ovrChange, 0, 1, pw1, pw2, pw1 - pw2, false, listWithM1, writtenP1);
-                checkPlayer("B", 91 + ovrChange, 1, 0, pw2, pw1, pw2 - pw1, false, listWithM1, writtenP2);
+                checkPlayer("A", 92 - ovrChange, 0, 1, pw1, pw2, pw1 - pw2, false, writtenP1);
+                checkPlayer("B", 91 + ovrChange, 1, 0, pw2, pw1, pw2 - pw1, false, writtenP2);
             }
             if (m2.getWinner().equals(p3)) {
                 int ovrChange = pw3 - pw4;
-                checkPlayer("C", 92 + ovrChange, 1, 0, pw3, pw4, pw3 - pw4, false, listWithM2, writtenP3);
-                checkPlayer("D", 91 - ovrChange, 0, 1, pw4, pw3, pw4 - pw3, false, listWithM2, writtenP4);
+                checkPlayer("C", 92 + ovrChange, 1, 0, pw3, pw4, pw3 - pw4, false, writtenP3);
+                checkPlayer("D", 91 - ovrChange, 0, 1, pw4, pw3, pw4 - pw3, false, writtenP4);
             } else {
                 int ovrChange = pw4 - pw3;
-                checkPlayer("C", 92 - ovrChange, 0, 1, pw3, pw4, pw3 - pw4, false, listWithM2, writtenP3);
-                checkPlayer("D", 91 + ovrChange, 1, 0, pw4, pw3, pw4 - pw3, false, listWithM2, writtenP4);
+                checkPlayer("C", 92 - ovrChange, 0, 1, pw3, pw4, pw3 - pw4, false, writtenP3);
+                checkPlayer("D", 91 + ovrChange, 1, 0, pw4, pw3, pw4 - pw3, false, writtenP4);
             }
             String rank1Player = t2.getRankingTable().getPlayerAtRank(1);
             String rank2Player = t2.getRankingTable().getPlayerAtRank(2);

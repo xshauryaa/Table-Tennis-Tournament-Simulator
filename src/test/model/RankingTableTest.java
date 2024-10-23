@@ -43,6 +43,12 @@ public class RankingTableTest {
     }
 
     @Test
+    void testPlayerLookup() {
+        assertEquals(p1, testRT.playerLookup("Luigi"));
+        assertEquals(null, testRT.playerLookup("John"));
+    }
+
+    @Test
     // First criteria for ranking: Higher number of wins
     void testUpdateBasedOnWins() {
         addWinsAndPoints(p3, 4, 0, 120, 100);
