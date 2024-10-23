@@ -2,6 +2,8 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +36,30 @@ public class MatchTest {
         assertEquals(0, testMatch1.getSetScore(2).get(p2.getName()));
         assertEquals(0, testMatch1.getSetScore(3).get(p1.getName()));
         assertEquals(0, testMatch1.getSetScore(3).get(p2.getName()));
+    }
+
+    @Test
+    void testAlternateConstructor() {
+        HashMap<String, Integer> set1 = new HashMap<String, Integer>();
+        set1.put(p1.getName(), 11);
+        set1.put(p2.getName(), 8);
+        HashMap<String, Integer> set2 = new HashMap<String, Integer>();
+        set2.put(p1.getName(), 6);
+        set2.put(p2.getName(), 11);
+        HashMap<String, Integer> set3 = new HashMap<String, Integer>();
+        set3.put(p1.getName(), 10);
+        set3.put(p2.getName(), 11);
+        Match testMatchAlt = new Match ("x", p1, p2, set1, set2, set3, p2);
+        assertEquals("x", testMatchAlt.getId());
+        assertEquals(p1, testMatchAlt.getPlayer1());
+        assertEquals(p2, testMatchAlt.getPlayer2());
+        assertEquals(11, testMatchAlt.getSetScore(1).get(p1.getName()));
+        assertEquals(8, testMatchAlt.getSetScore(1).get(p2.getName()));
+        assertEquals(6, testMatchAlt.getSetScore(2).get(p1.getName()));
+        assertEquals(11, testMatchAlt.getSetScore(2).get(p2.getName()));
+        assertEquals(10, testMatchAlt.getSetScore(3).get(p1.getName()));
+        assertEquals(11, testMatchAlt.getSetScore(3).get(p2.getName()));
+        assertEquals(p2, testMatchAlt.getWinner());
     }
 
     @Test

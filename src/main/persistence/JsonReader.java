@@ -121,6 +121,7 @@ public class JsonReader {
     // MODIFIES: t
     // EFFECTS: parses a single match from JSON object and returns it
     private Match parseMatch(JSONObject jsonObject) {
+        String id = jsonObject.getString("id");
         JSONObject nextPlayer = (JSONObject) jsonObject.get("player 1");
         Player p1 = parsePlayer(nextPlayer);
         nextPlayer = (JSONObject) jsonObject.get("player 2");
@@ -138,7 +139,8 @@ public class JsonReader {
             JSONObject winnerPlayer = (JSONObject) jsonObject.get("winner");
             winner = parsePlayer(winnerPlayer);
         }
-        Match m = new Match(p1, p2, set1, set2, set3, winner);
+        Match m = new Match(id, p1, p2, set1, set2, set3, winner);
+        return m;
     }
 
     private HashMap<String, Integer> parseSet(String name1, String name2, JSONObject set) {

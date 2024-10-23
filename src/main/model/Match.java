@@ -40,6 +40,19 @@ public class Match implements Writable {
         this.winner = null;
     }
 
+    // EFFECTS: creates a match with two given players, set scores for all
+    //          3 sets, and the given winner.
+    public Match(String id, Player player1, Player player2, HashMap<String, Integer> set1, HashMap<String, Integer> set2, HashMap<String, Integer> set3, Player winner) {
+        this.id = id;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.set1Score = set1;
+        this.set2Score = set2;
+        this.set3Score = set3;
+        this.winner = winner;
+    }
+
+
     @Override
     public String toString() {
         return this.id + ": " + this.player1.getName() + " vs. " + this.player2.getName();
@@ -49,6 +62,7 @@ public class Match implements Writable {
         return this.id;
     }
 
+    // EFFECTS: sets the id of the match to given id
     public void setId(String id) {
         this.id = id;
     }
@@ -72,6 +86,7 @@ public class Match implements Writable {
         }
     }
 
+    // EFFECTS: sets the score of set with given number to given scores for each player
     public void updateSetScore(int setNum, int p1Score, int p2Score) {
         this.getSetScore(setNum).replace(this.player1.getName(), 0, p1Score);
         this.getSetScore(setNum).replace(this.player2.getName(), 0, p2Score);
