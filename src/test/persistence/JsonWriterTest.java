@@ -2,13 +2,11 @@ package persistence;
 
 import model.Player;
 import model.Match;
-import model.RankingTable;
 import model.Tournament;
 
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

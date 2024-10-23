@@ -2,7 +2,6 @@ package persistence;
 
 import model.Player;
 import model.Match;
-import model.RankingTable;
 import model.Tournament;
 
 import org.junit.jupiter.api.Test;

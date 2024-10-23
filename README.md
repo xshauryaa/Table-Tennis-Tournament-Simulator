@@ -20,5 +20,5 @@ I have long been a follower of table tennis. Be it world championships or the Ol
 - As a user, I want to be able to select a player and view their match history in the tournament.
 - As a user, I want to have the option to save the progress of my tournament at any given time.
 - As a user, I want to have the option to quit one tournament and start/resume another without losing any progress.
-- As a user, I want to have the option to reload any tournament of my choosing out of the 3 slots.
+- As a user, I want to have the option to reload my last tournament progress.
 - As a user, I want to be able to view what stage I left a tournament at before I reload any of them.

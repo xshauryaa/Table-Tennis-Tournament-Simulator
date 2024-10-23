@@ -2,7 +2,6 @@ package persistence;
 
 import model.Player;
 import model.Match;
-import model.RankingTable;
 import model.Tournament;
 
 import java.io.IOException;
@@ -143,14 +142,14 @@ public class JsonReader {
     // EFFECTS: parses a single player from JSON object and returns it
     private Player parsePlayer(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        int overallAbility = jsonObject.getInt("overall ability");
+        int ovr = jsonObject.getInt("overall ability");
         int matchesWon = jsonObject.getInt("matches won");
         int matchesLost = jsonObject.getInt("matches lost");
         int pointsWon = jsonObject.getInt("points won");
         int pointsConceded = jsonObject.getInt("points conceded");
-        boolean isEliminated = jsonObject.getBoolean("eliminated");
+        boolean eliminated = jsonObject.getBoolean("eliminated");
         ArrayList<String> history = parseHistory(jsonObject);
-        Player player = new Player(name, overallAbility, matchesWon, matchesLost, pointsWon, pointsConceded, isEliminated, history);
+        Player player = new Player(name, ovr, matchesWon, matchesLost, pointsWon, pointsConceded, eliminated, history);
         return player;
     }
 
