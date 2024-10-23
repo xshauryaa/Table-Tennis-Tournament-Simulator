@@ -185,6 +185,7 @@ public class Match implements Writable {
         return json;
     }
 
+    // EFFECTS: converts a given set into a JSON object
     private JSONObject setScoreToJson(HashMap<String, Integer> set) {
         JSONObject json = new JSONObject();
         json.put(player1.getName(), set.get(player1.getName()));

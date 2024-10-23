@@ -110,7 +110,6 @@ public class JsonReader {
         t.setSemiFinals(sf);
     }
 
-    // MODIFIES: t
     // EFFECTS: parses the ranking table from JSON object and returns it
     private RankingTable parseRankingTable(Tournament t, JSONObject jsonObject) {
         ArrayList<String> rankedNames = new ArrayList<String>();
@@ -126,7 +125,6 @@ public class JsonReader {
         return rt;
     }
 
-    // MODIFIES: t
     // EFFECTS: parses a single match from JSON object and returns it
     private Match parseMatch(JSONObject jsonObject) {
         String id = jsonObject.getString("id");
