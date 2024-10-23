@@ -28,7 +28,7 @@ public class JsonReader {
     }
 
     // EFFECTS: reads tournament from file and returns it
-    public Tournament read() throws IOException{
+    public Tournament read() throws IOException, JSONException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseTournament(jsonObject);

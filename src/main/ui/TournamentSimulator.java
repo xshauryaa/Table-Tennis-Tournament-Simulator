@@ -3,19 +3,31 @@ package ui;
 import model.Player;
 import model.Match;
 import model.Tournament;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.Scanner;
+
+import org.json.JSONException;
+
 
 // Table Tennis Tournament Simulator Application
 public class TournamentSimulator {
     private Tournament tournament;
     private Scanner input = new Scanner(System.in); 
     private String divider = "=================================================";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/tournament.json";
 
     // EFFECTS: runs the simulator application
     public TournamentSimulator() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         System.out.println("Welcome to the Table Tennis Tournament Simulator!");
         runTournamentSimulator();
     }
@@ -29,17 +41,25 @@ public class TournamentSimulator {
 
         while (continueProgram) {
             System.out.println(divider);
-            System.out.println("Start new tournament? (Y/N)");
+            System.out.println("Start new tournament (s)");
+            System.out.println("Load tournament (l)");
+            System.out.println("Quit application (q)");
             String command = input.next();
-            command = command.toUpperCase();
-            if (command.equals("N")) {
-                continueProgram = false;
-            } else {
+            command = command.toLowerCase();
+            if (command.equals("s")) {
                 System.out.println("Enter a name for your tournament (no spaces!): ");
                 String tournamentName = input.next();
                 tournament = new Tournament(tournamentName);
                 createTournament();
                 simulateTournament();
+            } else if (command.equals("l")) {
+                loadTournament();
+            } else if (command.equals("q")) {
+                System.out.println("Quitting application...");
+                System.out.println("Goodbye!");
+                continueProgram = false;
+            } else {
+
             }
         }
     }
@@ -231,7 +251,9 @@ public class TournamentSimulator {
             System.out.println("View ranking table (r)");
             System.out.println("View specific player statistics (p)");
             System.out.println("View specific match details (m)");
+            System.out.println("Save current progress of tournament (s)");
             System.out.println("Play next round (n)");
+            System.out.println("Quit current tournament (q)");
             String nextCommand = input.next();
             if (nextCommand.equals("r")) {
                 System.out.println(tournament.getRankingTable());
@@ -239,6 +261,11 @@ public class TournamentSimulator {
                 selectAndViewPlayerStats();
             } else if (nextCommand.equals("m")) {
                 selectAndViewMatchDetails();
+            } else if (nextCommand.equals("s")) {
+                saveTournament();
+            } else if (nextCommand.equals("q")) {
+                System.out.println("Saving progress...");
+                saveTournament();
             } else if (nextCommand.equals("n")) {
                 break;
             } else {
@@ -339,5 +366,35 @@ public class TournamentSimulator {
         System.out.println("Set 2: " + m.getSetScore(2));
         System.out.println("Set 3: " + m.getSetScore(3));
         System.out.println("Winner: " + m.getWinner().getName());
+    }
+
+    // EFFECTS: saves the progress of current tournament to file
+    private void saveTournament() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(tournament);
+            jsonWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: loads tournament from file
+    private void loadTournament() {
+        try {
+            tournament = jsonReader.read();
+            System.out.println("Loaded " + tournament.getName() + " from " + JSON_STORE);
+            if (tournament.getDesignType() == 2) {
+                playCondition2();
+            } else if (tournament.getDesignType() == 3) {
+                playCondition3();
+            } else {
+                playCondition4();
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        } catch (JSONException e) {
+            System.out.println("No tournament found!");
+        }
     }
 }
