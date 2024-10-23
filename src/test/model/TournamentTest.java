@@ -64,6 +64,12 @@ public class TournamentTest {
     }
 
     @Test
+    void testSetStatus() {
+        testTournament.setStatus("O");
+        assertEquals("O", testTournament.getStatus());
+    }
+    
+    @Test
     void testAddMatch() {
         testTournament.addMatch(m1);
         assertEquals(1, testTournament.getOpeningRoundMatches().size());
@@ -73,8 +79,8 @@ public class TournamentTest {
         assertEquals(p2, testTournament.getListOfPlayers().get(1));
         assertEquals(1, p1.getMatchHistory().size());
         assertEquals(1, p2.getMatchHistory().size());
-        assertEquals(m1, p1.getMatchHistory().get(0));
-        assertEquals(m1, p2.getMatchHistory().get(0));
+        assertEquals(m1.toString(), p1.getMatchHistory().get(0));
+        assertEquals(m1.toString(), p2.getMatchHistory().get(0));
     }
 
     @Test
@@ -95,10 +101,10 @@ public class TournamentTest {
         assertEquals(1, p2.getMatchHistory().size());
         assertEquals(1, p3.getMatchHistory().size());
         assertEquals(1, p4.getMatchHistory().size());
-        assertEquals(m1, p1.getMatchHistory().get(0));
-        assertEquals(m1, p2.getMatchHistory().get(0));
-        assertEquals(m2, p3.getMatchHistory().get(0));
-        assertEquals(m2, p4.getMatchHistory().get(0));
+        assertEquals(m1.toString(), p1.getMatchHistory().get(0));
+        assertEquals(m1.toString(), p2.getMatchHistory().get(0));
+        assertEquals(m2.toString(), p3.getMatchHistory().get(0));
+        assertEquals(m2.toString(), p4.getMatchHistory().get(0));
     }
 
     @Test

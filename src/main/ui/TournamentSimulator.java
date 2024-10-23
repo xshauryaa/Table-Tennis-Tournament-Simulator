@@ -149,11 +149,14 @@ public class TournamentSimulator {
         }
         tournament.setFinalMatch(new Match("F", finalist1, finalist2));
         System.out.println("The opening matches have been played!");
-        duringTournamentMenu();
-        System.out.println(divider);
-        tournament.playFinalMatch();
-        System.out.println(tournament.getName() + " is complete!");
-        System.out.println("The champion is " + tournament.getChampion().getName());
+        tournament.setStatus("F");
+        if (tournament.getStatus().equals("F")) {
+            duringTournamentMenu();
+            System.out.println(divider);
+            tournament.playFinalMatch();
+            System.out.println(tournament.getName() + " is complete!");
+            System.out.println("The champion is " + tournament.getChampion().getName());
+        }
     }
 
     // MODIFIES: this
@@ -163,7 +166,6 @@ public class TournamentSimulator {
         tournament.playOpeningBracket();
         tournament.getRankingTable().updateRankings();
         System.out.println("The opening matches have been played!");
-        duringTournamentMenu();
         System.out.println(divider);
         ArrayList<Player> top4 = tournament.getRankingTable().getTopPlayers(4);
         for (Player p : tournament.getListOfPlayers()) {
@@ -172,13 +174,20 @@ public class TournamentSimulator {
             }
         }
         tournament.makeSemiFinals(top4);
-        tournament.playSemiFinals();
-        System.out.println("The semi-final matches have been played!");
-        duringTournamentMenu();
-        System.out.println(divider);
-        tournament.playFinalMatch();
-        System.out.println(tournament.getName() + " is complete!");
-        System.out.println("The champion is " + tournament.getChampion().getName());
+        tournament.setStatus("SF");
+        if (tournament.getStatus().equals("SF")) {
+            duringTournamentMenu();
+            tournament.playSemiFinals();
+            System.out.println("The semi-final matches have been played!");
+            tournament.setStatus("F");
+        }
+        if (tournament.getStatus().equals("SF")) {
+            duringTournamentMenu();
+            System.out.println(divider);
+            tournament.playFinalMatch();
+            System.out.println(tournament.getName() + " is complete!");
+            System.out.println("The champion is " + tournament.getChampion().getName());
+        }
     }
 
     // MODIFIES: this
@@ -188,21 +197,30 @@ public class TournamentSimulator {
         tournament.playOpeningBracket();
         tournament.getRankingTable().updateRankings();
         System.out.println("The opening matches have been played!");
-        duringTournamentMenu();
-        System.out.println(divider);
-        ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
-        tournament.makeQuarterFinals(top8);
-        tournament.playQuarterFinals();
-        System.out.println("The quarter-final matches have been played!");
-        duringTournamentMenu();
-        System.out.println(divider);
-        tournament.playSemiFinals();
-        System.out.println("The semi-final matches have been played!");
-        duringTournamentMenu();
-        System.out.println(divider);
-        tournament.playFinalMatch();
-        System.out.println(tournament.getName() + " is complete!");
-        System.out.println("The champion is " + tournament.getChampion().getName());
+        tournament.setStatus("QF");
+        if (tournament.getStatus().equals("QF")) {
+            duringTournamentMenu();
+            System.out.println(divider);
+            ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
+            tournament.makeQuarterFinals(top8);
+            tournament.playQuarterFinals();
+            System.out.println("The quarter-final matches have been played!");
+            tournament.setStatus("SF");
+        }
+        if (tournament.getStatus().equals("SF")) {
+            duringTournamentMenu();
+            System.out.println(divider);
+            tournament.playSemiFinals();
+            System.out.println("The semi-final matches have been played!");
+            tournament.setStatus("F");
+        }
+        if (tournament.getStatus().equals("F")) {
+            duringTournamentMenu();
+            System.out.println(divider);
+            tournament.playFinalMatch();
+            System.out.println(tournament.getName() + " is complete!");
+            System.out.println("The champion is " + tournament.getChampion().getName());
+        }
     }
 
     // EFFECTS: displays menu of possible options during the simulation for users

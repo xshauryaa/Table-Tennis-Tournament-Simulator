@@ -122,6 +122,6 @@ public class PlayerTest {
         Match newMatch = new Match("random", testPlayer, testPlayer2);
         testPlayer.addMatchToHistory(newMatch);
         assertEquals(1, testPlayer.getMatchHistory().size());
-        assertEquals(newMatch, testPlayer.getMatchHistory().get(0));
+        assertEquals("random: Luigi vs. Rohan", testPlayer.getMatchHistory().get(0));
     }
 }

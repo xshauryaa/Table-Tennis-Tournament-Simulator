@@ -49,6 +49,8 @@ public class JsonReader {
     private Tournament parseTournament(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Tournament t = new Tournament(name);
+        String status = jsonObject.getString("status");
+        t.setStatus(status);
         addOpeningMatches(t, jsonObject);
         addQFMatches(t, jsonObject);
         addSFMatches(t, jsonObject);
@@ -155,8 +157,8 @@ public class JsonReader {
     private ArrayList<String> parseHistory(JSONObject json) {
         ArrayList<String> history = new ArrayList<String>();
         JSONArray jsonArray = json.getJSONArray("match history");
-        for (Object jsonObject : jsonArray) {
-            String nextMatch = jsonObject.toString();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String nextMatch = jsonArray.get(i).toString();
             history.add(nextMatch);
         }
         return history;

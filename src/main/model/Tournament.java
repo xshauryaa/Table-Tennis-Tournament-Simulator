@@ -15,6 +15,7 @@ import persistence.Writable;
 public class Tournament implements Writable {
     private String name;
     private int designType;
+    private String status;
     private ArrayList<Player> listOfPlayers;
     private RankingTable rankingTable;
     private int openingMatchId = 1;
@@ -45,6 +46,15 @@ public class Tournament implements Writable {
 
     public int getDesignType() {
         return this.designType;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    // REQUIRES: status must be one of "O", "QF", "SF", or "F"
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public ArrayList<Player> getListOfPlayers() {
@@ -221,6 +231,7 @@ public class Tournament implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", name);
         json.put("design type", designType);
+        json.put("status", status);
         json.put("players", playersToJson());
         if (this.rankingTable != null) {
             json.put("ranking table", rankingTable.toJson());
