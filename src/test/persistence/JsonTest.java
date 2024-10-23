@@ -22,7 +22,7 @@ public class JsonTest {
         // assertEquals(winner, match.getWinner());
     }
 
-    protected void checkPlayer(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, int pointsDifference, boolean eliminated, ArrayList<Match> history, Player p) {
+    protected void checkPlayer(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, int pointsDifference, boolean eliminated, ArrayList<String> history, Player p) {
         assertEquals(name, p.getName());
         assertEquals(overallAbility, p.getOverallAbility());
         assertEquals(matchesWon, p.getMatchesWon());
@@ -31,6 +31,9 @@ public class JsonTest {
         assertEquals(pointsConceded, p.getPointsConceded());
         assertEquals(pointsDifference, p.getPointsDifference());
         assertEquals(eliminated, p.isEliminated());
-        assertEquals(history, p.getMatchHistory());
+        assertEquals(history.size(), p.getMatchHistory().size());
+        for (int i = 0; i < history.size(); i++) {
+            assertEquals(history.get(i), p.getMatchHistory().get(i));
+        }
     }
 }

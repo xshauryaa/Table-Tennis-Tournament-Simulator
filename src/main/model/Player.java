@@ -133,11 +133,14 @@ public class Player implements Writable {
         this.isEliminated = true;
     }
 
-    // REQUIRES: this player must be in given match
     // MODIFIES: this
     // EFFECTS: Adds given match to player's match history
     public void addMatchToHistory(Match match) {
-        this.matchHistory.add(match.toString());
+        if (this.matchHistory.contains(match.toString())) {
+            // pass
+        } else {
+            this.matchHistory.add(match.toString());
+        }
     }
 
     @Override

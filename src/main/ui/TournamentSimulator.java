@@ -253,7 +253,7 @@ public class TournamentSimulator {
             System.out.println("View specific match details (m)");
             System.out.println("Save current progress of tournament (s)");
             System.out.println("Play next round (n)");
-            System.out.println("Quit current tournament (q)");
+            System.out.println("Quit application (q)");
             String nextCommand = input.next();
             if (nextCommand.equals("r")) {
                 System.out.println(tournament.getRankingTable());
@@ -266,6 +266,9 @@ public class TournamentSimulator {
             } else if (nextCommand.equals("q")) {
                 System.out.println("Saving progress...");
                 saveTournament();
+                System.out.println("Quitting application...");
+                System.out.println("Goodbye!");
+                System.exit(0);
             } else if (nextCommand.equals("n")) {
                 break;
             } else {

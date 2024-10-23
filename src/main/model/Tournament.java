@@ -15,7 +15,7 @@ import persistence.Writable;
 public class Tournament implements Writable {
     private String name;
     private int designType;
-    private String status;
+    private String status = "O";
     private ArrayList<Player> listOfPlayers;
     private RankingTable rankingTable;
     private int openingMatchId = 1;
