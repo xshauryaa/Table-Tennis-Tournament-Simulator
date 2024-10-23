@@ -174,14 +174,21 @@ public class Match implements Writable {
         json.put("id", id);
         json.put("player 1", player1.toJson());
         json.put("player 2", player2.toJson());
-        json.put("set 1 score", set1Score.toString());
-        json.put("set 2 score", set2Score.toString());
-        json.put("set 3 score", set3Score.toString());
+        json.put("set 1 score", setScoreToJson(set1Score));
+        json.put("set 2 score", setScoreToJson(set2Score));
+        json.put("set 3 score", setScoreToJson(set3Score));
         if (this.winner != null) {
             json.put("winner", winner.toJson());
         } else {
             json.put("winner", "not set");
         }
+        return json;
+    }
+
+    private JSONObject setScoreToJson(HashMap<String, Integer> set) {
+        JSONObject json = new JSONObject();
+        json.put(player1.getName(), set.get(player1.getName()));
+        json.put(player2.getName(), set.get(player2.getName()));
         return json;
     }
 }
