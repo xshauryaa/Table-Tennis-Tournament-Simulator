@@ -161,17 +161,18 @@ public class JsonReader {
         int pointsWon = jsonObject.getInt("points won");
         int pointsConceded = jsonObject.getInt("points conceded");
         boolean isEliminated = jsonObject.getBoolean("eliminated");
-        ArrayList<Match> history = parseHistory(jsonObject.getJSONArray("match history"));
+        ArrayList<String> history = parseHistory(jsonObject);
         Player player = new Player(name, overallAbility, matchesWon, matchesLost, pointsWon, pointsConceded, isEliminated, history);
         return player;
     }
 
     // EFFECTS: parses the match history from JSON array and returns it
-    private ArrayList<Match> parseHistory(JSONArray jsonArray) {
-        ArrayList<Match> history = new ArrayList<Match>();
+    private ArrayList<String> parseHistory(JSONObject json) {
+        ArrayList<String> history = new ArrayList<String>();
+        JSONArray jsonArray = json.getJSONArray("match history");
         for (Object jsonObject : jsonArray) {
-            JSONObject nextMatch = (JSONObject) jsonObject;
-            history.add(parseMatch(nextMatch));
+            String nextMatch = jsonObject.toString();
+            history.add(nextMatch);
         }
         return history;
     }

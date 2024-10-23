@@ -30,7 +30,7 @@ public class PlayerTest {
 
     @Test
     void testAltConstructor() {
-        Player alex = new Player("Alex", 90, 5, 4, 100, 87, true, new ArrayList<Match>());
+        Player alex = new Player("Alex", 90, 5, 4, 100, 87, true, new ArrayList<String>());
         assertEquals("Alex", alex.getName());
         assertEquals(90, alex.getOverallAbility());
         assertEquals(100, alex.getPointsWon());

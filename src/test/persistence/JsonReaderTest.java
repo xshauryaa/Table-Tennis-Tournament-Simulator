@@ -56,8 +56,8 @@ class JsonReaderTest extends JsonTest {
             assertEquals("TableTennisWorldChampionship", t.getName());
             List<Match> matches = t.getOpeningRoundMatches();
             assertEquals(2, matches.size());
-            checkMatch(p1, p2, null, emptySetScores1, emptySetScores1, emptySetScores1, matches.get(0));
-            checkMatch(p3, p4, null, emptySetScores2, emptySetScores2, emptySetScores2, matches.get(1));
+            checkMatch("O1", emptySetScores1, emptySetScores1, emptySetScores1, matches.get(0));
+            checkMatch("O2", emptySetScores2, emptySetScores2, emptySetScores2, matches.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

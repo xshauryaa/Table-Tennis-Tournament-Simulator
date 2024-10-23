@@ -122,7 +122,7 @@ public class RankingTable implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        for (int i = 0; i < players.size(); i++) {
+        for (int i = 1; i <= players.size(); i++) {
             json.put("Rank " + i, playerLookup(getPlayerAtRank(i)).toJson());
         }
         return json;

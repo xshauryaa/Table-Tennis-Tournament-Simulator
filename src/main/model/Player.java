@@ -20,7 +20,7 @@ public class Player implements Writable {
     private int pointsWon;
     private int pointsConceded;
     private boolean isEliminated;
-    private ArrayList<Match> matchHistory;
+    private ArrayList<String> matchHistory;
 
     // REQUIRES: overallAbility > 0
     // EFFECTS: Creates a new Player object with given name
@@ -34,7 +34,7 @@ public class Player implements Writable {
         pointsWon = 0;
         pointsConceded = 0;
         isEliminated = false;
-        matchHistory = new ArrayList<Match>();
+        matchHistory = new ArrayList<String>();
     }
 
     // REQUIRES: overallAbility > 0 && matchesWon > 0 && matchesLost > 0 && pointsWon > 0 && pointsConceded > 0
@@ -42,7 +42,7 @@ public class Player implements Writable {
     //          overall ability, matches won, matches lost, 
     //          points won, points conceded, elimination status
     //          and match history
-    public Player(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, boolean eliminated, ArrayList<Match> history) {
+    public Player(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, boolean eliminated, ArrayList<String> history) {
         this.name = name;
         this.overallAbility = overallAbility;
         this.matchesWon = matchesWon;
@@ -90,7 +90,7 @@ public class Player implements Writable {
         return this.isEliminated; // stub
     }
 
-    public ArrayList<Match> getMatchHistory() {
+    public ArrayList<String> getMatchHistory() {
         return this.matchHistory; // stub
     }
 
@@ -137,7 +137,7 @@ public class Player implements Writable {
     // MODIFIES: this
     // EFFECTS: Adds given match to player's match history
     public void addMatchToHistory(Match match) {
-        this.matchHistory.add(match);
+        this.matchHistory.add(match.toString());
     }
 
     @Override
@@ -157,8 +157,8 @@ public class Player implements Writable {
     // EFFECTS: returns matches in this player's match history as a JSON array
     private JSONArray matchHistoryToJson() {
         JSONArray jsonArray = new JSONArray();
-        for (Match m : matchHistory) {
-            jsonArray.put(m.toJson());
+        for (String m : matchHistory) {
+            jsonArray.put(m);
         }
         return jsonArray;
     } 

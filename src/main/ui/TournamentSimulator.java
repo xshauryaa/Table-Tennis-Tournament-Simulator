@@ -259,7 +259,7 @@ public class TournamentSimulator {
         }
         System.out.println("Tournament status: " + status);
         System.out.println("Match history: ");
-        for (Match m : p.getMatchHistory()) {
+        for (String m : p.getMatchHistory()) {
             System.out.println(m);
         }
     }
