@@ -42,7 +42,8 @@ public class Player implements Writable {
     //          overall ability, matches won, matches lost, 
     //          points won, points conceded, elimination status
     //          and match history
-    public Player(String name, int overallAbility, int matchesWon, int matchesLost, int pointsWon, int pointsConceded, boolean eliminated, ArrayList<String> history) {
+    public Player(String name, int overallAbility, int matchesWon, int matchesLost, 
+            int pointsWon, int pointsConceded, boolean eliminated, ArrayList<String> history) {
         this.name = name;
         this.overallAbility = overallAbility;
         this.matchesWon = matchesWon;

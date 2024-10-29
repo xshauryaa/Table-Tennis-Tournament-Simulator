@@ -45,6 +45,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    @SuppressWarnings("methodlength")
     // EFFECTS: parses tournament from JSON object and returns it
     private Tournament parseTournament(JSONObject jsonObject) {
         String name = jsonObject.getString("name");

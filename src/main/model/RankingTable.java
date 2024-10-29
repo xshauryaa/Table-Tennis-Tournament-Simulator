@@ -106,6 +106,8 @@ public class RankingTable implements Writable {
         this.rankingTable = newRankings;
     }
 
+    // EFFECTS: returns the next highest ranked player that has not 
+    //          already been updated in rankings
     protected Player getNextHighestRankedPlayer(HashMap<String, Integer> newRankings) {
         Player nextHighestRankedPlayer = new Player("X", 60);
         int maxWins = -1;

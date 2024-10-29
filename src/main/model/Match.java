@@ -42,7 +42,8 @@ public class Match implements Writable {
 
     // EFFECTS: creates a match with two given players, set scores for all
     //          3 sets, and the given winner.
-    public Match(String id, Player player1, Player player2, HashMap<String, Integer> set1, HashMap<String, Integer> set2, HashMap<String, Integer> set3, Player winner) {
+    public Match(String id, Player player1, Player player2, HashMap<String, Integer> set1, 
+            HashMap<String, Integer> set2, HashMap<String, Integer> set3, Player winner) {
         this.id = id;
         this.player1 = player1;
         this.player2 = player2;

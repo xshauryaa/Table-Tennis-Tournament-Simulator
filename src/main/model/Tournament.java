@@ -230,6 +230,7 @@ public class Tournament implements Writable {
         }
     }
 
+    @SuppressWarnings("methodlength")
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -38,7 +38,6 @@ public class TournamentSimulator {
     // https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
     private void runTournamentSimulator() {
         boolean continueProgram = true;
-
         while (continueProgram) {
             System.out.println(divider);
             System.out.println("Start new tournament (s)");
@@ -55,8 +54,7 @@ public class TournamentSimulator {
             } else if (command.equals("l")) {
                 loadTournament();
             } else if (command.equals("q")) {
-                System.out.println("Quitting application...");
-                System.out.println("Goodbye!");
+                System.out.println("Quitting application...\nGoodbye!");
                 continueProgram = false;
             } else {
                 System.out.println("Invalid input! Please try again!");
@@ -171,11 +169,7 @@ public class TournamentSimulator {
         System.out.println("The opening matches have been played!");
         tournament.setStatus("F");
         if (tournament.getStatus().equals("F")) {
-            duringTournamentMenu();
-            System.out.println(divider);
-            tournament.playFinalMatch();
-            System.out.println(tournament.getName() + " is complete!");
-            System.out.println("The champion is " + tournament.getChampion().getName());
+            simulateFinalMatch();
         }
     }
 
@@ -196,17 +190,10 @@ public class TournamentSimulator {
         tournament.makeSemiFinals(top4);
         tournament.setStatus("SF");
         if (tournament.getStatus().equals("SF")) {
-            duringTournamentMenu();
-            tournament.playSemiFinals();
-            System.out.println("The semi-final matches have been played!");
-            tournament.setStatus("F");
+            simulateSemiFinals();
         }
-        if (tournament.getStatus().equals("SF")) {
-            duringTournamentMenu();
-            System.out.println(divider);
-            tournament.playFinalMatch();
-            System.out.println(tournament.getName() + " is complete!");
-            System.out.println("The champion is " + tournament.getChampion().getName());
+        if (tournament.getStatus().equals("F")) {
+            simulateFinalMatch();
         }
     }
 
@@ -219,30 +206,49 @@ public class TournamentSimulator {
         System.out.println("The opening matches have been played!");
         tournament.setStatus("QF");
         if (tournament.getStatus().equals("QF")) {
-            duringTournamentMenu();
-            System.out.println(divider);
-            ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
-            tournament.makeQuarterFinals(top8);
-            tournament.playQuarterFinals();
-            System.out.println("The quarter-final matches have been played!");
-            tournament.setStatus("SF");
+            simulateQuarterFinals();
         }
         if (tournament.getStatus().equals("SF")) {
-            duringTournamentMenu();
-            System.out.println(divider);
-            tournament.playSemiFinals();
-            System.out.println("The semi-final matches have been played!");
-            tournament.setStatus("F");
+            simulateSemiFinals();
         }
         if (tournament.getStatus().equals("F")) {
-            duringTournamentMenu();
-            System.out.println(divider);
-            tournament.playFinalMatch();
-            System.out.println(tournament.getName() + " is complete!");
-            System.out.println("The champion is " + tournament.getChampion().getName());
+            simulateFinalMatch();
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: simulates quarter final matches
+    private void simulateQuarterFinals() {
+        duringTournamentMenu();
+        System.out.println(divider);
+        ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
+        tournament.makeQuarterFinals(top8);
+        tournament.playQuarterFinals();
+        System.out.println("The quarter-final matches have been played!");
+        tournament.setStatus("SF");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: simulates semi final matches
+    private void simulateSemiFinals() {
+        duringTournamentMenu();
+        System.out.println(divider);
+        tournament.playSemiFinals();
+        System.out.println("The semi-final matches have been played!");
+        tournament.setStatus("F");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: simulates the final match
+    private void simulateFinalMatch() {
+        duringTournamentMenu();
+        System.out.println(divider);
+        tournament.playFinalMatch();
+        System.out.println(tournament.getName() + " is complete!");
+        System.out.println("The champion is " + tournament.getChampion().getName());
+    }
+
+    @SuppressWarnings("methodlength")
     // EFFECTS: displays menu of possible options during the simulation for users
     //          processes input
     private void duringTournamentMenu() {
@@ -288,7 +294,7 @@ public class TournamentSimulator {
         }
         System.out.println("Select number of player to view: ");
         int playerNumber = input.nextInt();
-        displayPlayerStats(tournament.getListOfPlayers().get(playerNumber-1));
+        displayPlayerStats(tournament.getListOfPlayers().get(playerNumber - 1));
     }
 
     // EFFECTS: displays statistics of given player
@@ -312,6 +318,7 @@ public class TournamentSimulator {
         }
     }
 
+    @SuppressWarnings("methodlength")
     // EFFECTS: enlists all matches in tournament and processes user input
     private void selectAndViewMatchDetails() {
         System.out.println(divider);
