@@ -43,6 +43,17 @@ public class AddMatchDialog extends JDialog {
         JPanel player1Panel = createPlayerPanel("Player 1", 1);
         JPanel player2Panel = createPlayerPanel("Player 2", 2);
         
+        initializeSubmitButton();
+
+        buttonPanel.add(submitBtn);
+        main.add(player1Panel);
+        main.add(player2Panel);
+        add(main, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    // EFFECTS: initializes submit button for the dialog window
+    private void initializeSubmitButton() {
         submitBtn = new JButton("Submit");
         submitBtn.setSize(57, 24);
         submitBtn.addActionListener(new ActionListener() {
@@ -56,12 +67,6 @@ public class AddMatchDialog extends JDialog {
                 dispose();
             }
         });
-
-        buttonPanel.add(submitBtn);
-        main.add(player1Panel);
-        main.add(player2Panel);
-        add(main, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH);
     }
 
     // REQUIRES: playerNum == 1 || playerNum == 2
@@ -75,34 +80,41 @@ public class AddMatchDialog extends JDialog {
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         playerPanel.add(titleLabel);
-        JTextField nameField;
-        JTextField ovrField;
         if (playerNum == 1) {
-            nameField = player1Name;
-            ovrField = ovr1;
+            setNameField(playerPanel, player1Name);
+            setOvrField(playerPanel, ovr1);
         } else {
-            nameField = player2Name;
-            ovrField = ovr2;
+            setNameField(playerPanel, player2Name);
+            setOvrField(playerPanel, ovr2);
         }
+
+        return playerPanel;
+    }
+
+    // EFFECTS: sets given field to a new JTextField instance and adds
+    //          it to the given panel as the OVR field
+    private void setOvrField(JPanel panel, JTextField ovrField) {
+        ovrField = new JTextField(10);
+        ovrField.setBackground(Color.DARK_GRAY);
+        ovrField.setForeground(Color.WHITE);
+        JLabel label = new JLabel("OVR (0-100)");
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Arial", Font.PLAIN, 12));
+        panel.add(label);
+        panel.add(ovrField);
+    }
+
+    // EFFECTS: sets given field to a new JTextField instance and adds
+    //          it to the given panel as the name field
+    private void setNameField(JPanel panel, JTextField nameField) {
         nameField = new JTextField(10);
         nameField.setBackground(Color.DARK_GRAY);
         nameField.setForeground(Color.WHITE);
         JLabel label = new JLabel("Name");
         label.setForeground(Color.WHITE);
         label.setFont(new Font("Arial", Font.PLAIN, 12));
-        playerPanel.add(label);
-        playerPanel.add(nameField);
-
-        ovrField = new JTextField(10);
-        ovrField.setBackground(Color.DARK_GRAY);
-        ovrField.setForeground(Color.WHITE);
-        label = new JLabel("OVR (0-100)");
-        label.setForeground(Color.WHITE);
-        label.setFont(new Font("Arial", Font.PLAIN, 12));
-        playerPanel.add(label);
-        playerPanel.add(ovrField);
-
-        return playerPanel;
+        panel.add(label);
+        panel.add(nameField);
     }
 
     public String getP1Name() {
