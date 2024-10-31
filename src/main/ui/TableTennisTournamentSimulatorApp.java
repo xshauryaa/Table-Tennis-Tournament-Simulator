@@ -2,8 +2,8 @@ package ui;
 
 import javax.swing.*;
 
-// Referenced by JsonSerializationDemo
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+// Referenced by B02-SpaceInvadersBase
+// https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
 
 // Represents the main window of the GUI of the app
 public class TableTennisTournamentSimulatorApp extends JFrame {
