@@ -1,19 +1,42 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 
+import model.Tournament;
 import ui.dialogs.AddMatchDialog;
+import ui.panels.CreateTournamentPanel;
+import ui.panels.OpeningMenuPanel;
+import ui.panels.PlayFinalMatchPanel;
+import ui.panels.PlayOpeningMatchesPanel;
+import ui.panels.PlayQuarterFinalMatchesPanel;
+import ui.panels.PlaySemiFinalMatchesPanel;
+import ui.panels.SideMenuPanel;
 
 // Referenced by B02-SpaceInvadersBase
 // https://github.students.cs.ubc.ca/CPSC210/B02-SpaceInvadersBase
 
 // Represents the main window of the GUI of the app
 public class TableTennisTournamentSimulatorApp extends JFrame {
+    private Tournament t;
+
+    private OpeningMenuPanel om;
+    private CreateTournamentPanel ctp;
+    private PlayOpeningMatchesPanel omp;
+    private PlayQuarterFinalMatchesPanel qfmp;
+    private PlaySemiFinalMatchesPanel sfmp;
+    private PlayFinalMatchPanel fmp;
+    private SideMenuPanel smp;
+    private ArrayList<JPanel> panelsList = new ArrayList<JPanel>(Arrays.asList(om, ctp, omp, qfmp, sfmp, fmp));
+    
     private static final int WIDTH = 1500;
     private static final int HEIGHT = 723;
     private static final int PANEL_IMAGE_WIDTH = 551;
@@ -31,11 +54,13 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         JPanel picturePanel = getSidePicturePanel();
         add(picturePanel, BorderLayout.WEST);
 
+        om = new OpeningMenuPanel(this);
+        om.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
+        add(om);
+        om.setVisible(true);
+
         setVisible(true);
         centreOnScreen();
-
-        AddMatchDialog a = new AddMatchDialog(this);
-        a.setVisible(true);
     }
 
     private JPanel getSidePicturePanel() {
@@ -63,5 +88,89 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     private void centreOnScreen() {
 		Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
+    }
+
+    // EFFECTS: initializes and sets all the panels required to play the game
+    private void initializePanels() {
+        // stub
+    }
+
+    /**
+     * ========================================================
+     * TOURNAMENT SIMULATION LOGISTICS BELOW THIS LINE
+     */
+
+    public Tournament getTournament() {
+        return t;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: starts a new tournament
+    public void startNewTournament() {
+       // stub
+    }
+
+    // EFFECTS: loads existing tournament for tournament.json file
+    public void loadTournament() {
+       // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: navigates to screen where tournament will be created
+    public void createTournament() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: simulates tournament in case of only 1 match
+    private void playCondition1() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: simulates tournament in case of only 2 matches
+    private void playCondition2() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: simulates tournament in case of 3-4 matches
+    private void playCondition3() {
+        // stub
+    }
+
+     // MODIFIES: this
+    // EFFECTS: simulates tournament in case of 5 or more matches
+    private void playCondition4() {
+        // stub
+    }
+
+    // EFFECTS: navigates to screen where opening matches will be simulated
+    private void playOpeningMatches() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: navigates to screen where quarter-final matches will be simulated
+    private void playQFMatches() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: navigates to screen where semi-final matches will be simulated
+    private void playSFMatches() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: navigates to screen where final match will be simulated
+    private void playFinalMatch() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: makes given panel visible, while making all others invisible
+    private void showPanel(JPanel panel) {
+        // stub
     }
 }

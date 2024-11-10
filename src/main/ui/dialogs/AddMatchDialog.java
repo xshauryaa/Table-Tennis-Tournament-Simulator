@@ -65,6 +65,7 @@ public class AddMatchDialog extends JDialog {
                 p2Ovr = Integer.parseInt(ovr2.getText());
 
                 dispose();
+                setVisible(false);
             }
         });
     }
