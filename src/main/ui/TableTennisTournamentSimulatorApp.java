@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,6 +15,7 @@ import javax.swing.*;
 
 import model.Tournament;
 import ui.dialogs.AddMatchDialog;
+import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
 import ui.panels.OpeningMenuPanel;
 import ui.panels.PlayFinalMatchPanel;
@@ -26,7 +29,7 @@ import ui.panels.SideMenuPanel;
 
 // Represents the main window of the GUI of the app
 public class TableTennisTournamentSimulatorApp extends JFrame {
-    private Tournament t;
+    private Tournament tournament;
 
     private OpeningMenuPanel om;
     private CreateTournamentPanel ctp;
@@ -35,12 +38,13 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     private PlaySemiFinalMatchesPanel sfmp;
     private PlayFinalMatchPanel fmp;
     private SideMenuPanel smp;
-    private ArrayList<JPanel> panelsList = new ArrayList<JPanel>(Arrays.asList(om, ctp, omp, qfmp, sfmp, fmp));
+    private ArrayList<JPanel> panelsList = new ArrayList<JPanel>(Arrays.asList(om, ctp));
     
     private static final int WIDTH = 1500;
     private static final int HEIGHT = 723;
     private static final int PANEL_IMAGE_WIDTH = 551;
     private static final int PANEL_IMAGE_HEIGHT = 685;
+    private static final int INTERVAL = 10;
     
     // EFFECTS: sets up window in which Table Tennis Tournament Simulator App will be played
     public TableTennisTournamentSimulatorApp() {
@@ -57,9 +61,9 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         om = new OpeningMenuPanel(this);
         om.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
         add(om);
-        om.setVisible(true);
 
         setVisible(true);
+        addTimer();
         centreOnScreen();
     }
 
@@ -80,19 +84,41 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
 	// EFFECTS: initializes a timer that updates game each
 	//          few milliseconds
     private void addTimer() {
-		// stub
+		Timer t = new Timer(INTERVAL, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				for (JPanel p : panelsList) {
+                    if (p != null) {
+                        p.repaint();
+                    }
+                }
+			}
+		});
+		
+		t.start();
     }
 
 	// MODIFIES: this
 	// EFFECTS: location of frame is set so frame is centred on desktop
     private void centreOnScreen() {
-		Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
+        Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 
     // EFFECTS: initializes and sets all the panels required to play the game
-    private void initializePanels() {
-        // stub
+    public void initializePanels() {
+        // Create Tournament Panel
+        ctp = new CreateTournamentPanel(this);
+        ctp.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
+        add(ctp);
+
+        // Opening Match Panel
+
+        // Quarter-Final Match Panel
+
+        // Semi-Final Match Panel
+
+        // Final Match panel
     }
 
     /**
@@ -101,13 +127,26 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
      */
 
     public Tournament getTournament() {
-        return t;
+        return tournament;
+    }
+
+    public void setTournament(Tournament t) {
+        this.tournament = t;
     }
 
     // MODIFIES: this
-    // EFFECTS: starts a new tournament
-    public void startNewTournament() {
-       // stub
+    // EFFECTS: makes a new tournament
+    public void makeNewTournament() {
+        TournamentNameDialog tnd = new TournamentNameDialog(this);
+        tnd.setVisible(true);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: starts the creation of new tournament
+    public void startTournament() {
+        om.setVisible(false);
+        initializePanels();
+        ctp.setVisible(true);
     }
 
     // EFFECTS: loads existing tournament for tournament.json file
@@ -168,9 +207,16 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         // stub
     }
 
+    // REQUIRES: panel must be in list of panels in this application
     // MODIFIES: this
     // EFFECTS: makes given panel visible, while making all others invisible
     private void showPanel(JPanel panel) {
-        // stub
+        for (JPanel p : panelsList) {
+            if (p.equals(panel)) {
+                p.setVisible(true);
+            } else {
+                p.setVisible(false);
+            }
+        }
     }
 }

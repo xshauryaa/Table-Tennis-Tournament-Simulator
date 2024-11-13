@@ -2,22 +2,29 @@ package ui.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import model.Match;
+import model.Player;
+import ui.TableTennisTournamentSimulatorApp;
+import ui.panels.CreateTournamentPanel;
 
 /**
  * Represents the modal dialog box that takes input
  * from the user to create match
  */ 
 public class AddMatchDialog extends JDialog {
-    private JTextField player1Name;
-    private JTextField player2Name;
-    private JTextField ovr1;
-    private JTextField ovr2;
+    private JTextField player1Name = new JTextField(10);
+    private JTextField player2Name = new JTextField(10);
+    private JTextField ovr1 = new JTextField(10);
+    private JTextField ovr2 = new JTextField(10);
     private JButton submitBtn;
     private String p1Name;
     private String p2Name;
@@ -26,8 +33,8 @@ public class AddMatchDialog extends JDialog {
     
     // EFFECTS: creates a dialog that asks user for match details
     //          to create a match
-    public AddMatchDialog(JFrame owner) {
-        super(owner, "Add Match Details", true);
+    public AddMatchDialog(TableTennisTournamentSimulatorApp owner, CreateTournamentPanel ctp) {
+        super(owner, "Add Match Details", false);
         setSize(468, 228);
         setBackground(Color.BLACK);
         setLayout(new BorderLayout());
@@ -43,17 +50,19 @@ public class AddMatchDialog extends JDialog {
         JPanel player1Panel = createPlayerPanel("Player 1", 1);
         JPanel player2Panel = createPlayerPanel("Player 2", 2);
         
-        initializeSubmitButton();
+        initializeSubmitButton(owner, ctp);
 
         buttonPanel.add(submitBtn);
         main.add(player1Panel);
         main.add(player2Panel);
         add(main, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+
+        centreOnScreen();
     }
 
     // EFFECTS: initializes submit button for the dialog window
-    private void initializeSubmitButton() {
+    private void initializeSubmitButton(TableTennisTournamentSimulatorApp owner, CreateTournamentPanel ctp) {
         submitBtn = new JButton("Submit");
         submitBtn.setSize(57, 24);
         submitBtn.addActionListener(new ActionListener() {
@@ -64,8 +73,11 @@ public class AddMatchDialog extends JDialog {
                 p2Name = player2Name.getText();
                 p2Ovr = Integer.parseInt(ovr2.getText());
 
-                dispose();
-                setVisible(false);
+                Match m = new Match("X", new Player(p1Name, p1Ovr), new Player(p2Name, p2Ovr));
+                owner.getTournament().addMatch(m);
+
+                dialogClose();
+                ctp.repaint();
             }
         });
     }
@@ -95,7 +107,6 @@ public class AddMatchDialog extends JDialog {
     // EFFECTS: sets given field to a new JTextField instance and adds
     //          it to the given panel as the OVR field
     private void setOvrField(JPanel panel, JTextField ovrField) {
-        ovrField = new JTextField(10);
         ovrField.setBackground(Color.DARK_GRAY);
         ovrField.setForeground(Color.WHITE);
         JLabel label = new JLabel("OVR (0-100)");
@@ -108,7 +119,6 @@ public class AddMatchDialog extends JDialog {
     // EFFECTS: sets given field to a new JTextField instance and adds
     //          it to the given panel as the name field
     private void setNameField(JPanel panel, JTextField nameField) {
-        nameField = new JTextField(10);
         nameField.setBackground(Color.DARK_GRAY);
         nameField.setForeground(Color.WHITE);
         JLabel label = new JLabel("Name");
@@ -118,19 +128,15 @@ public class AddMatchDialog extends JDialog {
         panel.add(nameField);
     }
 
-    public String getP1Name() {
-        return p1Name;
+    // MODIFIES: this
+	// EFFECTS: location of frame is set so frame is centred on desktop
+    private void centreOnScreen() {
+		Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 
-    public String getP2Name() {
-        return p2Name;
-    }
-
-    public int getP1Ovr() {
-        return p1Ovr;
-    }
-
-    public int getP2Ovr() {
-        return p2Ovr;
+    // EFFECTS: closes the dialog
+    private void dialogClose() {
+        this.setVisible(false);
     }
 }

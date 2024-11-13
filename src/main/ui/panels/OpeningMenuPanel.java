@@ -85,19 +85,9 @@ public class OpeningMenuPanel extends JPanel {
         btn.setSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         btn.setIcon(image);
         if (function.equals("start")) {
-            btn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    owner.startNewTournament();
-                }
-            });
+            btn.addActionListener(e -> owner.makeNewTournament());
         } else if (function.equals("load")) {
-            btn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    owner.loadTournament();
-                }
-            });
+            btn.addActionListener(e -> owner.loadTournament());
         }
         btn.setVisible(true);
         return btn;
