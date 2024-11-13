@@ -1,10 +1,8 @@
 package ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +12,6 @@ import java.util.Arrays;
 import javax.swing.*;
 
 import model.Tournament;
-import ui.dialogs.AddMatchDialog;
 import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
 import ui.panels.OpeningMenuPanel;

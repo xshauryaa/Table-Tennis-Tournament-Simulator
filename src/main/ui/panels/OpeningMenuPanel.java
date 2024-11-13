@@ -5,19 +5,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
 
 // Represents the welcome menu panel of the application
 public class OpeningMenuPanel extends JPanel {
     private TableTennisTournamentSimulatorApp owner;
 
-    private static final int SPECIAL_PANEL_WIDTH = 945;
-    private static final int PANEL_HEIGHT = 700;
     private static final int BUTTON_WIDTH = 255;
     private static final int BUTTON_HEIGHT = 255;
 
@@ -25,7 +22,7 @@ public class OpeningMenuPanel extends JPanel {
     public OpeningMenuPanel(TableTennisTournamentSimulatorApp owner) {
         super();
         this.owner = owner;
-        setSize(SPECIAL_PANEL_WIDTH, PANEL_HEIGHT);
+        setSize(StyleGuide.SPECIAL_PANEL_WIDTH, StyleGuide.PANEL_HEIGHT);
         setBackground(Color.WHITE);
         setLayout(new GridLayout(2, 1, 36, 36));
         addWelcomeLabel();
@@ -37,16 +34,16 @@ public class OpeningMenuPanel extends JPanel {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(1, 2, 24, 24));
         buttonsPanel.setBackground(Color.WHITE);
-        buttonsPanel.setSize(SPECIAL_PANEL_WIDTH, 400);
+        buttonsPanel.setSize(StyleGuide.SPECIAL_PANEL_WIDTH, 400);
 
         ImageIcon startNewImage = new ImageIcon("./data/assets/StartTournament.png");
         startNewImage.setImage(startNewImage.getImage().getScaledInstance(BUTTON_WIDTH, 
-                                                                        BUTTON_HEIGHT, 
-                                                                        Image.SCALE_DEFAULT));
+                                                                            BUTTON_HEIGHT, 
+                                                                            Image.SCALE_DEFAULT));
         ImageIcon loadImage = new ImageIcon("./data/assets/LoadTournament.png");
         loadImage.setImage(loadImage.getImage().getScaledInstance(BUTTON_WIDTH, 
-                                                                        BUTTON_HEIGHT, 
-                                                                        Image.SCALE_DEFAULT));
+                                                                    BUTTON_HEIGHT, 
+                                                                    Image.SCALE_DEFAULT));
 
         JButton startNewBtn = getButtonForMenu(startNewImage, "start");
         JLabel startLabel = makeLabel("Start New Tournament", Color.BLACK, 30);
@@ -85,6 +82,8 @@ public class OpeningMenuPanel extends JPanel {
         btn.setSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         btn.setIcon(image);
         if (function.equals("start")) {
+            // lambda functionality for action listener by: Java GUI: Full Course ☕ (FREE)
+            // https://www.youtube.com/watch?v=Kmgo00avvEw&t=2s
             btn.addActionListener(e -> owner.makeNewTournament());
         } else if (function.equals("load")) {
             btn.addActionListener(e -> owner.loadTournament());

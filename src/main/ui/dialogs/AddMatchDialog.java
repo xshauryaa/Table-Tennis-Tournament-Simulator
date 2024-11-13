@@ -3,7 +3,6 @@ package ui.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -13,6 +12,7 @@ import javax.swing.*;
 
 import model.Match;
 import model.Player;
+import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
 import ui.panels.CreateTournamentPanel;
 
@@ -91,7 +91,7 @@ public class AddMatchDialog extends JDialog {
 
         JLabel titleLabel = new JLabel(title);
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setFont(StyleGuide.BOLD_FONT_18);
         playerPanel.add(titleLabel);
         if (playerNum == 1) {
             setNameField(playerPanel, player1Name);
@@ -111,7 +111,7 @@ public class AddMatchDialog extends JDialog {
         ovrField.setForeground(Color.WHITE);
         JLabel label = new JLabel("OVR (0-100)");
         label.setForeground(Color.WHITE);
-        label.setFont(new Font("Arial", Font.PLAIN, 12));
+        label.setFont(StyleGuide.PLAIN_FONT_12);
         panel.add(label);
         panel.add(ovrField);
     }
@@ -123,7 +123,7 @@ public class AddMatchDialog extends JDialog {
         nameField.setForeground(Color.WHITE);
         JLabel label = new JLabel("Name");
         label.setForeground(Color.WHITE);
-        label.setFont(new Font("Arial", Font.PLAIN, 12));
+        label.setFont(StyleGuide.PLAIN_FONT_12);
         panel.add(label);
         panel.add(nameField);
     }

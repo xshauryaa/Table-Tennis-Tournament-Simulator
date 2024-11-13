@@ -3,7 +3,6 @@ package ui.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -28,6 +27,7 @@ public class TournamentNameDialog extends JDialog {
         JPanel main = new JPanel();
         main.setBackground(Color.BLACK);
         main.setLayout(new GridLayout(2, 1, 24, 24));
+        main.setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         JTextField nameField = new JTextField(15);
         nameField.setBackground(Color.GRAY);
         nameField.setForeground(Color.WHITE);
