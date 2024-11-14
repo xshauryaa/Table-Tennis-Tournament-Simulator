@@ -24,6 +24,7 @@ public class OpeningMenuPanel extends JPanel {
         this.owner = owner;
         setSize(StyleGuide.SPECIAL_PANEL_WIDTH, StyleGuide.PANEL_HEIGHT);
         setBackground(Color.WHITE);
+        setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         setLayout(new GridLayout(2, 1, 36, 36));
         addWelcomeLabel();
         addButtonsPanel();

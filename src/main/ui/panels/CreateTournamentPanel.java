@@ -31,6 +31,7 @@ public class CreateTournamentPanel extends JPanel {
         this.owner = owner;
         this.tournament = owner.getTournament();
         setSize(StyleGuide.SPECIAL_PANEL_WIDTH, StyleGuide.PANEL_HEIGHT);
+        setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
         createTitlePanel();
