@@ -37,6 +37,12 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     private SideMenuPanel smp;
     private ArrayList<JPanel> panelsList = new ArrayList<JPanel>(Arrays.asList(om, ctp));
     
+    public static final int OPENING_MATCHES_PANEL = 1;
+    public static final int QF_MATCHES_PANEL = 2;
+    public static final int SF_MATCHES_PANEL = 3;
+    public static final int FINAL_MATCH_PANEL = 4;
+    private static final int currentTournamentStage = 0;
+
     private static final int WIDTH = 1500;
     private static final int HEIGHT = 723;
     private static final int PANEL_IMAGE_WIDTH = 551;
@@ -141,9 +147,8 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: starts the creation of new tournament
     public void startTournament() {
-        om.setVisible(false);
-        initializePanels();
-        ctp.setVisible(true);
+        smp = new SideMenuPanel(this);
+        add(smp, BorderLayout.EAST);
     }
 
     // EFFECTS: loads existing tournament for tournament.json file
@@ -154,7 +159,9 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: navigates to screen where tournament will be created
     public void createTournament() {
-        // stub
+        om.setVisible(false);
+        initializePanels();
+        ctp.setVisible(true);
     }
 
     // MODIFIES: this

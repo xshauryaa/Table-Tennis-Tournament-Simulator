@@ -61,7 +61,7 @@ public class OpeningMenuPanel extends JPanel {
         JLabel l = new JLabel();
         l.setText("Welcome!");
         l.setForeground(Color.BLACK);
-        l.setFont(new Font("Arial", Font.BOLD, 100));
+        l.setFont(StyleGuide.BOLD_FONT_100);
         l.setHorizontalAlignment(JLabel.CENTER);
         add(l);
     }

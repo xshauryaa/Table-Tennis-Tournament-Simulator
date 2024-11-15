@@ -1,55 +1,154 @@
 package ui.panels;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
+import model.Tournament;
+import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
 
 // Represents the side menu that offers options like save, quit, etc.
 public class SideMenuPanel extends JPanel {
+    private TableTennisTournamentSimulatorApp owner;
+    private Tournament tournament;
+    private JButton nextRoundButton;
     
     // EFFECTS: draws the side menu that is displayed while tournament
     //          is being simulated
     public SideMenuPanel(TableTennisTournamentSimulatorApp owner) {
-        // stub
+        super();
+        this.owner = owner;
+        this.tournament = owner.getTournament();
+        setSize(StyleGuide.SIDE_MENU_WIDTH, StyleGuide.PANEL_HEIGHT);
+        setBackground(Color.WHITE);
+        setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
+        setLayout(new BorderLayout());
+        addTitleLabel();
+        addButtonsPanel();
+        addQuitButton();
     }
 
     // EFFECTS: makes a label for "Menu" and adds it to the side menu
     private void addTitleLabel() {
-        // stub
+        JLabel l = new JLabel();
+        l.setText("Menu");
+        l.setForeground(Color.BLACK);
+        l.setFont(StyleGuide.BOLD_FONT_75);
+        l.setHorizontalAlignment(JLabel.CENTER);
+        l.setVerticalAlignment(JLabel.TOP);
+        add(l, BorderLayout.NORTH);
     }
 
     // EFFECTS: makes a panel that contains all buttons for menu options
     private void addButtonsPanel() {
-        // stub
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setSize(StyleGuide.SIDE_MENU_WIDTH, 350);
+        buttonsPanel.setBackground(Color.WHITE);
+        buttonsPanel.setLayout(new GridLayout(5, 1, 4, 4));
+        buttonsPanel.add(viewRankingTableButton());
+        buttonsPanel.add(viewMatchDetailsButton());
+        buttonsPanel.add(viewPlayerStatsButton());
+        buttonsPanel.add(saveButton());
+        buttonsPanel.add(playNextRoundButton());
+        add(buttonsPanel);
     }
 
     // EFFECTS: creates a JButton to view ranking table and returns it
     private JButton viewRankingTableButton() {
-        return null;
+        JButton btn = new JButton("View Ranking Table");
+        btn.setSize(150, 60);
+        btn.setBackground(Color.BLACK);
+        btn.setIcon(new ImageIcon("./data/assets/ViewRankingsIcon.png"));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // new RankingTableDialog(tournament.getRankingTable()); // TODO
+            }
+        });
+        return btn;
     }
 
     // EFFECTS: creates a JButton to view match details and returns it
     private JButton viewMatchDetailsButton() {
-        return null;
+        JButton btn = new JButton("View Match Details");
+        btn.setSize(150, 60);
+        btn.setBackground(Color.BLACK);
+        btn.setIcon(new ImageIcon("./data/assets/ViewMatchDetailsIcon.png"));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // new MatchDetailsDialog(); // TODO
+            }
+        });
+        return btn;
     }
 
     // EFFECTS: creates a JButton to view player statistics and returns it
     private JButton viewPlayerStatsButton() {
-        return null;
+        JButton btn = new JButton("View Player Statistics");
+        btn.setSize(150, 60);
+        btn.setBackground(Color.BLACK);
+        btn.setIcon(new ImageIcon("./data/assets/ViewPlayerStatsIcon.png"));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // new PlayerStatisticsDialog(); // TODO
+            }
+        });
+        return btn;
     }
 
     // EFFECTS: creates a JButton to save tournament progress and returns it
     private JButton saveButton() {
-        return null;
+        JButton btn = new JButton("Save Progress");
+        btn.setSize(150, 60);
+        btn.setBackground(Color.BLACK);
+        btn.setIcon(new ImageIcon("./data/assets/SaveIcon.png"));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // owner.saveTournament(); // TODO
+            }
+        });
+        return btn;
     }
 
     // EFFECTS: creates a JButton to continue to next round and returns it
     private JButton playNextRoundButton() {
-        return null;
+        JButton btn = new JButton("Play Next Round");
+        btn.setSize(150, 60);
+        btn.setBackground(Color.BLACK);
+        btn.setIcon(new ImageIcon("./data/assets/PlayNextRoundIcon.png"));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO
+            }
+        });
+        btn.setEnabled(false);
+        return btn;
     }
 
-    // EFFECTS: creates a JButton to quit application and returns it
-    private JButton quitButton() {
-        return null;
+    public JButton getNextRoundButton() {
+        return nextRoundButton;
+    }
+
+    // EFFECTS: creates a JButton to quit application and adds it to side menu
+    private void addQuitButton() {
+        JButton quitBtn = new JButton("Quit Application");
+        quitBtn.setSize(150, 60);
+        quitBtn.setIcon(new ImageIcon("./data/assets/QuitIcon.png"));
+        quitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO
+            }
+        });
+        add(quitBtn, BorderLayout.SOUTH);
     }
 }

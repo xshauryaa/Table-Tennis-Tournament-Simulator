@@ -49,10 +49,8 @@ public class TournamentNameDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 Tournament t = new Tournament(nameField.getText());
                 owner.setTournament(t);
-                nameField.setEditable(false);
-                enterBtn.setEnabled(false);
                 dialogClose();
-                owner.startTournament();
+                owner.createTournament();
             }
         });
         return enterBtn;
