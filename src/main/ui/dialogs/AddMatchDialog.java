@@ -14,7 +14,6 @@ import model.Match;
 import model.Player;
 import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
-import ui.panels.CreateTournamentPanel;
 
 /**
  * Represents the modal dialog box that takes input
@@ -33,7 +32,7 @@ public class AddMatchDialog extends JDialog {
     
     // EFFECTS: creates a dialog that asks user for match details
     //          to create a match
-    public AddMatchDialog(TableTennisTournamentSimulatorApp owner, CreateTournamentPanel ctp) {
+    public AddMatchDialog(TableTennisTournamentSimulatorApp owner) {
         super(owner, "Add Match Details", false);
         setSize(468, 228);
         setBackground(Color.BLACK);
@@ -50,7 +49,7 @@ public class AddMatchDialog extends JDialog {
         JPanel player1Panel = createPlayerPanel("Player 1", 1);
         JPanel player2Panel = createPlayerPanel("Player 2", 2);
         
-        initializeSubmitButton(owner, ctp);
+        initializeSubmitButton(owner);
 
         buttonPanel.add(submitBtn);
         main.add(player1Panel);
@@ -62,7 +61,7 @@ public class AddMatchDialog extends JDialog {
     }
 
     // EFFECTS: initializes submit button for the dialog window
-    private void initializeSubmitButton(TableTennisTournamentSimulatorApp owner, CreateTournamentPanel ctp) {
+    private void initializeSubmitButton(TableTennisTournamentSimulatorApp owner) {
         submitBtn = new JButton("Submit");
         submitBtn.setSize(57, 24);
         submitBtn.addActionListener(new ActionListener() {
@@ -77,7 +76,6 @@ public class AddMatchDialog extends JDialog {
                 owner.getTournament().addMatch(m);
 
                 dialogClose();
-                ctp.repaint();
             }
         });
     }
