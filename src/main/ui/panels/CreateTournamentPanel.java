@@ -111,12 +111,7 @@ public class CreateTournamentPanel extends JPanel {
             JPanel matchCard = StyleGuide.drawMatchCard(m);
             matchDisplayPanel.add(matchCard);
         }
-        // JScrollPane: Referred from StackOverflow
-        // https://stackoverflow.com/a/6582086
-        JScrollPane scrollFrame = new JScrollPane(matchDisplayPanel);
-        matchDisplayPanel.setAutoscrolls(true);
-        scrollFrame.setBounds(22, 270, 900, 400);
-        add(scrollFrame);
+        add(matchDisplayPanel);
     }
 
     // EFFECTS: initializes a timer that updates game each

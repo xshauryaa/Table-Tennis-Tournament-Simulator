@@ -20,6 +20,7 @@ public class StyleGuide {
 
     public static final Font BOLD_FONT_100 = new Font("Inter", Font.BOLD, 100);
     public static final Font BOLD_FONT_75 = new Font("Inter", Font.BOLD, 75);
+    public static final Font BOLD_FONT_60 = new Font("Inter", Font.BOLD, 60);
     public static final Font BOLD_FONT_30 = new Font("Inter", Font.BOLD, 30);
     public static final Font BOLD_FONT_18 = new Font("Inter", Font.BOLD, 18);
     public static final Font PLAIN_FONT_12 = new Font("Inter", Font.PLAIN, 12);
@@ -30,7 +31,8 @@ public class StyleGuide {
         JPanel matchCard = new JPanel(new GridLayout(2, 1, 12, 12));
         matchCard.setSize(MATCH_CARD_DIMENSION);
         matchCard.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        matchCard.setBackground(Color.BLACK);
+        if (!m.isPlayed()) { matchCard.setBackground(Color.BLACK); }
+        else { matchCard.setBackground(Color.GREEN); }
         matchIdPanel(m, matchCard);
         playersPanel(m, matchCard);
         return matchCard;

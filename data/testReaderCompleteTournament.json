@@ -199,6 +199,7 @@
             ],
             "points conceded": 102
         },
+        "played": true,
         "set 2 score": {
             "E": 11,
             "L": 8
@@ -259,6 +260,7 @@
                 ],
                 "points conceded": 100
             },
+            "played": true,
             "set 2 score": {
                 "A": 11,
                 "E": 10
@@ -317,6 +319,7 @@
                 ],
                 "points conceded": 78
             },
+            "played": true,
             "set 2 score": {
                 "H": 8,
                 "L": 11
@@ -524,6 +527,7 @@
                 ],
                 "points conceded": 81
             },
+            "played": true,
             "set 2 score": {
                 "A": 11,
                 "B": 8
@@ -575,6 +579,7 @@
                 ],
                 "points conceded": 55
             },
+            "played": true,
             "set 2 score": {
                 "C": 11,
                 "D": 8
@@ -630,6 +635,7 @@
                 ],
                 "points conceded": 100
             },
+            "played": true,
             "set 2 score": {
                 "E": 11,
                 "F": 10
@@ -686,6 +692,7 @@
                 ],
                 "points conceded": 86
             },
+            "played": true,
             "set 2 score": {
                 "G": 8,
                 "H": 11
@@ -737,6 +744,7 @@
                 ],
                 "points conceded": 51
             },
+            "played": true,
             "set 2 score": {
                 "I": 11,
                 "J": 5
@@ -793,6 +801,7 @@
                 ],
                 "points conceded": 60
             },
+            "played": true,
             "set 2 score": {
                 "K": 11,
                 "L": 9
@@ -851,6 +860,7 @@
                 ],
                 "points conceded": 81
             },
+            "played": true,
             "set 2 score": {
                 "A": 11,
                 "C": 8
@@ -909,6 +919,7 @@
                 ],
                 "points conceded": 100
             },
+            "played": true,
             "set 2 score": {
                 "E": 11,
                 "G": 5
@@ -965,6 +976,7 @@
                 ],
                 "points conceded": 86
             },
+            "played": true,
             "set 2 score": {
                 "H": 11,
                 "I": 8
@@ -1022,6 +1034,7 @@
                 ],
                 "points conceded": 78
             },
+            "played": true,
             "set 2 score": {
                 "K": 8,
                 "L": 11

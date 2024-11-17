@@ -70,6 +70,7 @@
                 "points conceded": 0
             },
             "winner": "not set",
+            "played": false,
             "set 2 score": {
                 "A": 0,
                 "B": 0
@@ -106,6 +107,7 @@
                 "points conceded": 0
             },
             "winner": "not set",
+            "played": false,
             "set 2 score": {
                 "C": 0,
                 "D": 0

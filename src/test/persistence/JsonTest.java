@@ -12,15 +12,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 public class JsonTest {
-    protected void checkMatch(String id, HashMap<String, Integer> set1, HashMap<String, Integer> set2, HashMap<String, Integer> set3, Match match) {
+    protected void checkMatch(String id, boolean played, HashMap<String, Integer> set1, HashMap<String, Integer> set2, HashMap<String, Integer> set3, Match match) {
         assertEquals(id, match.getId());
+        assertEquals(played, match.isPlayed());
         assertEquals(set1, match.getSetScore(1));
         assertEquals(set2, match.getSetScore(2));
         assertEquals(set3, match.getSetScore(3));
     }
 
-    protected void checkMatch(String id, ArrayList<HashMap<String, Integer>> sets, Match match) {
+    protected void checkMatch(String id, boolean played, ArrayList<HashMap<String, Integer>> sets, Match match) {
         assertEquals(id, match.getId());
+        assertEquals(played, match.isPlayed());
         assertEquals(sets.get(0), match.getSetScore(1));
         assertEquals(sets.get(1), match.getSetScore(2));
         assertEquals(sets.get(2), match.getSetScore(3));

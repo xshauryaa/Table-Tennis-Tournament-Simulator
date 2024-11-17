@@ -133,6 +133,7 @@ public class JsonReader {
         Player p1 = parsePlayer(nextPlayer);
         nextPlayer = (JSONObject) jsonObject.get("player 2");
         Player p2 = parsePlayer(nextPlayer);
+        boolean played = jsonObject.getBoolean("played");
         JSONObject set1Score = (JSONObject) jsonObject.get("set 1 score");
         HashMap<String, Integer> set1 = parseSet(p1.getName(), p2.getName(), set1Score);
         JSONObject set2Score = (JSONObject) jsonObject.get("set 2 score");
@@ -146,7 +147,7 @@ public class JsonReader {
             JSONObject winnerPlayer = (JSONObject) jsonObject.get("winner");
             winner = parsePlayer(winnerPlayer);
         }
-        Match m = new Match(id, p1, p2, set1, set2, set3, winner);
+        Match m = new Match(id, p1, p2, played, set1, set2, set3, winner);
         return m;
     }
 

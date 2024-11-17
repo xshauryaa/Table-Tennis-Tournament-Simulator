@@ -30,6 +30,7 @@ public class MatchTest {
         assertEquals("123", testMatch1.getId());
         assertEquals(p1, testMatch1.getPlayer1());
         assertEquals(p2, testMatch1.getPlayer2());
+        assertFalse(testMatch1.isPlayed());
         assertEquals(0, testMatch1.getSetScore(1).get(p1.getName()));
         assertEquals(0, testMatch1.getSetScore(1).get(p2.getName()));
         assertEquals(0, testMatch1.getSetScore(2).get(p1.getName()));
@@ -49,10 +50,11 @@ public class MatchTest {
         HashMap<String, Integer> set3 = new HashMap<String, Integer>();
         set3.put(p1.getName(), 10);
         set3.put(p2.getName(), 11);
-        Match testMatchAlt = new Match ("x", p1, p2, set1, set2, set3, p2);
+        Match testMatchAlt = new Match ("x", p1, p2, true, set1, set2, set3, p2);
         assertEquals("x", testMatchAlt.getId());
         assertEquals(p1, testMatchAlt.getPlayer1());
         assertEquals(p2, testMatchAlt.getPlayer2());
+        assertTrue(testMatchAlt.isPlayed());
         assertEquals(11, testMatchAlt.getSetScore(1).get(p1.getName()));
         assertEquals(8, testMatchAlt.getSetScore(1).get(p2.getName()));
         assertEquals(6, testMatchAlt.getSetScore(2).get(p1.getName()));

@@ -78,6 +78,7 @@
                 "B": 0
             },
             "id": "O1",
+            "played": false,
             "set 3 score": {
                 "A": 0,
                 "B": 0
@@ -114,6 +115,7 @@
                 "D": 0
             },
             "id": "O2",
+            "played": false,
             "set 3 score": {
                 "C": 0,
                 "D": 0

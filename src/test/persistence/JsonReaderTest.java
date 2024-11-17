@@ -56,8 +56,8 @@ class JsonReaderTest extends JsonTest {
             assertEquals("TableTennisWorldChampionship", t.getName());
             List<Match> matches = t.getOpeningRoundMatches();
             assertEquals(2, matches.size());
-            checkMatch("O1", emptySetScores1, emptySetScores1, emptySetScores1, matches.get(0));
-            checkMatch("O2", emptySetScores2, emptySetScores2, emptySetScores2, matches.get(1));
+            checkMatch("O1", false, emptySetScores1, emptySetScores1, emptySetScores1, matches.get(0));
+            checkMatch("O2", false, emptySetScores2, emptySetScores2, emptySetScores2, matches.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -84,43 +84,43 @@ class JsonReaderTest extends JsonTest {
             checkPlayer("K", 82, 1, 1, 52, 60, true, t.getListOfPlayers().get(10));
             checkPlayer("L", 111, 3, 1, 123, 102, false, t.getListOfPlayers().get(11));
             ArrayList<HashMap<String, Integer>> sets = setCreator("A", "B", 11, 10, 11, 8, 11, 5);
-            checkMatch("O1", sets, t.getOpeningRoundMatches().get(0));
+            checkMatch("O1", true, sets, t.getOpeningRoundMatches().get(0));
 
             sets = setCreator("C", "D", 11, 8, 11, 8, 9, 11);
-            checkMatch("O2", sets, t.getOpeningRoundMatches().get(1));
+            checkMatch("O2", true, sets, t.getOpeningRoundMatches().get(1));
 
             sets = setCreator("E", "F", 11, 1, 11, 10, 5, 11);
-            checkMatch("O3", sets, t.getOpeningRoundMatches().get(2));
+            checkMatch("O3", true, sets, t.getOpeningRoundMatches().get(2));
 
             sets = setCreator("G", "H", 10, 11, 8, 11, 11, 4);
-            checkMatch("O4", sets, t.getOpeningRoundMatches().get(3));
+            checkMatch("O4", true, sets, t.getOpeningRoundMatches().get(3));
 
             sets = setCreator("I", "J", 5, 11, 11, 5, 11, 8);
-            checkMatch("O5", sets, t.getOpeningRoundMatches().get(4));
+            checkMatch("O5", true, sets, t.getOpeningRoundMatches().get(4));
 
             sets = setCreator("K", "L", 11, 7, 11, 9, 8, 11);
-            checkMatch("O6", sets, t.getOpeningRoundMatches().get(5));
+            checkMatch("O6", true, sets, t.getOpeningRoundMatches().get(5));
             
             sets = setCreator("A", "C", 11, 7, 11, 8, 6, 11);
-            checkMatch("QF1", sets, t.getQuarterFinalMatches().get(0));
+            checkMatch("QF1", true, sets, t.getQuarterFinalMatches().get(0));
             
             sets = setCreator("E", "G", 11, 9, 11, 5, 3, 11);
-            checkMatch("QF2", sets, t.getQuarterFinalMatches().get(1));
+            checkMatch("QF2", true, sets, t.getQuarterFinalMatches().get(1));
             
             sets = setCreator("H", "I", 5, 11, 11, 8, 11, 5);
-            checkMatch("QF3", sets, t.getQuarterFinalMatches().get(2));
+            checkMatch("QF3", true, sets, t.getQuarterFinalMatches().get(2));
             
             sets = setCreator("K", "L", 5, 11, 8, 11, 9, 11);
-            checkMatch("QF4", sets, t.getQuarterFinalMatches().get(3));
+            checkMatch("QF4", true, sets, t.getQuarterFinalMatches().get(3));
             
             sets = setCreator("A", "E", 3, 11, 11, 10, 9, 11);
-            checkMatch("SF1", sets, t.getSemiFinalMatches().get(0));
+            checkMatch("SF1", true, sets, t.getSemiFinalMatches().get(0));
             
             sets = setCreator("H", "L", 10, 11, 8, 11, 8, 11);
-            checkMatch("SF2", sets, t.getSemiFinalMatches().get(1));
+            checkMatch("SF2", true, sets, t.getSemiFinalMatches().get(1));
             
             sets = setCreator("E", "L", 3, 11, 11, 8, 10, 11);
-            checkMatch("F", sets, t.getFinalMatch());
+            checkMatch("F", true, sets, t.getFinalMatch());
 
             checkPlayer("L", 111, 3, 1, 123, 102, false, t.getChampion());
         } catch (IOException e) {

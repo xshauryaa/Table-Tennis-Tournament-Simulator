@@ -17,6 +17,7 @@ public class Match implements Writable {
     private String id;
     private Player player1;
     private Player player2;
+    private boolean played;
     private HashMap<String, Integer> set1Score;
     private HashMap<String, Integer> set2Score;
     private HashMap<String, Integer> set3Score;
@@ -28,6 +29,7 @@ public class Match implements Writable {
         this.id = id;
         this.player1 = player1;
         this.player2 = player2;
+        played = false;
         set1Score = new HashMap<String, Integer>();
         set2Score = new HashMap<String, Integer>();
         set3Score = new HashMap<String, Integer>();
@@ -42,11 +44,12 @@ public class Match implements Writable {
 
     // EFFECTS: creates a match with two given players, set scores for all
     //          3 sets, and the given winner.
-    public Match(String id, Player player1, Player player2, HashMap<String, Integer> set1, 
+    public Match(String id, Player player1, Player player2, boolean played, HashMap<String, Integer> set1, 
             HashMap<String, Integer> set2, HashMap<String, Integer> set3, Player winner) {
         this.id = id;
         this.player1 = player1;
         this.player2 = player2;
+        this.played = played;
         this.set1Score = set1;
         this.set2Score = set2;
         this.set3Score = set3;
@@ -74,6 +77,10 @@ public class Match implements Writable {
 
     public Player getPlayer2() {
         return this.player2;
+    }
+
+    public boolean isPlayed() {
+        return this.played;
     }
 
     // REQUIRES: 1 <= num <= 3
@@ -126,6 +133,7 @@ public class Match implements Writable {
             this.player2.winMatch(abs(overallChange));
             this.player1.loseMatch(abs(overallChange));
         }
+        played = true;
     }
 
     // REQUIRES: 1 <= num <= 3
@@ -175,6 +183,7 @@ public class Match implements Writable {
         json.put("id", id);
         json.put("player 1", player1.toJson());
         json.put("player 2", player2.toJson());
+        json.put("played", played);
         json.put("set 1 score", setScoreToJson(set1Score));
         json.put("set 2 score", setScoreToJson(set2Score));
         json.put("set 3 score", setScoreToJson(set3Score));
