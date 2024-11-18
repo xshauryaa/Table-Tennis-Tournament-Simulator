@@ -54,7 +54,8 @@ public class SideMenuPanel extends JPanel {
         buttonsPanel.add(viewMatchDetailsButton());
         buttonsPanel.add(viewPlayerStatsButton());
         buttonsPanel.add(saveButton());
-        buttonsPanel.add(playNextRoundButton());
+        nextRoundButton = playNextRoundButton();
+        buttonsPanel.add(nextRoundButton);
         add(buttonsPanel);
     }
 
@@ -136,6 +137,10 @@ public class SideMenuPanel extends JPanel {
 
     public JButton getNextRoundButton() {
         return nextRoundButton;
+    }
+
+    public void enableNextRoundButton() {
+        nextRoundButton.setEnabled(true);
     }
 
     // EFFECTS: creates a JButton to quit application and adds it to side menu

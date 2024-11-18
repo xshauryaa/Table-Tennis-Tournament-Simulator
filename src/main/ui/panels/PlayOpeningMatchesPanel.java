@@ -12,12 +12,10 @@ import model.Match;
 import model.Tournament;
 import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
-import ui.dialogs.AddMatchDialog;
 
 // Represents the panel where user simulates opening matches
 public class PlayOpeningMatchesPanel extends JPanel {
     private TableTennisTournamentSimulatorApp owner;
-    private SideMenuPanel smp;
     private Tournament tournament;
     
     
@@ -25,14 +23,13 @@ public class PlayOpeningMatchesPanel extends JPanel {
     public PlayOpeningMatchesPanel(TableTennisTournamentSimulatorApp owner, SideMenuPanel smp) {
         super();
         this.owner = owner;
-        this.smp = smp;
         this.tournament = this.owner.getTournament();
         setSize(StyleGuide.PANEL_WIDTH, StyleGuide.PANEL_HEIGHT);
         setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
         addTitleLabel();
-        addSimulateButton();
+        addSimulateButton(smp);
         addMatchDisplay();
     }
 
@@ -48,7 +45,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
     }
 
     // EFFECTS: makes a JButton to simulate matches and adds it to the screen
-    private void addSimulateButton() {
+    private void addSimulateButton(SideMenuPanel smp) {
         JButton simulateBtn = new JButton("Simulate Round");
         simulateBtn.setSize(250, 100);
         simulateBtn.setBackground(Color.BLACK);
@@ -58,7 +55,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 tournament.playOpeningBracket(); 
                 addMatchDisplay();
-                smp.getNextRoundButton().setEnabled(true);
+                smp.enableNextRoundButton();
             }
         });
         simulateBtn.setBounds(225, 100, 250, 100);

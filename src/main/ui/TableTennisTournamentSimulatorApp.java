@@ -57,6 +57,10 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         om.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
         add(om);
 
+        smp = new SideMenuPanel(this);
+        add(smp, BorderLayout.EAST);
+        smp.setVisible(false);
+
         setVisible(true);
         centreOnScreen();
     }
@@ -150,9 +154,8 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: starts the creation of new tournament
     public void startTournament() {
+        smp.setVisible(true);
         ctp.setVisible(false);
-        smp = new SideMenuPanel(this);
-        add(smp, BorderLayout.EAST);
         tournament.initiateTournament();
         if (tournament.getDesignType() == 1) {
             playCondition1();
