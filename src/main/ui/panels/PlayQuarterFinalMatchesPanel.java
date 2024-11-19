@@ -17,6 +17,8 @@ import ui.TableTennisTournamentSimulatorApp;
 public class PlayQuarterFinalMatchesPanel extends JPanel {
     private TableTennisTournamentSimulatorApp owner;
     private Tournament tournament;
+    private JPanel matchDisplayPanel;
+
     
     // EFFECTS: draws the panel where opening matches are played
     public PlayQuarterFinalMatchesPanel(TableTennisTournamentSimulatorApp owner, SideMenuPanel smp) {
@@ -26,7 +28,7 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
         setSize(StyleGuide.PANEL_WIDTH, StyleGuide.PANEL_HEIGHT);
         setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         setBackground(Color.WHITE);
-        setLayout(new BorderLayout());
+        setLayout(null);
         addTitleLabel();
         addSimulateButton(smp);
         addMatchDisplay();
@@ -34,17 +36,26 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
 
     // EFFECTS: makes a label for "Quarter Finals" and adds it to the screen
     private void addTitleLabel() {
+        JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(Color.WHITE);
+        titlePanel.setBounds(0, 20, StyleGuide.PANEL_WIDTH, 120);
         JLabel l = new JLabel();
         l.setText("Quarter Finals");
         l.setForeground(Color.BLACK);
         l.setFont(StyleGuide.BOLD_FONT_60);
         l.setHorizontalAlignment(JLabel.CENTER);
         l.setVerticalAlignment(JLabel.TOP);
-        add(l);
+        titlePanel.add(l);
+        add(titlePanel);
     }
 
     // EFFECTS: makes a JButton to simulate matches and adds it to the screen
     private void addSimulateButton(SideMenuPanel smp) {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(1, 3, 24, 24));
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.setBounds(0, 100, StyleGuide.PANEL_WIDTH, 150);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         JButton simulateBtn = new JButton("Simulate Round");
         simulateBtn.setSize(250, 100);
         simulateBtn.setBackground(Color.BLACK);
@@ -52,23 +63,22 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
         simulateBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tournament.playOpeningBracket(); 
-                addMatchDisplay();
-                smp.getNextRoundButton().setEnabled(true);
+                tournament.playOpeningBracket();
+                smp.enableNextRoundButton();
             }
         });
-        simulateBtn.setBounds(225, 100, 250, 100);
-        add(simulateBtn);
+        buttonPanel.add(simulateBtn);
+        add(buttonPanel);
     }
 
     // EFFECTS: creates the panel for displaying all the matches in the quarter finals
     private void addMatchDisplay() {
-        JPanel matchDisplayPanel = new JPanel();
+        matchDisplayPanel = new JPanel();
         matchDisplayPanel.setBackground(Color.WHITE);
-        matchDisplayPanel.setBounds(22, 270, 900, 150);
+        matchDisplayPanel.setBounds(0, 300, StyleGuide.PANEL_WIDTH, 150);
         matchDisplayPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         matchDisplayPanel.setLayout(new GridLayout(1, 4, 12, 12));
-        for (Match m : tournament.getOpeningRoundMatches()) {
+        for (Match m : tournament.getQuarterFinalMatches()) {
             JPanel matchCard = StyleGuide.drawMatchCard(m);
             matchDisplayPanel.add(matchCard);
         }

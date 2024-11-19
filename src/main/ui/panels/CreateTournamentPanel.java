@@ -2,7 +2,6 @@ package ui.panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -100,7 +99,7 @@ public class CreateTournamentPanel extends JPanel {
 
     // EFFECTS: adds the panel where matches are displayed
     private void createMatchesDisplayPanel() {
-        double numMatches = (double) tournament.getOpeningRoundMatches().size();
+        double numMatches = (double) matchesToDisplay.size();
         int rows = (int) Math.ceil(numMatches / 4);
         matchDisplayPanel = new JPanel();
         matchDisplayPanel.setBackground(Color.WHITE);
@@ -117,15 +116,15 @@ public class CreateTournamentPanel extends JPanel {
     // EFFECTS: initializes a timer that updates game each
 	//          few milliseconds
     private void addTimer() {
-		Timer t = new Timer(INTERVAL, new ActionListener() {
+        Timer t = new Timer(INTERVAL, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 matchesToDisplay = tournament.getOpeningRoundMatches();
                 createMatchesDisplayPanel();
                 matchDisplayPanel.revalidate();
                 matchDisplayPanel.repaint();
-            }
+            } 
         });
-		t.start();
+        t.start();
     }
 }

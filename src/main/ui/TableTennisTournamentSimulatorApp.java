@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 import javax.swing.*;
 
-
 import model.Tournament;
 import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
@@ -88,11 +87,6 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
 
     // EFFECTS: initializes and sets all the panels required to play the game
     public void initializePanels() {
-        // Create Tournament Panel
-        ctp = new CreateTournamentPanel(this);
-        ctp.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
-        add(ctp);
-
         // Opening Match Panel
         omp = new PlayOpeningMatchesPanel(this, smp);
         omp.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
@@ -100,10 +94,10 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         omp.setVisible(false);
 
         // Quarter-Final Match Panel
-        // qfmp = new PlayQuarterFinalMatchesPanel(this);
-        // qfmp.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
-        // add(qfmp);
-        // qfmp.setVisible(false);
+        qfmp = new PlayQuarterFinalMatchesPanel(this, smp);
+        qfmp.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
+        add(qfmp);
+        qfmp.setVisible(false);
 
         // Semi-Final Match Panel
         // sfmp = new PlaySemiFinalMatchesPanel(this);
@@ -154,6 +148,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: starts the creation of new tournament
     public void startTournament() {
+        initializePanels();
         smp.setVisible(true);
         ctp.setVisible(false);
         tournament.initiateTournament();
@@ -177,7 +172,9 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // EFFECTS: navigates to screen where tournament will be created
     public void createTournament() {
         om.setVisible(false);
-        initializePanels();
+        ctp = new CreateTournamentPanel(this);
+        ctp.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
+        add(ctp);
         ctp.setVisible(true);
     }
 

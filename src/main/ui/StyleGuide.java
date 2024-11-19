@@ -31,8 +31,7 @@ public class StyleGuide {
         JPanel matchCard = new JPanel(new GridLayout(2, 1, 12, 12));
         matchCard.setSize(MATCH_CARD_DIMENSION);
         matchCard.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        if (!m.isPlayed()) { matchCard.setBackground(Color.BLACK); }
-        else { matchCard.setBackground(Color.GREEN); }
+        matchCard.setBackground(Color.BLACK);
         matchIdPanel(m, matchCard);
         playersPanel(m, matchCard);
         return matchCard;
