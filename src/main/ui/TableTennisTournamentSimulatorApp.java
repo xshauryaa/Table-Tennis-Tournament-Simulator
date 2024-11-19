@@ -100,10 +100,10 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         qfmp.setVisible(false);
 
         // Semi-Final Match Panel
-        // sfmp = new PlaySemiFinalMatchesPanel(this);
-        // sfmp.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
-        // add(sfmp);
-        // sfmp.setVisible(false);
+        sfmp = new PlaySemiFinalMatchesPanel(this, smp);
+        sfmp.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
+        add(sfmp);
+        sfmp.setVisible(false);
 
         // Final Match panel
         // fmp = new PlayFinalMatchPanel(this);

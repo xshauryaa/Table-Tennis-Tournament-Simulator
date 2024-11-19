@@ -1,6 +1,6 @@
 package ui.panels;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
     private JPanel matchDisplayPanel;
 
     
-    // EFFECTS: draws the panel where opening matches are played
+    // EFFECTS: draws the panel where quarter final matches are played
     public PlayQuarterFinalMatchesPanel(TableTennisTournamentSimulatorApp owner, SideMenuPanel smp) {
         super();
         this.owner = owner;
