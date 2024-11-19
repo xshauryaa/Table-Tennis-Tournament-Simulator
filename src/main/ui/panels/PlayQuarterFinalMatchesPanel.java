@@ -63,7 +63,7 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
         simulateBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tournament.playOpeningBracket();
+                tournament.playQuarterFinals();
                 smp.enableNextRoundButton();
             }
         });
