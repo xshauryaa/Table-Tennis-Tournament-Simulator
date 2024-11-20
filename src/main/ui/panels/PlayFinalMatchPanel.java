@@ -2,7 +2,6 @@ package ui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +17,6 @@ import ui.TableTennisTournamentSimulatorApp;
 public class PlayFinalMatchPanel extends JPanel {
     private TableTennisTournamentSimulatorApp owner;
     private Tournament tournament;
-    private JPanel matchDisplayPanel;
     
     // EFFECTS: draws the panel where the final match is played
     public PlayFinalMatchPanel(TableTennisTournamentSimulatorApp owner, SideMenuPanel smp) {
@@ -31,7 +29,11 @@ public class PlayFinalMatchPanel extends JPanel {
         setLayout(null);
         addTitleLabel();
         addSimulateButton(smp);
-        addMatchDisplay();
+        try {
+            addMatchDisplay();
+        } catch (NullPointerException e) {
+            // do nothing
+        }
     }
 
     // EFFECTS: makes a label for "Final Match" and adds it to the screen
@@ -72,7 +74,7 @@ public class PlayFinalMatchPanel extends JPanel {
     }
 
     // EFFECTS: creates the panel for displaying the final match
-    private void addMatchDisplay() {
+    private void addMatchDisplay() throws NullPointerException {
         Match finalMatch = tournament.getFinalMatch();
         JPanel matchCard = new JPanel();
         matchCard.setBackground(Color.decode("#FFD700"));
@@ -96,6 +98,7 @@ public class PlayFinalMatchPanel extends JPanel {
         add(matchCard);
     }
 
+    // EFFECTS: creates a panel with a player image and player name and returns it
     private JPanel getPlayerPanel(Match finalMatch, int playerNum) {
         JLabel playerNameLabel;
         JPanel playerPanel = new JPanel(new GridLayout(2, 1, 10, 10));
@@ -115,5 +118,10 @@ public class PlayFinalMatchPanel extends JPanel {
         playerPanel.add(playerImageLabel, BorderLayout.CENTER);
         playerPanel.add(playerNameLabel, BorderLayout.CENTER);
         return playerPanel;
+    }
+
+    // EFFECTS: updates the match display
+    public void update() {
+        addMatchDisplay();
     }
 }

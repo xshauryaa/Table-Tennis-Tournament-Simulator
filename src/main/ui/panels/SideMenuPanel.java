@@ -113,7 +113,7 @@ public class SideMenuPanel extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // owner.saveTournament(); // TODO
+                owner.saveTournament();
             }
         });
         return btn;
@@ -128,7 +128,12 @@ public class SideMenuPanel extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO
+                updateFields();
+                if (tournament.getStatus().equals("F")) {
+                    owner.showChampion();
+                } else {
+                    owner.goToNextRound();
+                }
             }
         });
         btn.setEnabled(false);
@@ -151,9 +156,15 @@ public class SideMenuPanel extends JPanel {
         quitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO
+                owner.saveTournament();
+                // owner.quit(); // TODO
             }
         });
         add(quitBtn, BorderLayout.SOUTH);
+    }
+
+    // EFFECTS: updates the fields to their current values
+    private void updateFields() {
+        tournament = owner.getTournament();
     }
 }

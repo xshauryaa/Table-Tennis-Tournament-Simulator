@@ -27,6 +27,7 @@ import ui.panels.SideMenuPanel;
 // Represents the main window of the GUI of the app
 public class TableTennisTournamentSimulatorApp extends JFrame {
     private Tournament tournament;
+    private JPanel currentPanel;
 
     private OpeningMenuPanel om;
     private CreateTournamentPanel ctp;
@@ -35,7 +36,6 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     private PlaySemiFinalMatchesPanel sfmp;
     private PlayFinalMatchPanel fmp;
     private SideMenuPanel smp;
-    private ArrayList<JPanel> panelsList = new ArrayList<JPanel>(Arrays.asList(omp, qfmp, sfmp, fmp));
 
     private static final int WIDTH = 1500;
     private static final int HEIGHT = 723;
@@ -88,7 +88,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     }
 
     // EFFECTS: initializes and sets all the panels required to play the game
-    public void initializePanels() {
+    private void initializePanels() {
         // Opening Match Panel
         omp = new PlayOpeningMatchesPanel(this, smp);
         omp.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
@@ -114,17 +114,49 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         fmp.setVisible(false);
     }
 
-    // REQUIRES: panel must be in list of panels in this application
-    // MODIFIES: this
-    // EFFECTS: makes given panel visible, while making all others invisible
-    private void showPanel(JPanel panel) {
-        for (JPanel p : panelsList) {
-            if (p.equals(panel)) {
-                p.setVisible(true);
-            } else {
-                p.setVisible(false);
+    public void goToNextRound() {
+        int design = tournament.getDesignType();
+        currentPanel.setVisible(false);
+        if (currentPanel == omp && design == 2) {
+            playFinalMatch();
+        } else if (currentPanel == omp && design == 3) {
+            getTop4();
+            playSFMatches();
+        } else if (currentPanel == omp && design == 4) {
+            getTop8();
+            playQFMatches();
+        } else if (currentPanel == qfmp) {
+            playSFMatches();
+        } else if (currentPanel == sfmp) {
+            playFinalMatch();
+        }
+    }
+
+    // EFFECTS: makes the quarter finals with the top 8 players and eliminates everyone else
+    private void getTop8() {
+        ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
+        for (Player p : tournament.getListOfPlayers()) {
+            if (!top8.contains(p)) {
+                p.eliminate();
             }
         }
+        tournament.makeQuarterFinals(top8);
+    }
+
+    // EFFECTS: makes the semi finals with the top 4 players and eliminates everyone else
+    private void getTop4() {
+        ArrayList<Player> top4 = tournament.getRankingTable().getTopPlayers(4);
+        for (Player p : tournament.getListOfPlayers()) {
+            if (!top4.contains(p)) {
+                p.eliminate();
+            }
+        }
+        tournament.makeSemiFinals(top4);
+    }
+
+    // EFFECTS: renders a JPanel that shows the champion of the tournament
+    public void showChampion() {
+        // stub // TODO
     }
 
     /**
@@ -155,20 +187,23 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         ctp.setVisible(false);
         tournament.initiateTournament();
         if (tournament.getDesignType() == 1) {
-            playCondition1();
-        } else if (tournament.getDesignType() == 2) {
-            playCondition2();
-        } else if (tournament.getDesignType() == 3) {
-            playCondition3();
-        } else if (tournament.getDesignType() == 4) {
-            playCondition4();
+            Match finalMatch = tournament.getOpeningRoundMatches().get(0);
+            tournament.setFinalMatch(finalMatch);
+            playFinalMatch();
+        } else {
+            playOpeningMatches();
         }
     }
 
-    // EFFECTS: loads existing tournament for tournament.json file
+    // EFFECTS: loads existing tournament from tournament.json file
     public void loadTournament() {
-       // stub
+       // stub  // TODO
     }
+
+    // EFFECTS: saves existing tournament to tournament.json file
+    public void saveTournament() {
+        // stub  // TODO
+     }
 
     // MODIFIES: this
     // EFFECTS: navigates to screen where tournament will be created
@@ -180,50 +215,36 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         ctp.setVisible(true);
     }
 
-    // MODIFIES: this
-    // EFFECTS: simulates tournament in case of only 1 match
-    private void playCondition1() {
-        // stub
-    }
-
-    // MODIFIES: this
-    // EFFECTS: simulates tournament in case of only 2 matches
-    private void playCondition2() {
-        playOpeningMatches();
-    }
-
-    // MODIFIES: this
-    // EFFECTS: simulates tournament in case of 3-4 matches
-    private void playCondition3() {
-        playOpeningMatches();
-    }
-
-     // MODIFIES: this
-    // EFFECTS: simulates tournament in case of 5 or more matches
-    private void playCondition4() {
-        playOpeningMatches();
-    }
-
     // EFFECTS: navigates to screen where opening matches will be simulated
     private void playOpeningMatches() {
+        currentPanel = omp;
         omp.setVisible(true);
     }
 
     // MODIFIES: this
     // EFFECTS: navigates to screen where quarter-final matches will be simulated
     private void playQFMatches() {
-        // stub
+        tournament.setStatus("QF");
+        qfmp.update();
+        currentPanel = qfmp;
+        qfmp.setVisible(true);
     }
 
     // MODIFIES: this
     // EFFECTS: navigates to screen where semi-final matches will be simulated
     private void playSFMatches() {
-        // stub
+        tournament.setStatus("SF");
+        sfmp.update();
+        currentPanel = sfmp;
+       sfmp.setVisible(true);
     }
 
     // MODIFIES: this
     // EFFECTS: navigates to screen where final match will be simulated
     private void playFinalMatch() {
-        // stub
+        tournament.setStatus("F");
+        fmp.update();
+        currentPanel = fmp;
+        fmp.setVisible(true);
     }
 }

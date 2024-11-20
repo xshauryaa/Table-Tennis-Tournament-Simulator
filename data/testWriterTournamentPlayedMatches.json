@@ -3,253 +3,253 @@
     "players": [
         {
             "eliminated": true,
-            "overall ability": 85,
-            "points won": 51,
+            "overall ability": 82,
+            "points won": 23,
             "name": "A",
-            "matches won": 1,
-            "matches lost": 1,
-            "match history": [
-                "O1: A vs. B",
-                "F: A vs. C"
-            ],
-            "points conceded": 58
-        },
-        {
-            "eliminated": true,
-            "overall ability": 86,
-            "points won": 25,
-            "name": "B",
             "matches won": 0,
             "matches lost": 1,
             "match history": ["O1: A vs. B"],
-            "points conceded": 30
-        },
-        {
-            "eliminated": true,
-            "overall ability": 112,
-            "points won": 62,
-            "name": "C",
-            "matches won": 2,
-            "matches lost": 0,
-            "match history": [
-                "O2: C vs. D",
-                "F: A vs. C"
-            ],
-            "points conceded": 42
+            "points conceded": 33
         },
         {
             "eliminated": false,
-            "overall ability": 83,
-            "points won": 21,
-            "name": "D",
+            "overall ability": 104,
+            "points won": 64,
+            "name": "B",
+            "matches won": 2,
+            "matches lost": 0,
+            "match history": [
+                "O1: A vs. B",
+                "F: B vs. D"
+            ],
+            "points conceded": 51
+        },
+        {
+            "eliminated": true,
+            "overall ability": 89,
+            "points won": 22,
+            "name": "C",
             "matches won": 0,
             "matches lost": 1,
             "match history": ["O2: C vs. D"],
-            "points conceded": 29
+            "points conceded": 25
+        },
+        {
+            "eliminated": true,
+            "overall ability": 91,
+            "points won": 53,
+            "name": "D",
+            "matches won": 1,
+            "matches lost": 1,
+            "match history": [
+                "O2: C vs. D",
+                "F: B vs. D"
+            ],
+            "points conceded": 53
         }
     ],
     "name": "TableTennisWorldChampionship",
     "final": {
         "player 2": {
             "eliminated": true,
-            "overall ability": 112,
-            "points won": 62,
-            "name": "C",
-            "matches won": 2,
-            "matches lost": 0,
-            "match history": [
-                "O2: C vs. D",
-                "F: A vs. C"
-            ],
-            "points conceded": 42
-        },
-        "player 1": {
-            "eliminated": true,
-            "overall ability": 85,
-            "points won": 51,
-            "name": "A",
+            "overall ability": 91,
+            "points won": 53,
+            "name": "D",
             "matches won": 1,
             "matches lost": 1,
             "match history": [
-                "O1: A vs. B",
-                "F: A vs. C"
+                "O2: C vs. D",
+                "F: B vs. D"
             ],
-            "points conceded": 58
+            "points conceded": 53
         },
-        "winner": {
-            "eliminated": true,
-            "overall ability": 112,
-            "points won": 62,
-            "name": "C",
+        "player 1": {
+            "eliminated": false,
+            "overall ability": 104,
+            "points won": 64,
+            "name": "B",
             "matches won": 2,
             "matches lost": 0,
             "match history": [
-                "O2: C vs. D",
-                "F: A vs. C"
+                "O1: A vs. B",
+                "F: B vs. D"
             ],
-            "points conceded": 42
+            "points conceded": 51
+        },
+        "winner": {
+            "eliminated": false,
+            "overall ability": 104,
+            "points won": 64,
+            "name": "B",
+            "matches won": 2,
+            "matches lost": 0,
+            "match history": [
+                "O1: A vs. B",
+                "F: B vs. D"
+            ],
+            "points conceded": 51
         },
         "set 2 score": {
-            "A": 3,
-            "C": 11
+            "B": 11,
+            "D": 10
         },
         "set 1 score": {
-            "A": 8,
-            "C": 11
+            "B": 9,
+            "D": 11
         },
         "id": "F",
         "played": true,
         "set 3 score": {
-            "A": 10,
-            "C": 11
+            "B": 11,
+            "D": 7
         }
     },
     "semi finals": [],
     "ranking table": {
         "Rank 4": {
-            "eliminated": false,
-            "overall ability": 83,
-            "points won": 21,
-            "name": "D",
-            "matches won": 0,
-            "matches lost": 1,
-            "match history": ["O2: C vs. D"],
-            "points conceded": 29
-        },
-        "Rank 3": {
             "eliminated": true,
-            "overall ability": 86,
-            "points won": 25,
-            "name": "B",
+            "overall ability": 82,
+            "points won": 23,
+            "name": "A",
             "matches won": 0,
             "matches lost": 1,
             "match history": ["O1: A vs. B"],
-            "points conceded": 30
+            "points conceded": 33
+        },
+        "Rank 3": {
+            "eliminated": true,
+            "overall ability": 89,
+            "points won": 22,
+            "name": "C",
+            "matches won": 0,
+            "matches lost": 1,
+            "match history": ["O2: C vs. D"],
+            "points conceded": 25
         },
         "Rank 2": {
             "eliminated": true,
-            "overall ability": 85,
-            "points won": 51,
-            "name": "A",
+            "overall ability": 91,
+            "points won": 53,
+            "name": "D",
             "matches won": 1,
             "matches lost": 1,
             "match history": [
-                "O1: A vs. B",
-                "F: A vs. C"
+                "O2: C vs. D",
+                "F: B vs. D"
             ],
-            "points conceded": 58
+            "points conceded": 53
         },
         "Rank 1": {
-            "eliminated": true,
-            "overall ability": 112,
-            "points won": 62,
-            "name": "C",
+            "eliminated": false,
+            "overall ability": 104,
+            "points won": 64,
+            "name": "B",
             "matches won": 2,
             "matches lost": 0,
             "match history": [
-                "O2: C vs. D",
-                "F: A vs. C"
+                "O1: A vs. B",
+                "F: B vs. D"
             ],
-            "points conceded": 42
+            "points conceded": 51
         }
     },
     "opening bracket": [
         {
             "player 2": {
-                "eliminated": true,
-                "overall ability": 86,
-                "points won": 25,
+                "eliminated": false,
+                "overall ability": 104,
+                "points won": 64,
                 "name": "B",
-                "matches won": 0,
-                "matches lost": 1,
-                "match history": ["O1: A vs. B"],
-                "points conceded": 30
+                "matches won": 2,
+                "matches lost": 0,
+                "match history": [
+                    "O1: A vs. B",
+                    "F: B vs. D"
+                ],
+                "points conceded": 51
             },
             "player 1": {
                 "eliminated": true,
-                "overall ability": 85,
-                "points won": 51,
+                "overall ability": 82,
+                "points won": 23,
                 "name": "A",
-                "matches won": 1,
+                "matches won": 0,
                 "matches lost": 1,
-                "match history": [
-                    "O1: A vs. B",
-                    "F: A vs. C"
-                ],
-                "points conceded": 58
+                "match history": ["O1: A vs. B"],
+                "points conceded": 33
             },
             "winner": {
-                "eliminated": true,
-                "overall ability": 85,
-                "points won": 51,
-                "name": "A",
-                "matches won": 1,
-                "matches lost": 1,
+                "eliminated": false,
+                "overall ability": 104,
+                "points won": 64,
+                "name": "B",
+                "matches won": 2,
+                "matches lost": 0,
                 "match history": [
                     "O1: A vs. B",
-                    "F: A vs. C"
+                    "F: B vs. D"
                 ],
-                "points conceded": 58
+                "points conceded": 51
             },
             "set 2 score": {
-                "A": 11,
-                "B": 7
+                "A": 7,
+                "B": 11
             },
             "set 1 score": {
-                "A": 11,
-                "B": 7
+                "A": 7,
+                "B": 11
             },
             "id": "O1",
             "played": true,
             "set 3 score": {
-                "A": 8,
+                "A": 9,
                 "B": 11
             }
         },
         {
             "player 2": {
-                "eliminated": false,
-                "overall ability": 83,
-                "points won": 21,
+                "eliminated": true,
+                "overall ability": 91,
+                "points won": 53,
                 "name": "D",
-                "matches won": 0,
+                "matches won": 1,
                 "matches lost": 1,
-                "match history": ["O2: C vs. D"],
-                "points conceded": 29
+                "match history": [
+                    "O2: C vs. D",
+                    "F: B vs. D"
+                ],
+                "points conceded": 53
             },
             "player 1": {
                 "eliminated": true,
-                "overall ability": 112,
-                "points won": 62,
+                "overall ability": 89,
+                "points won": 22,
                 "name": "C",
-                "matches won": 2,
-                "matches lost": 0,
-                "match history": [
-                    "O2: C vs. D",
-                    "F: A vs. C"
-                ],
-                "points conceded": 42
+                "matches won": 0,
+                "matches lost": 1,
+                "match history": ["O2: C vs. D"],
+                "points conceded": 25
             },
             "winner": {
                 "eliminated": true,
-                "overall ability": 112,
-                "points won": 62,
-                "name": "C",
-                "matches won": 2,
-                "matches lost": 0,
+                "overall ability": 91,
+                "points won": 53,
+                "name": "D",
+                "matches won": 1,
+                "matches lost": 1,
                 "match history": [
                     "O2: C vs. D",
-                    "F: A vs. C"
+                    "F: B vs. D"
                 ],
-                "points conceded": 42
+                "points conceded": 53
             },
             "set 2 score": {
-                "C": 11,
-                "D": 5
+                "C": 4,
+                "D": 11
             },
             "set 1 score": {
                 "C": 11,
-                "D": 5
+                "D": 3
             },
             "id": "O2",
             "played": true,
@@ -261,17 +261,17 @@
     ],
     "quarter finals": [],
     "champion": {
-        "eliminated": true,
-        "overall ability": 112,
-        "points won": 62,
-        "name": "C",
+        "eliminated": false,
+        "overall ability": 104,
+        "points won": 64,
+        "name": "B",
         "matches won": 2,
         "matches lost": 0,
         "match history": [
-            "O2: C vs. D",
-            "F: A vs. C"
+            "O1: A vs. B",
+            "F: B vs. D"
         ],
-        "points conceded": 42
+        "points conceded": 51
     },
     "status": "F"
 }

@@ -29,7 +29,11 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
         setLayout(null);
         addTitleLabel();
         addSimulateButton(smp);
-        addMatchDisplay();
+        try {
+            addMatchDisplay();
+        } catch (NullPointerException e) {
+            // do nothing
+        }
     }
 
     // EFFECTS: makes a label for "Semi Finals" and adds it to the screen
@@ -70,7 +74,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
     }
 
     // EFFECTS: creates the panel for displaying all the matches in the semi finals
-    private void addMatchDisplay() {
+    private void addMatchDisplay() throws NullPointerException {
         matchDisplayPanel = new JPanel();
         matchDisplayPanel.setBackground(Color.WHITE);
         matchDisplayPanel.setBounds(0, 300, StyleGuide.PANEL_WIDTH, 150);
@@ -81,5 +85,10 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
             matchDisplayPanel.add(matchCard);
         }
         add(matchDisplayPanel);
+    }
+
+    // EFFECTS: updates the match display
+    public void update() {
+        addMatchDisplay();
     }
 }
