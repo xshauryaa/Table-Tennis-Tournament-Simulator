@@ -16,7 +16,7 @@ public class StyleGuide {
     public static final int SPECIAL_PANEL_WIDTH = 945;
     public static final int PANEL_WIDTH = 700;
     public static final int PANEL_HEIGHT = 700;
-    public static final int SIDE_MENU_WIDTH = 245;
+    public static final int SIDE_MENU_WIDTH = 200;
 
     public static final Font BOLD_FONT_100 = new Font("Inter", Font.BOLD, 100);
     public static final Font BOLD_FONT_75 = new Font("Inter", Font.BOLD, 75);

@@ -9,6 +9,8 @@ import java.util.Arrays;
 
 import javax.swing.*;
 
+import model.Match;
+import model.Player;
 import model.Tournament;
 import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
