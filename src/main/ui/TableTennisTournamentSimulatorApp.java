@@ -222,13 +222,21 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: loads existing tournament from tournament.json file
     public void loadTournament() {
+<<<<<<< HEAD
         // stub // TODO
+=======
+       // stub  // TODO
+>>>>>>> 882280bb165fe08ad898113d5c1f4dbe135d8e92
     }
 
     // MODIFIES: this
     // EFFECTS: saves existing tournament to tournament.json file
     public void saveTournament() {
+<<<<<<< HEAD
         // stub // TODO
+=======
+        // stub  // TODO
+>>>>>>> 882280bb165fe08ad898113d5c1f4dbe135d8e92
     }
 
     // MODIFIES: this
