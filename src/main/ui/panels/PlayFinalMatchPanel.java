@@ -66,7 +66,7 @@ public class PlayFinalMatchPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tournament.playFinalMatch();
-                smp.enableNextRoundButton();
+                owner.showChampion();
             }
         });
         buttonPanel.add(simulateBtn);
@@ -122,6 +122,9 @@ public class PlayFinalMatchPanel extends JPanel {
 
     // EFFECTS: updates the match display
     public void update() {
+        tournament = owner.getTournament();
         addMatchDisplay();
+        revalidate();
+        repaint();
     }
 }

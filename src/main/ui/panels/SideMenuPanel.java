@@ -11,6 +11,7 @@ import javax.swing.*;
 import model.Tournament;
 import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
+import ui.dialogs.RankingTableDialog;
 
 // Represents the side menu that offers options like save, quit, etc.
 public class SideMenuPanel extends JPanel {
@@ -68,7 +69,9 @@ public class SideMenuPanel extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // new RankingTableDialog(tournament.getRankingTable()); // TODO
+                updateFields();
+                RankingTableDialog rtd = new RankingTableDialog(owner, tournament.getRankingTable());
+                rtd.setVisible(true);
             }
         });
         return btn;
@@ -129,11 +132,8 @@ public class SideMenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateFields();
-                if (tournament.getStatus().equals("F")) {
-                    owner.showChampion();
-                } else {
-                    owner.goToNextRound();
-                }
+                owner.goToNextRound();
+                btn.setEnabled(false);
             }
         });
         btn.setEnabled(false);

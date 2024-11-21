@@ -18,7 +18,6 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
     private TableTennisTournamentSimulatorApp owner;
     private Tournament tournament;
     private JPanel matchDisplayPanel;
-
     
     // EFFECTS: draws the panel where quarter final matches are played
     public PlayQuarterFinalMatchesPanel(TableTennisTournamentSimulatorApp owner, SideMenuPanel smp) {
@@ -91,6 +90,9 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
 
     // EFFECTS: updates the match display
     public void update() {
+        tournament = owner.getTournament();
         addMatchDisplay();
+        revalidate();
+        repaint();
     }
 }
