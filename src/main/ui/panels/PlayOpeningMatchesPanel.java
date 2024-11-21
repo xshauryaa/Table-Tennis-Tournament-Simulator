@@ -65,6 +65,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tournament.playOpeningBracket();
+                tournament.getRankingTable().updateRankings();
                 smp.enableNextRoundButton();
             }
         });
