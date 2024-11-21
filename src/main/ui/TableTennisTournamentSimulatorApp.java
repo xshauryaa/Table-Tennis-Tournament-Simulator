@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -66,6 +65,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         centreOnScreen();
     }
 
+    // EFFECTS: creates a panel of the display picture and returns it
     private JPanel getSidePicturePanel() {
         JLabel display = new JLabel();
         ImageIcon displayImage = new ImageIcon("./data/assets/PanelPicture.png");
@@ -114,24 +114,35 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         fmp.setVisible(false);
     }
 
+    // MODIFIES: this
+    // EFFECTS: changes the current panel to the panel of the next round to be played
     public void goToNextRound() {
         int design = tournament.getDesignType();
         currentPanel.setVisible(false);
         if (currentPanel == omp && design == 2) {
+            tournament.setStatus("F");
+            Player finalist1 = tournament.getOpeningRoundMatches().get(0).getWinner();
+            Player finalist2 = tournament.getOpeningRoundMatches().get(1).getWinner();
+            tournament.setFinalMatch(new Match("F", finalist1, finalist2));
             playFinalMatch();
         } else if (currentPanel == omp && design == 3) {
+            tournament.setStatus("SF");
             getTop4();
             playSFMatches();
         } else if (currentPanel == omp && design == 4) {
+            tournament.setStatus("QF");
             getTop8();
             playQFMatches();
         } else if (currentPanel == qfmp) {
+            tournament.setStatus("SF");
             playSFMatches();
         } else if (currentPanel == sfmp) {
+            tournament.setStatus("F");
             playFinalMatch();
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: makes the quarter finals with the top 8 players and eliminates everyone else
     private void getTop8() {
         ArrayList<Player> top8 = tournament.getRankingTable().getTopPlayers(8);
@@ -143,6 +154,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         tournament.makeQuarterFinals(top8);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes the semi finals with the top 4 players and eliminates everyone else
     private void getTop4() {
         ArrayList<Player> top4 = tournament.getRankingTable().getTopPlayers(4);
@@ -154,6 +166,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         tournament.makeSemiFinals(top4);
     }
 
+    // MODIFIES: this
     // EFFECTS: renders a JPanel that shows the champion of the tournament
     public void showChampion() {
         // stub // TODO
@@ -180,32 +193,6 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: starts the creation of new tournament
-    public void startTournament() {
-        initializePanels();
-        smp.setVisible(true);
-        ctp.setVisible(false);
-        tournament.initiateTournament();
-        if (tournament.getDesignType() == 1) {
-            Match finalMatch = tournament.getOpeningRoundMatches().get(0);
-            tournament.setFinalMatch(finalMatch);
-            playFinalMatch();
-        } else {
-            playOpeningMatches();
-        }
-    }
-
-    // EFFECTS: loads existing tournament from tournament.json file
-    public void loadTournament() {
-       // stub  // TODO
-    }
-
-    // EFFECTS: saves existing tournament to tournament.json file
-    public void saveTournament() {
-        // stub  // TODO
-     }
-
-    // MODIFIES: this
     // EFFECTS: navigates to screen where tournament will be created
     public void createTournament() {
         om.setVisible(false);
@@ -215,6 +202,36 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         ctp.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: starts a new tournament
+    public void startTournament() {
+        initializePanels();
+        smp.setVisible(true);
+        ctp.setVisible(false);
+        tournament.initiateTournament();
+        if (tournament.getDesignType() == 1) {
+            Match finalMatch = tournament.getOpeningRoundMatches().get(0);
+            tournament.setFinalMatch(finalMatch);
+            fmp.update();
+            playFinalMatch();
+        } else {
+            playOpeningMatches();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads existing tournament from tournament.json file
+    public void loadTournament() {
+       // stub  // TODO
+    }
+
+    // MODIFIES: this
+    // EFFECTS: saves existing tournament to tournament.json file
+    public void saveTournament() {
+        // stub  // TODO
+    }
+
+    // MODIFIES: this
     // EFFECTS: navigates to screen where opening matches will be simulated
     private void playOpeningMatches() {
         currentPanel = omp;
@@ -224,7 +241,6 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: navigates to screen where quarter-final matches will be simulated
     private void playQFMatches() {
-        tournament.setStatus("QF");
         qfmp.update();
         currentPanel = qfmp;
         qfmp.setVisible(true);
@@ -233,18 +249,23 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: navigates to screen where semi-final matches will be simulated
     private void playSFMatches() {
-        tournament.setStatus("SF");
         sfmp.update();
         currentPanel = sfmp;
-       sfmp.setVisible(true);
+        sfmp.setVisible(true);
     }
 
     // MODIFIES: this
     // EFFECTS: navigates to screen where final match will be simulated
     private void playFinalMatch() {
-        tournament.setStatus("F");
         fmp.update();
         currentPanel = fmp;
         fmp.setVisible(true);
     }
+
+    // EFFECTS: updates all the panels to the current state of the tournament
+    // private void updatePanels() {
+    //     qfmp.update();
+    //     sfmp.update();
+    //     fmp.update();
+    // }
 }

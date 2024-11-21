@@ -129,11 +129,8 @@ public class SideMenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateFields();
-                if (tournament.getStatus().equals("F")) {
-                    owner.showChampion();
-                } else {
-                    owner.goToNextRound();
-                }
+                owner.goToNextRound();
+                btn.setEnabled(false);
             }
         });
         btn.setEnabled(false);
