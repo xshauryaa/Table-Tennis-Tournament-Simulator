@@ -101,9 +101,8 @@ public class MatchDetailsDialog extends JDialog {
     // MODIFIES: this
     // EFFECTS: creates a panel with set scores and winner for match and adds it to the dialog
     private void addDetailsPanel() {
-        JPanel detailsPanel = new JPanel();
+        JPanel detailsPanel = new JPanel(new GridLayout(4, 1, 1, 1));
         detailsPanel.setSize(250, 130);
-        detailsPanel.setLayout(new GridLayout(4, 1, 1, 1));
         detailsPanel.setBackground(Color.BLACK);
         detailsPanel.setBounds(0, 150, 250, 130);
         String p1Name = match.getPlayer1().getName();
@@ -111,17 +110,19 @@ public class MatchDetailsDialog extends JDialog {
         JLabel set1 = new JLabel("Set 1: " + match.getSetScore(1).get(p1Name) + "-" + match.getSetScore(1).get(p2Name));
         JLabel set2 = new JLabel("Set 2: " + match.getSetScore(2).get(p1Name) + "-" + match.getSetScore(2).get(p2Name));
         JLabel set3 = new JLabel("Set 3: " + match.getSetScore(3).get(p1Name) + "-" + match.getSetScore(3).get(p2Name));
-        JLabel winner = new JLabel("Winner: " + match.getWinner().getName());
+        JLabel winner = null;
+        try {
+            winner = new JLabel("Winner: " + match.getWinner().getName());
+        } catch (NullPointerException e) {
+            winner = new JLabel("Match has not yet been played.");
+        }
         ArrayList<JLabel> labels = new ArrayList<JLabel>(Arrays.asList(set1, set2, set3, winner));
         for (JLabel label : labels) {
             label.setForeground(Color.WHITE);
             label.setFont(StyleGuide.PLAIN_FONT_12);
             label.setHorizontalAlignment(JLabel.CENTER);
+            detailsPanel.add(label);
         }
-        detailsPanel.add(set1);
-        detailsPanel.add(set2);
-        detailsPanel.add(set3);
-        detailsPanel.add(winner);
         add(detailsPanel);
     }
 

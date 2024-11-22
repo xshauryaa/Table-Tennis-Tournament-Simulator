@@ -76,7 +76,12 @@ public class PlayFinalMatchPanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: creates the panel for displaying the final match
     private void addMatchDisplay() throws NullPointerException {
-        Match finalMatch = tournament.getFinalMatch();
+        Match finalMatch;
+        if (tournament.getFinalMatch() == null) {
+            throw new NullPointerException();
+        } else {
+            finalMatch = tournament.getFinalMatch();
+        }
         JPanel matchCard = new JPanel();
         matchCard.setBackground(Color.decode("#FFD700"));
         matchCard.setSize(400, 200);
@@ -87,21 +92,27 @@ public class PlayFinalMatchPanel extends JPanel {
         player1Panel.setBounds(0, 0, 140, 250);
         JPanel player2Panel = getPlayerPanel(finalMatch, 2);
         player2Panel.setBounds(280, 0, 140, 250);
-        JPanel vsPanel = new JPanel();
-        vsPanel.setBackground(Color.decode("#FFD700"));
-        JLabel vsLabel = new JLabel("vs.");
-        vsLabel.setFont(StyleGuide.BOLD_FONT_30);
-        vsPanel.add(vsLabel);
-        player1Panel.setBounds(140, 0, 140, 250);
+        JPanel vsPanel = getVsPanel();
         matchCard.add(player1Panel);
         matchCard.add(vsPanel);
         matchCard.add(player2Panel);
         add(matchCard);
     }
 
+    // EFFECTS: creates a panel that shows the JLabel "vs." and returns it
+    private JPanel getVsPanel() {
+        JPanel vsPanel = new JPanel();
+        vsPanel.setBackground(Color.decode("#FFD700"));
+        JLabel vsLabel = new JLabel("vs.");
+        vsLabel.setFont(StyleGuide.BOLD_FONT_30);
+        vsPanel.add(vsLabel);
+        vsLabel.setBounds(140, 0, 140, 250);
+        return vsPanel;
+    }
+
     // REQUIRES: playerNum == 1 || playerNum == 2
     // EFFECTS: creates a panel with a player image and player name and returns it
-    private JPanel getPlayerPanel(Match finalMatch, int playerNum) {
+    private JPanel getPlayerPanel(Match finalMatch, int playerNum) throws NullPointerException {
         JLabel playerNameLabel;
         JPanel playerPanel = new JPanel(new GridLayout(2, 1, 10, 10));
         playerPanel.setSize(140, 250);
@@ -125,7 +136,11 @@ public class PlayFinalMatchPanel extends JPanel {
     // EFFECTS: updates the match display
     public void update() {
         tournament = owner.getTournament();
-        addMatchDisplay();
+        try {
+            addMatchDisplay();
+        } catch (NullPointerException e) {
+            // do nothing
+        }
         revalidate();
         repaint();
     }

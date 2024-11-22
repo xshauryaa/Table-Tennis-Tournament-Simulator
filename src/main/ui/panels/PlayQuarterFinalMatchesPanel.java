@@ -94,7 +94,11 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
     public void update() {
         matchDisplayPanel.setVisible(false);
         tournament = owner.getTournament();
-        addMatchDisplay();
+        try {
+            addMatchDisplay();
+        } catch (NullPointerException e) {
+            // do nothing
+        }
         revalidate();
         repaint();
     }

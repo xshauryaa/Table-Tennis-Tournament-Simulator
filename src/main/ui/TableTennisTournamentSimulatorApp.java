@@ -241,11 +241,11 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
             initializePanels();
             smp.setVisible(true);
             om.setVisible(false);
-            if (tournament.getStatus() == "O") {
+            if (tournament.getStatus().equals("O")) {
                 playOpeningMatches();
-            } else if (tournament.getStatus() == "QF") {
+            } else if (tournament.getStatus().equals("QF")) {
                 playQFMatches();
-            } else if (tournament.getStatus() == "SF") {
+            } else if (tournament.getStatus().equals("SF")) {
                 playSFMatches();
             } else {
                 playFinalMatch();
