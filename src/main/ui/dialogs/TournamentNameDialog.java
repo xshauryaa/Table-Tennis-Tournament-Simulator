@@ -14,7 +14,7 @@ import model.Tournament;
 import ui.TableTennisTournamentSimulatorApp;
 
 /**
- * Represents the modal dialog box that takes input
+ * Represents the dialog box that takes input
  * from the user to set tournament with given name
  */ 
 public class TournamentNameDialog extends JDialog {
@@ -40,6 +40,7 @@ public class TournamentNameDialog extends JDialog {
         centreOnScreen();
     }
 
+    // EFFECTS: returns the "Enter" button that accepts the user input
     private JButton getEnterButton(TableTennisTournamentSimulatorApp owner, JTextField nameField) {
         JButton enterBtn = new JButton("Enter");
         enterBtn.setBackground(Color.GRAY);
@@ -63,6 +64,7 @@ public class TournamentNameDialog extends JDialog {
         setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
     
+    // MODIFIES: this
     // EFFECTS: closes the dialog
     private void dialogClose() {
         setVisible(false);
