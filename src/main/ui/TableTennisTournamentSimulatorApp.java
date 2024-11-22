@@ -4,13 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
+import org.json.JSONException;
+
 import model.Match;
 import model.Player;
 import model.Tournament;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
 import ui.panels.OpeningMenuPanel;
@@ -35,6 +41,10 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     private PlaySemiFinalMatchesPanel sfmp;
     private PlayFinalMatchPanel fmp;
     private SideMenuPanel smp;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/tournament.json";
 
     private static final int WIDTH = 1500;
     private static final int HEIGHT = 723;
@@ -87,6 +97,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 
+    // MODIFIES: this
     // EFFECTS: initializes and sets all the panels required to play the game
     private void initializePanels() {
         // Opening Match Panel
@@ -222,13 +233,35 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: loads existing tournament from tournament.json file
     public void loadTournament() {
-        // stub // TODO
+        try {
+            tournament = jsonReader.read();
+            System.out.println("Loaded " + tournament.getName() + " from " + JSON_STORE);
+            if (tournament.getStatus() == "O") {
+                playOpeningMatches();
+            } else if (tournament.getStatus() == "QF") {
+                playQFMatches();
+            } else if (tournament.getStatus() == "SF") {
+                playSFMatches();
+            } else {
+                playFinalMatch();
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        } catch (JSONException e) {
+            System.out.println("No tournament found!");
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: saves existing tournament to tournament.json file
     public void saveTournament() {
-        // stub // TODO
+        try {
+            jsonWriter.open();
+            jsonWriter.write(tournament);
+            jsonWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
     // MODIFIES: this
@@ -261,11 +294,4 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         currentPanel = fmp;
         fmp.setVisible(true);
     }
-
-    // EFFECTS: updates all the panels to the current state of the tournament
-    // private void updatePanels() {
-    //     qfmp.update();
-    //     sfmp.update();
-    //     fmp.update();
-    // }
 }
