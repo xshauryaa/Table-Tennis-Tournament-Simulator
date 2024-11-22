@@ -114,8 +114,11 @@ public class PlayerStatisticsDialog extends JDialog {
         JLabel status = new JLabel();
         status.setForeground(Color.WHITE);
         status.setFont(StyleGuide.PLAIN_FONT_12);
-        if (player.isEliminated()) { status.setText("Eliminated"); }
-        else { status.setText("Qualified"); }
+        if (player.isEliminated()) { 
+            status.setText("Eliminated"); 
+        } else { 
+            status.setText("Qualified");
+        }
         panel.add(status);
     }
 

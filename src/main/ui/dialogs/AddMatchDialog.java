@@ -129,8 +129,8 @@ public class AddMatchDialog extends JDialog {
     // MODIFIES: this
 	// EFFECTS: location of frame is set so frame is centred on desktop
     private void centreOnScreen() {
-		Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
+        Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight() / 2));
     }
 
     // EFFECTS: closes the dialog
