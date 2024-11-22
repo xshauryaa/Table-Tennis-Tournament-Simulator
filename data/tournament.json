@@ -2,215 +2,218 @@
     "design type": 2,
     "players": [
         {
-            "eliminated": true,
-            "overall ability": 72,
-            "points won": 85,
-            "name": "a",
-            "matches won": 0,
-            "matches lost": 3,
-            "match history": ["O1: a vs. b"],
-            "points conceded": 89
+            "eliminated": false,
+            "overall ability": -2,
+            "points won": 27,
+            "name": "A",
+            "matches won": 1,
+            "matches lost": 0,
+            "match history": ["O1: A vs. B"],
+            "points conceded": 30
         },
         {
             "eliminated": false,
-            "overall ability": 109,
-            "points won": 89,
-            "name": "b",
-            "matches won": 3,
-            "matches lost": 0,
-            "match history": ["O1: a vs. b"],
-            "points conceded": 85
-        },
-        {
-            "eliminated": true,
-            "overall ability": 133,
-            "points won": 82,
-            "name": "c",
-            "matches won": 3,
-            "matches lost": 0,
-            "match history": ["O2: c vs. d"],
-            "points conceded": 83
+            "overall ability": 4,
+            "points won": 30,
+            "name": "B",
+            "matches won": 0,
+            "matches lost": 1,
+            "match history": ["O1: A vs. B"],
+            "points conceded": 27
         },
         {
             "eliminated": false,
-            "overall ability": 44,
-            "points won": 83,
-            "name": "d",
+            "overall ability": -7,
+            "points won": 18,
+            "name": "C",
             "matches won": 0,
-            "matches lost": 3,
-            "match history": ["O2: c vs. d"],
-            "points conceded": 82
+            "matches lost": 1,
+            "match history": ["O2: C vs. D"],
+            "points conceded": 26
+        },
+        {
+            "eliminated": false,
+            "overall ability": 9,
+            "points won": 26,
+            "name": "D",
+            "matches won": 1,
+            "matches lost": 0,
+            "match history": ["O2: C vs. D"],
+            "points conceded": 18
         }
     ],
     "name": "TTWC",
     "final": {
         "player 2": {
-            "eliminated": true,
-            "overall ability": 133,
-            "points won": 82,
-            "name": "c",
-            "matches won": 3,
+            "eliminated": false,
+            "overall ability": 9,
+            "points won": 26,
+            "name": "D",
+            "matches won": 1,
             "matches lost": 0,
-            "match history": ["O2: c vs. d"],
-            "points conceded": 83
+            "match history": ["O2: C vs. D"],
+            "points conceded": 18
         },
         "player 1": {
             "eliminated": false,
-            "overall ability": 109,
-            "points won": 89,
-            "name": "b",
-            "matches won": 3,
+            "overall ability": -2,
+            "points won": 27,
+            "name": "A",
+            "matches won": 1,
             "matches lost": 0,
-            "match history": ["O1: a vs. b"],
-            "points conceded": 85
+            "match history": ["O1: A vs. B"],
+            "points conceded": 30
         },
         "winner": "not set",
         "set 2 score": {
-            "b": 0,
-            "c": 0
+            "A": 0,
+            "D": 0
         },
         "set 1 score": {
-            "b": 0,
-            "c": 0
+            "A": 0,
+            "D": 0
         },
         "id": "F",
+        "played": false,
         "set 3 score": {
-            "b": 0,
-            "c": 0
+            "A": 0,
+            "D": 0
         }
     },
     "semi finals": [],
     "ranking table": {
         "Rank 4": {
             "eliminated": false,
-            "overall ability": 74,
+            "overall ability": -7,
             "points won": 18,
-            "name": "d",
+            "name": "C",
             "matches won": 0,
             "matches lost": 1,
-            "match history": ["O2: c vs. d"],
-            "points conceded": 33
+            "match history": ["O2: C vs. D"],
+            "points conceded": 26
         },
         "Rank 3": {
-            "eliminated": true,
-            "overall ability": 103,
-            "points won": 33,
-            "name": "c",
-            "matches won": 1,
-            "matches lost": 0,
-            "match history": ["O2: c vs. d"],
-            "points conceded": 18
+            "eliminated": false,
+            "overall ability": 4,
+            "points won": 30,
+            "name": "B",
+            "matches won": 0,
+            "matches lost": 1,
+            "match history": ["O1: A vs. B"],
+            "points conceded": 27
         },
         "Rank 2": {
             "eliminated": false,
-            "overall ability": 97,
-            "points won": 31,
-            "name": "b",
+            "overall ability": -2,
+            "points won": 27,
+            "name": "A",
             "matches won": 1,
             "matches lost": 0,
-            "match history": ["O1: a vs. b"],
-            "points conceded": 25
+            "match history": ["O1: A vs. B"],
+            "points conceded": 30
         },
         "Rank 1": {
-            "eliminated": true,
-            "overall ability": 84,
-            "points won": 25,
-            "name": "a",
-            "matches won": 0,
-            "matches lost": 1,
-            "match history": ["O1: a vs. b"],
-            "points conceded": 31
+            "eliminated": false,
+            "overall ability": 9,
+            "points won": 26,
+            "name": "D",
+            "matches won": 1,
+            "matches lost": 0,
+            "match history": ["O2: C vs. D"],
+            "points conceded": 18
         }
     },
     "opening bracket": [
         {
             "player 2": {
                 "eliminated": false,
-                "overall ability": 109,
-                "points won": 89,
-                "name": "b",
-                "matches won": 3,
-                "matches lost": 0,
-                "match history": ["O1: a vs. b"],
-                "points conceded": 85
+                "overall ability": 4,
+                "points won": 30,
+                "name": "B",
+                "matches won": 0,
+                "matches lost": 1,
+                "match history": ["O1: A vs. B"],
+                "points conceded": 27
             },
             "player 1": {
-                "eliminated": true,
-                "overall ability": 72,
-                "points won": 85,
-                "name": "a",
-                "matches won": 0,
-                "matches lost": 3,
-                "match history": ["O1: a vs. b"],
-                "points conceded": 89
+                "eliminated": false,
+                "overall ability": -2,
+                "points won": 27,
+                "name": "A",
+                "matches won": 1,
+                "matches lost": 0,
+                "match history": ["O1: A vs. B"],
+                "points conceded": 30
             },
             "winner": {
                 "eliminated": false,
-                "overall ability": 109,
-                "points won": 89,
-                "name": "b",
-                "matches won": 3,
+                "overall ability": -2,
+                "points won": 27,
+                "name": "A",
+                "matches won": 1,
                 "matches lost": 0,
-                "match history": ["O1: a vs. b"],
-                "points conceded": 85
+                "match history": ["O1: A vs. B"],
+                "points conceded": 30
             },
             "set 2 score": {
-                "a": 11,
-                "b": 9
+                "A": 11,
+                "B": 10
             },
             "set 1 score": {
-                "a": 6,
-                "b": 11
+                "A": 5,
+                "B": 11
             },
             "id": "O1",
+            "played": true,
             "set 3 score": {
-                "a": 8,
-                "b": 11
+                "A": 11,
+                "B": 9
             }
         },
         {
             "player 2": {
                 "eliminated": false,
-                "overall ability": 44,
-                "points won": 83,
-                "name": "d",
-                "matches won": 0,
-                "matches lost": 3,
-                "match history": ["O2: c vs. d"],
-                "points conceded": 82
+                "overall ability": 9,
+                "points won": 26,
+                "name": "D",
+                "matches won": 1,
+                "matches lost": 0,
+                "match history": ["O2: C vs. D"],
+                "points conceded": 18
             },
             "player 1": {
-                "eliminated": true,
-                "overall ability": 133,
-                "points won": 82,
-                "name": "c",
-                "matches won": 3,
-                "matches lost": 0,
-                "match history": ["O2: c vs. d"],
-                "points conceded": 83
+                "eliminated": false,
+                "overall ability": -7,
+                "points won": 18,
+                "name": "C",
+                "matches won": 0,
+                "matches lost": 1,
+                "match history": ["O2: C vs. D"],
+                "points conceded": 26
             },
             "winner": {
-                "eliminated": true,
-                "overall ability": 133,
-                "points won": 82,
-                "name": "c",
-                "matches won": 3,
+                "eliminated": false,
+                "overall ability": 9,
+                "points won": 26,
+                "name": "D",
+                "matches won": 1,
                 "matches lost": 0,
-                "match history": ["O2: c vs. d"],
-                "points conceded": 83
+                "match history": ["O2: C vs. D"],
+                "points conceded": 18
             },
             "set 2 score": {
-                "c": 11,
-                "d": 4
+                "C": 5,
+                "D": 11
             },
             "set 1 score": {
-                "c": 11,
-                "d": 7
+                "C": 11,
+                "D": 4
             },
             "id": "O2",
+            "played": true,
             "set 3 score": {
-                "c": 11,
-                "d": 7
+                "C": 2,
+                "D": 11
             }
         }
     ],

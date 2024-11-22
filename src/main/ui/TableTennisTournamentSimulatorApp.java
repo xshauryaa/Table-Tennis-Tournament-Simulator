@@ -60,6 +60,9 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         setSize(WIDTH, HEIGHT);
         setResizable(false);
 
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         JPanel picturePanel = getSidePicturePanel();
         add(picturePanel, BorderLayout.WEST);
 
@@ -235,7 +238,9 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     public void loadTournament() {
         try {
             tournament = jsonReader.read();
-            System.out.println("Loaded " + tournament.getName() + " from " + JSON_STORE);
+            initializePanels();
+            smp.setVisible(true);
+            om.setVisible(false);
             if (tournament.getStatus() == "O") {
                 playOpeningMatches();
             } else if (tournament.getStatus() == "QF") {
