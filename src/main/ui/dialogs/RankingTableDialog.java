@@ -20,7 +20,7 @@ public class RankingTableDialog extends JDialog {
     
     // EFFECTS: creates a dialog that shows the ranking table to the user
     public RankingTableDialog(TableTennisTournamentSimulatorApp owner, RankingTable rt) {
-        super();
+        super(owner, "Ranking Table (Up until Opening Round)", false);
         this.numPlayers = owner.getTournament().getListOfPlayers().size();
         this.rankingTable = rt;
         setSize(800, 300);

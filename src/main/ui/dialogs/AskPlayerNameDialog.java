@@ -24,7 +24,7 @@ public class AskPlayerNameDialog extends JDialog {
     
     // EFFECTS: creates a dialog that asks user for name of player
     public AskPlayerNameDialog(TableTennisTournamentSimulatorApp owner) {
-        super(owner, "Enter Player Name", false);
+        super(owner, "Enter Player Name (Currently case sensitive)", false);
         tournament = owner.getTournament();
         setSize(468, 228);
         setLayout(new BorderLayout());

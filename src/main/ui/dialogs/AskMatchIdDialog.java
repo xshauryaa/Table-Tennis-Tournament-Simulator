@@ -24,7 +24,7 @@ public class AskMatchIdDialog extends JDialog {
 
     // EFFECTS: creates a dialog that asks user for ID of match
     public AskMatchIdDialog(TableTennisTournamentSimulatorApp owner) {
-        super(owner, "Enter Match ID", false);
+        super(owner, "Enter Match ID - (Like 'O2', 'QF3', 'SF1', 'F')", false);
         tournament = owner.getTournament();
         setSize(468, 228);
         setLayout(new BorderLayout());
