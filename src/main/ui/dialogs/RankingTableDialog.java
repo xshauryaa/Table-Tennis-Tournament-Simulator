@@ -10,12 +10,10 @@ import javax.swing.table.DefaultTableModel;
 
 import model.Player;
 import model.RankingTable;
-import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
 
 // Represents the dialog box that shows the ranking table
 public class RankingTableDialog extends JDialog {
-    private TableTennisTournamentSimulatorApp owner;
     private int numPlayers;
     private RankingTable rankingTable;
     private JTable tableRender;
@@ -23,7 +21,6 @@ public class RankingTableDialog extends JDialog {
     // EFFECTS: creates a dialog that shows the ranking table to the user
     public RankingTableDialog(TableTennisTournamentSimulatorApp owner, RankingTable rt) {
         super();
-        this.owner = owner;
         this.numPlayers = owner.getTournament().getListOfPlayers().size();
         this.rankingTable = rt;
         setSize(800, 300);

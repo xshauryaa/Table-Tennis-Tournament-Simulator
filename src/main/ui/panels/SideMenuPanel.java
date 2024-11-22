@@ -162,8 +162,7 @@ public class SideMenuPanel extends JPanel {
         quitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                owner.saveTournament();
-                // owner.quit(); // TODO
+                owner.quit();
             }
         });
         add(quitBtn, BorderLayout.SOUTH);
