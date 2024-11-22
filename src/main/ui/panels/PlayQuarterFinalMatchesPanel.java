@@ -1,6 +1,7 @@
 package ui.panels;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -67,6 +68,7 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tournament.playQuarterFinals();
+                addCompletionLabel();
                 smp.enableNextRoundButton();
             }
         });
@@ -95,5 +97,21 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
         addMatchDisplay();
         revalidate();
         repaint();
+    }
+
+    // EFFECTS: makes a label for "Round Complete" and adds it to the screen at the bottom
+    private void addCompletionLabel() {
+        JPanel completionPanel = new JPanel();
+        completionPanel.setBackground(Color.WHITE);
+        completionPanel.setBounds(50, 600, 600, 120);
+        JLabel l = new JLabel();
+        l.setText("Round Complete");
+        l.setForeground(Color.BLACK);
+        l.setFont(StyleGuide.BOLD_FONT_30);
+        l.setHorizontalAlignment(JLabel.CENTER);
+        l.setVerticalAlignment(JLabel.CENTER);
+        completionPanel.add(l);
+        add(completionPanel, BorderLayout.SOUTH);
+        setComponentZOrder(completionPanel, 1);
     }
 }
