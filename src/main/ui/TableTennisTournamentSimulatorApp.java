@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -183,7 +184,26 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: renders a JPanel that shows the champion of the tournament
     public void showChampion() {
-        // stub // TODO
+        fmp.setVisible(false);
+        JPanel championPanel = new JPanel(null);
+        championPanel.setBounds(PANEL_IMAGE_WIDTH, 0, 700, 700);
+        championPanel.setBackground(Color.BLACK);
+        championPanel.setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
+        ImageIcon trophy = new ImageIcon("./data/assets/Trophy.png");
+        trophy.setImage(trophy.getImage().getScaledInstance(600, 450, Image.SCALE_DEFAULT));
+        JLabel trophyImage = new JLabel(trophy);
+        trophyImage.setBounds(50, 150, 600, 450);
+        JPanel titlePanel = new JPanel(new BorderLayout());
+        titlePanel.setBackground(Color.BLACK);
+        titlePanel.setBounds(0, 0, 700, 150);
+        JLabel champion = new JLabel(tournament.getChampion().getName() + " has won " + tournament.getName());
+        champion.setForeground(Color.decode("#FFD700"));
+        champion.setFont(StyleGuide.BOLD_FONT_30);
+        champion.setHorizontalAlignment(JLabel.CENTER);
+        titlePanel.add(champion);
+        championPanel.add(titlePanel);
+        championPanel.add(trophyImage);
+        add(championPanel);
     }
 
     /**
