@@ -90,6 +90,7 @@ public class PlayQuarterFinalMatchesPanel extends JPanel {
 
     // EFFECTS: updates the match display
     public void update() {
+        matchDisplayPanel.setVisible(false);
         tournament = owner.getTournament();
         addMatchDisplay();
         revalidate();

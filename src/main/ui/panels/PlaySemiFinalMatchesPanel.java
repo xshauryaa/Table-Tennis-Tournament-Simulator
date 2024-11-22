@@ -77,9 +77,10 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
     private void addMatchDisplay() throws NullPointerException {
         matchDisplayPanel = new JPanel();
         matchDisplayPanel.setBackground(Color.WHITE);
+        matchDisplayPanel.setSize(StyleGuide.PANEL_WIDTH, 150);
+        matchDisplayPanel.setLayout(new GridLayout(1, 2, 12, 12));
         matchDisplayPanel.setBounds(0, 300, StyleGuide.PANEL_WIDTH, 150);
         matchDisplayPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        matchDisplayPanel.setLayout(new GridLayout(1, 2, 12, 12));
         for (Match m : tournament.getSemiFinalMatches()) {
             JPanel matchCard = StyleGuide.drawMatchCard(m);
             matchDisplayPanel.add(matchCard);
@@ -89,6 +90,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
 
     // EFFECTS: updates the match display
     public void update() {
+        matchDisplayPanel.setVisible(false);
         tournament = owner.getTournament();
         addMatchDisplay();
         revalidate();

@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 import model.Player;
 import model.RankingTable;
+import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
 
 // Represents the dialog box that shows the ranking table
@@ -23,22 +24,25 @@ public class RankingTableDialog extends JDialog {
         this.owner = owner;
         this.numPlayers = owner.getTournament().getListOfPlayers().size();
         this.rankingTable = rt;
-        setBackground(Color.BLACK);
         setSize(800, 300);
         setLayout(new BorderLayout());
 
         JPanel main = new JPanel();
+        main.setBackground(Color.WHITE);
         main.setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         
         add(main);
 
         makeTable(main);
+        addTitleLabel();
     }
 
     // EFFECTS: renders the table for the ranking table
     private void makeTable(JPanel main) {
+        // Referenced from: #35.1 Java Swing Tutorial | JTable in Java part 1 | create a table using DefaultTableModel
+        // https://www.youtube.com/watch?v=skryksKiIK0
         String[] columnNames = {"Rank", "Player", "Overall Ability", "Matches Won", "Matches Lost", 
-                                "Points Won", "Points Lost", "Points Difference", "Status"};
+                                "Points Won", "Points Lost", "Points Difference"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         model.addRow(columnNames);
         for (int i = 1; i <= numPlayers; i++) {
@@ -46,6 +50,8 @@ public class RankingTableDialog extends JDialog {
             addPlayer(model, rankingTable.playerLookup(player), i);
         }
         tableRender = new JTable(model);
+        tableRender.setBackground(Color.BLACK);
+        tableRender.setForeground(Color.WHITE);
         main.add(tableRender);
     }
 
@@ -59,10 +65,22 @@ public class RankingTableDialog extends JDialog {
         String pointsWon = Integer.toString(p.getPointsWon());
         String pointsLost = Integer.toString(p.getPointsConceded());
         String pointsDifference = Integer.toString(p.getPointsDifference());
-        String status;
-        if (p.isEliminated()) { status = "Qualified"; }
-        else { status = "Eliminated"; }
-        String[] player = {playerRank, name, ovr, matchesWon, matchesLost, pointsWon, pointsLost, pointsDifference, status};
+        String[] player = {playerRank, name, ovr, matchesWon, matchesLost, pointsWon, pointsLost, pointsDifference};
         model.addRow(player);
+    }
+
+    // EFFECTS: makes a label for ranking table information update and adds it to the screen
+    private void addTitleLabel() {
+        JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(Color.BLACK);
+        titlePanel.setBounds(0, 20, StyleGuide.PANEL_WIDTH, 120);
+        JLabel l = new JLabel();
+        l.setText("The rankings are only updated up until the opening round.");
+        l.setForeground(Color.WHITE);
+        l.setFont(StyleGuide.BOLD_FONT_30);
+        l.setHorizontalAlignment(JLabel.CENTER);
+        l.setVerticalAlignment(JLabel.CENTER);
+        titlePanel.add(l);
+        add(titlePanel);
     }
 }
