@@ -17,6 +17,7 @@ import model.Player;
 import model.Tournament;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.dialogs.MatchDetailsDialog;
 import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
 import ui.panels.OpeningMenuPanel;
@@ -66,13 +67,18 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         JPanel picturePanel = getSidePicturePanel();
         add(picturePanel, BorderLayout.WEST);
 
-        om = new OpeningMenuPanel(this);
-        om.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
-        add(om);
+        // om = new OpeningMenuPanel(this);
+        // om.setBounds(PANEL_IMAGE_WIDTH, 0, 945, 700);
+        // add(om);
 
-        smp = new SideMenuPanel(this);
-        add(smp, BorderLayout.EAST);
-        smp.setVisible(false);
+        // smp = new SideMenuPanel(this);
+        // add(smp, BorderLayout.EAST);
+        // smp.setVisible(false);
+
+        Match m = new Match("O1", new Player("S", 1), new Player("X", 1));
+        m.playMatch();
+        MatchDetailsDialog mdd = new MatchDetailsDialog(this, m);
+        mdd.setVisible(true);
 
         setVisible(true);
         centreOnScreen();

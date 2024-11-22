@@ -23,6 +23,7 @@ public class StyleGuide {
     public static final Font BOLD_FONT_60 = new Font("Inter", Font.BOLD, 60);
     public static final Font BOLD_FONT_30 = new Font("Inter", Font.BOLD, 30);
     public static final Font BOLD_FONT_18 = new Font("Inter", Font.BOLD, 18);
+    public static final Font PLAIN_FONT_16 = new Font("Inter", Font.PLAIN, 16);
     public static final Font PLAIN_FONT_12 = new Font("Inter", Font.PLAIN, 12);
 
     public static final Dimension MATCH_CARD_DIMENSION = new Dimension(150, 75);

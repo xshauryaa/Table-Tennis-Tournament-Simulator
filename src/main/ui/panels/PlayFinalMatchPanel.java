@@ -73,6 +73,7 @@ public class PlayFinalMatchPanel extends JPanel {
         add(buttonPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates the panel for displaying the final match
     private void addMatchDisplay() throws NullPointerException {
         Match finalMatch = tournament.getFinalMatch();
@@ -98,6 +99,7 @@ public class PlayFinalMatchPanel extends JPanel {
         add(matchCard);
     }
 
+    // REQUIRES: playerNum == 1 || playerNum == 2
     // EFFECTS: creates a panel with a player image and player name and returns it
     private JPanel getPlayerPanel(Match finalMatch, int playerNum) {
         JLabel playerNameLabel;
