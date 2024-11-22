@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import model.Match;
+
 import model.Player;
 import model.Tournament;
 import ui.TableTennisTournamentSimulatorApp;

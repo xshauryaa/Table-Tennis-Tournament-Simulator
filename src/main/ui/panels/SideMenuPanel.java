@@ -12,6 +12,7 @@ import model.Tournament;
 import ui.StyleGuide;
 import ui.TableTennisTournamentSimulatorApp;
 import ui.dialogs.AskMatchIdDialog;
+import ui.dialogs.AskPlayerNameDialog;
 import ui.dialogs.RankingTableDialog;
 
 // Represents the side menu that offers options like save, quit, etc.
@@ -104,7 +105,9 @@ public class SideMenuPanel extends JPanel {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // new PlayerStatisticsDialog(); // TODO
+                updateFields();
+                AskPlayerNameDialog apmd = new AskPlayerNameDialog(owner);
+                apmd.setVisible(true);
             }
         });
         return btn;
