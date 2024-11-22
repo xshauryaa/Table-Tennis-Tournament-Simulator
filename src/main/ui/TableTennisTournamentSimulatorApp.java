@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -18,6 +19,7 @@ import model.Tournament;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.dialogs.MatchDetailsDialog;
+import ui.dialogs.PlayerStatisticsDialog;
 import ui.dialogs.TournamentNameDialog;
 import ui.panels.CreateTournamentPanel;
 import ui.panels.OpeningMenuPanel;
