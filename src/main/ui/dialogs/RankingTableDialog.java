@@ -2,6 +2,8 @@ package ui.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +36,8 @@ public class RankingTableDialog extends JDialog {
         add(main);
 
         makeTable(main);
-        addTitleLabel();
+
+        centreOnScreen();
     }
 
     // EFFECTS: renders the table for the ranking table
@@ -69,18 +72,10 @@ public class RankingTableDialog extends JDialog {
         model.addRow(player);
     }
 
-    // EFFECTS: makes a label for ranking table information update and adds it to the screen
-    private void addTitleLabel() {
-        JPanel titlePanel = new JPanel();
-        titlePanel.setBackground(Color.BLACK);
-        titlePanel.setBounds(0, 20, StyleGuide.PANEL_WIDTH, 120);
-        JLabel l = new JLabel();
-        l.setText("The rankings are only updated up until the opening round.");
-        l.setForeground(Color.WHITE);
-        l.setFont(StyleGuide.BOLD_FONT_30);
-        l.setHorizontalAlignment(JLabel.CENTER);
-        l.setVerticalAlignment(JLabel.CENTER);
-        titlePanel.add(l);
-        add(titlePanel);
+    // MODIFIES: this
+	// EFFECTS: location of frame is set so frame is centred on desktop
+    private void centreOnScreen() {
+        Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 }
