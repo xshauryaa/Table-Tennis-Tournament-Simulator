@@ -37,6 +37,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a label for "Semi Finals" and adds it to the screen
     private void addTitleLabel() {
         JPanel titlePanel = new JPanel();
@@ -52,6 +53,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
         add(titlePanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a JButton to simulate matches and adds it to the screen
     private void addSimulateButton(SideMenuPanel smp) {
         JPanel buttonPanel = new JPanel();
@@ -75,6 +77,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
         add(buttonPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates the panel for displaying all the matches in the semi finals
     private void addMatchDisplay() throws NullPointerException {
         matchDisplayPanel = new JPanel();
@@ -90,6 +93,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
         add(matchDisplayPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: updates the match display
     public void update() {
         matchDisplayPanel.setVisible(false);
@@ -103,6 +107,7 @@ public class PlaySemiFinalMatchesPanel extends JPanel {
         repaint();
     }
     
+    // MODIFIES: this
     // EFFECTS: makes a label for "Round Complete" and adds it to the screen at the bottom
     private void addCompletionLabel() {
         JPanel completionPanel = new JPanel();

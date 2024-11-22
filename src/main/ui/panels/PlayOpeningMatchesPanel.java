@@ -36,6 +36,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
         addMatchDisplay();
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a label for "Opening Round" and adds it to the screen
     private void addTitleLabel() {
         JPanel titlePanel = new JPanel();
@@ -51,6 +52,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
         add(titlePanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a JButton to simulate matches and adds it to the screen
     private void addSimulateButton(SideMenuPanel smp) {
         JPanel buttonPanel = new JPanel();
@@ -75,6 +77,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
         add(buttonPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates the panel for displaying all the matches in the opening round
     private void addMatchDisplay() {
         double numMatches = (double) matchesToDisplay.size();
@@ -91,6 +94,7 @@ public class PlayOpeningMatchesPanel extends JPanel {
         add(matchDisplayPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a label for "Round Complete" and adds it to the screen at the bottom
     private void addCompletionLabel() {
         JPanel completionPanel = new JPanel();

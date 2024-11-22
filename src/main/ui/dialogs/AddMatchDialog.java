@@ -60,6 +60,7 @@ public class AddMatchDialog extends JDialog {
         centreOnScreen();
     }
 
+    // MODIFIES: this
     // EFFECTS: initializes submit button for the dialog window
     private void initializeSubmitButton(TableTennisTournamentSimulatorApp owner) {
         submitBtn = new JButton("Submit");
@@ -133,6 +134,7 @@ public class AddMatchDialog extends JDialog {
         setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 
+    // MODIFIES: this
     // EFFECTS: closes the dialog
     private void dialogClose() {
         this.setVisible(false);

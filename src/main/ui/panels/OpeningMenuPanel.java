@@ -30,6 +30,7 @@ public class OpeningMenuPanel extends JPanel {
         addButtonsPanel();
     }
 
+    // MODIFIES: this
     // EFFECTS: creates and adds a panel containing the action buttons
     private void addButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
@@ -56,6 +57,7 @@ public class OpeningMenuPanel extends JPanel {
         add(buttonsPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a label for "Welcome!" and adds it to the opening menu
     private void addWelcomeLabel() {
         JLabel l = new JLabel();

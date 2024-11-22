@@ -36,6 +36,7 @@ public class SideMenuPanel extends JPanel {
         addQuitButton();
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a label for "Menu" and adds it to the side menu
     private void addTitleLabel() {
         JLabel l = new JLabel();
@@ -47,6 +48,7 @@ public class SideMenuPanel extends JPanel {
         add(l, BorderLayout.NORTH);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a panel that contains all buttons for menu options
     private void addButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
@@ -154,6 +156,7 @@ public class SideMenuPanel extends JPanel {
         nextRoundButton.setEnabled(true);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates a JButton to quit application and adds it to side menu
     private void addQuitButton() {
         JButton quitBtn = new JButton("Quit Application");
@@ -168,6 +171,7 @@ public class SideMenuPanel extends JPanel {
         add(quitBtn, BorderLayout.SOUTH);
     }
 
+    // MODIFIES: this
     // EFFECTS: updates the fields to their current values
     private void updateFields() {
         tournament = owner.getTournament();

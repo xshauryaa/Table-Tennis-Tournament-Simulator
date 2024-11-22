@@ -41,6 +41,7 @@ public class CreateTournamentPanel extends JPanel {
         addTimer();
     }
 
+    // MODIFIES: this
     // EFFECTS: adds the panel with name of the tournament
     private void createTitlePanel() {
         JPanel titlePanel = new JPanel();
@@ -56,6 +57,7 @@ public class CreateTournamentPanel extends JPanel {
         add(titlePanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: adds the menu of buttons with options
     private void createOptionsMenu() {
         JPanel optionsMenu = new JPanel();
@@ -69,7 +71,7 @@ public class CreateTournamentPanel extends JPanel {
         JButton beginTournamentButton = beginTournamentButton();
         beginTournamentButton.setBounds(250, 0, 200, 80);
         optionsMenu.add(beginTournamentButton);
-        // buttonsMenu.add(filterMatchesDropdown());
+        optionsMenu.add(filterMatchesDropdown());
         add(optionsMenu);
     }
 
@@ -97,6 +99,39 @@ public class CreateTournamentPanel extends JPanel {
         return beginTournamentBtn;
     }
 
+    // EFFECTS: creates a panel with a dropdown to filter matches according to minimum average ovr and returns it
+    private JPanel filterMatchesDropdown() {
+        JPanel filterPanel = new JPanel(new GridLayout(2, 1, 8, 8));
+        filterPanel.setBackground(Color.WHITE);
+        JLabel info = new JLabel("View only matches with average OVR higher than: ");
+        info.setFont(StyleGuide.PLAIN_FONT_10);
+        filterPanel.add(info);
+        String[] ovrStrings = {"Show all matches", "90", "80", "70", "60"};
+        JComboBox<String> filterBox = new JComboBox<String>(ovrStrings);
+        filterBox.addActionListener(e -> updateMatchDisplay(filterBox.getSelectedItem()));
+        filterPanel.add(filterBox);
+        return filterPanel;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the list of matches displayed according to the filter 
+    private void updateMatchDisplay(Object ovr) {
+        String minOvr = (String) ovr;
+        if (minOvr.equals("Show all matches")) {
+            matchesToDisplay = tournament.getOpeningRoundMatches();
+        } else {
+            ArrayList<Match> filteredMatches = new ArrayList<Match>();
+            for (Match m : tournament.getOpeningRoundMatches()) {
+                int averageOvr = (m.getPlayer1().getOverallAbility() + m.getPlayer2().getOverallAbility()) / 2;
+                if (averageOvr > Integer.parseInt(minOvr)) {
+                    filteredMatches.add(m);
+                }
+            }
+            matchesToDisplay = filteredMatches;
+        }
+    }
+
+    // MODIFIES: this
     // EFFECTS: adds the panel where matches are displayed
     private void createMatchesDisplayPanel() {
         double numMatches = (double) matchesToDisplay.size();
@@ -113,13 +148,14 @@ public class CreateTournamentPanel extends JPanel {
         add(matchDisplayPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: initializes a timer that updates game each
 	//          few milliseconds
     private void addTimer() {
         Timer t = new Timer(INTERVAL, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                matchesToDisplay = tournament.getOpeningRoundMatches();
+                matchDisplayPanel.setVisible(false);
                 createMatchesDisplayPanel();
                 matchDisplayPanel.revalidate();
                 matchDisplayPanel.repaint();

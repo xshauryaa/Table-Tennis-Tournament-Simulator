@@ -36,6 +36,7 @@ public class PlayFinalMatchPanel extends JPanel {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a label for "Final Match" and adds it to the screen
     private void addTitleLabel() {
         JPanel titlePanel = new JPanel();
@@ -51,6 +52,7 @@ public class PlayFinalMatchPanel extends JPanel {
         add(titlePanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes a JButton to simulate the final match and adds it to the screen
     private void addSimulateButton(SideMenuPanel smp) {
         JPanel buttonPanel = new JPanel();
@@ -133,6 +135,7 @@ public class PlayFinalMatchPanel extends JPanel {
         return playerPanel;
     }
 
+    // MODIFIES: this
     // EFFECTS: updates the match display
     public void update() {
         tournament = owner.getTournament();

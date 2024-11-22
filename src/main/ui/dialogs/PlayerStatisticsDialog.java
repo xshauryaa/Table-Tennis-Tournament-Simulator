@@ -84,6 +84,7 @@ public class PlayerStatisticsDialog extends JDialog {
         add(statsPanel);
     }
 
+    // EFFECTS: adds labels for matches won and matches lost to given panel
     private void addMatchStatsLabels(JPanel panel) {
         JLabel matchesWon = new JLabel("Matches Won: " + player.getMatchesWon());
         matchesWon.setForeground(Color.WHITE);
@@ -95,6 +96,7 @@ public class PlayerStatisticsDialog extends JDialog {
         panel.add(matchesLost);
     }
 
+    // EFFECTS: adds labels for points won, points lost, and points difference to given panel
     private void addPointStatsLabels(JPanel panel) {
         JLabel pointsWon = new JLabel("Points Won: " + player.getPointsWon());
         pointsWon.setForeground(Color.WHITE);
@@ -110,6 +112,7 @@ public class PlayerStatisticsDialog extends JDialog {
         panel.add(pointsDiff);
     }
 
+    // EFFECTS: adds label for status to given panel
     private void addStatusLabel(JPanel panel) {
         JLabel status = new JLabel();
         status.setForeground(Color.WHITE);
@@ -122,6 +125,7 @@ public class PlayerStatisticsDialog extends JDialog {
         panel.add(status);
     }
 
+    // EFFECTS: adds a panel for matches history to given panel
     private void addMatchHistory() {
         JPanel history = new JPanel();
         history.setBackground(Color.BLACK);
