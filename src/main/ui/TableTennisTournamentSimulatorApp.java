@@ -323,7 +323,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: saves the tournament and takes user back to opening menu
     public void quit() {
-        saveTournament();
+        smp.setVisible(false);
         currentPanel.setVisible(false);
         om.setVisible(true);
     }

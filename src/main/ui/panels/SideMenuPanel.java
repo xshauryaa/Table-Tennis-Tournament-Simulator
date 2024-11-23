@@ -14,6 +14,7 @@ import ui.TableTennisTournamentSimulatorApp;
 import ui.dialogs.AskMatchIdDialog;
 import ui.dialogs.AskPlayerNameDialog;
 import ui.dialogs.RankingTableDialog;
+import ui.dialogs.SaveTournamentDialog;
 
 // Represents the side menu that offers options like save, quit, etc.
 public class SideMenuPanel extends JPanel {
@@ -165,7 +166,8 @@ public class SideMenuPanel extends JPanel {
         quitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                owner.quit();
+                SaveTournamentDialog std = new SaveTournamentDialog(owner);
+                std.setVisible(true);
             }
         });
         add(quitBtn, BorderLayout.SOUTH);
