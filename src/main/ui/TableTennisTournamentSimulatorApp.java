@@ -245,6 +245,7 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
         tournament.initiateTournament();
         if (tournament.getDesignType() == 1) {
             Match finalMatch = tournament.getOpeningRoundMatches().get(0);
+            finalMatch.setId("F");
             tournament.setFinalMatch(finalMatch);
             fmp.update();
             playFinalMatch();
