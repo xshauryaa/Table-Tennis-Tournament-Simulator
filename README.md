@@ -22,5 +22,16 @@ I have long been a follower of table tennis. Be it world championships or the Ol
 - As a user, I want to have the option to quit one tournament and start/resume another without losing any progress.
 - As a user, I want to have the option to reload my last tournament progress.
 - As a user, I want to be able to view what stage I left a tournament at before I reload any of them.
+- As a user, I want to see which matches have an average player OVR above a certain number
 
 # Instructions for End User
+- You can create a new tournament by clicking the "Start New Tournament" button on the opening menu
+- You can add a new match to your tournament related to the user story "adding multiple matches to a tournament" by clicking the "Add Match" button
+- You can filter matches while creating them related to the user story "seeing which matches have an average player OVR higher than certain numbers" by using the dropdown option besides the "Begin Tournament" button
+- You can locate my visual component by looking at the left hand side of my application and across multiple buttons with their icons
+- You can save the state of my application by clicking on the "Save Tournament" button on the side menu of the game
+- You can reload the state of my application by clicking the "Load Tournament" buttons on the opening menu
+- You can view statistics of a specific player by clicking on the "View Player Statistics" button on the side menu
+- You can view details of a specific match by clicking on the "View Match Details" button on the side menu
+- You can view the ranking table by clicking on the "View Ranking Table" button on the side menu
+- You can quit the 
