@@ -22,3 +22,5 @@ I have long been a follower of table tennis. Be it world championships or the Ol
 - As a user, I want to have the option to quit one tournament and start/resume another without losing any progress.
 - As a user, I want to have the option to reload my last tournament progress.
 - As a user, I want to be able to view what stage I left a tournament at before I reload any of them.
+
+# Instructions for End User

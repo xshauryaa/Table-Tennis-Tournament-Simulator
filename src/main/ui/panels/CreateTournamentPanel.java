@@ -106,6 +106,8 @@ public class CreateTournamentPanel extends JPanel {
         JLabel info = new JLabel("View only matches with average OVR higher than: ");
         info.setFont(StyleGuide.PLAIN_FONT_10);
         filterPanel.add(info);
+        // JComboBox referenced by Java combobox 📑 by Bro Code (YouTube)
+        // https://www.youtube.com/watch?v=EAxV_eoYrIg
         String[] ovrStrings = {"Show all matches", "90", "80", "70", "60"};
         JComboBox<String> filterBox = new JComboBox<String>(ovrStrings);
         filterBox.addActionListener(e -> updateMatchDisplay(filterBox.getSelectedItem()));
