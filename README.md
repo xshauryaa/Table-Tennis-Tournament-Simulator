@@ -34,4 +34,4 @@ I have long been a follower of table tennis. Be it world championships or the Ol
 - You can view statistics of a specific player by clicking on the "View Player Statistics" button on the side menu
 - You can view details of a specific match by clicking on the "View Match Details" button on the side menu
 - You can view the ranking table by clicking on the "View Ranking Table" button on the side menu
-- You can quit the 
+- You can quit the tournament stage by clicking on the "Quit Tournament" button on the side menu and choose whether or not you'd like to save your progress
