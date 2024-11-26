@@ -102,6 +102,27 @@ public class TournamentTest {
     }
 
     @Test
+    void testFilterMatches() {
+        testTournament.addMatch(m1);
+        Match nm1 = new Match("X", new Player("S", 90), new Player("K", 80));
+        testTournament.addMatch(nm1);
+        Match nm2 = new Match("X", new Player("S", 80), new Player("K", 70));
+        testTournament.addMatch(nm2);
+        ArrayList<Match> matchesOver90 = testTournament.filterMatchesOnMinOvr(90);
+        ArrayList<Match> matchesOver80 = testTournament.filterMatchesOnMinOvr(80);
+        ArrayList<Match> matchesOver70 = testTournament.filterMatchesOnMinOvr(70);
+        assertEquals(1, matchesOver90.size());
+        assertTrue(matchesOver90.contains(m1));
+        assertEquals(2, matchesOver80.size());
+        assertTrue(matchesOver80.contains(m1));
+        assertTrue(matchesOver80.contains(nm1));
+        assertEquals(3, matchesOver70.size());
+        assertTrue(matchesOver70.contains(m1));
+        assertTrue(matchesOver70.contains(nm1));
+        assertTrue(matchesOver70.contains(nm2));
+    }
+
+    @Test
     void testInitiateTournamentCondition1() {
         testTournament.addMatch(m1);
         testTournament.initiateTournament();

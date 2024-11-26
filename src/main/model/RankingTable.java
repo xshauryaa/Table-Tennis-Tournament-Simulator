@@ -104,6 +104,7 @@ public class RankingTable implements Writable {
             newRankings.put(next.getName(), rank);
         }
         this.rankingTable = newRankings;
+        EventLog.getInstance().logEvent(new Event("Rankings were updated."));
     }
 
     // EFFECTS: returns the next highest ranked player that has not 

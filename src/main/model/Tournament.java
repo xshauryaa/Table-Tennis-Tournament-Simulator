@@ -38,6 +38,7 @@ public class Tournament implements Writable {
         this.semiFinalMatches = new ArrayList<Match>();
         this.finalMatch = null;
         this.champion = null;
+        EventLog.getInstance().logEvent(new Event("Tournament " + name + " has been created."));
     }
 
     public String getName() {
@@ -120,6 +121,21 @@ public class Tournament implements Writable {
         match.getPlayer1().addMatchToHistory(match);
         match.getPlayer2().addMatchToHistory(match);
         this.openingMatchId++;
+        EventLog.getInstance().logEvent(new Event("Match " + match.toString() 
+                                                + " has been added to the tournament " + name + "."));
+    }
+
+    // EFFECTS: returns a filtered list of matches with minimum average ovr
+    public ArrayList<Match> filterMatchesOnMinOvr(int minOvr) {
+        ArrayList<Match> filteredMatches = new ArrayList<Match>();
+            for (Match m : openingRoundMatches) {
+                int averageOvr = (m.getPlayer1().getOverallAbility() + m.getPlayer2().getOverallAbility()) / 2;
+                if (averageOvr > minOvr) {
+                    filteredMatches.add(m);
+                }
+            }
+        EventLog.getInstance().logEvent(new Event("Filtered matches with minimum average OVR as " + minOvr));
+        return filteredMatches;
     }
 
     // MODIFIES: this
@@ -137,6 +153,8 @@ public class Tournament implements Writable {
         } else {
             this.designType = 4;
         }
+        EventLog.getInstance().logEvent(new Event("Tournament " + name + " has been initiated with design type " 
+                                                    + designType + "."));
     }
 
     // MODIFIES: this
@@ -145,6 +163,7 @@ public class Tournament implements Writable {
         for (Match m : this.openingRoundMatches) {
             m.playMatch();
         }
+        EventLog.getInstance().logEvent(new Event("The opening round was simulated."));
     }
 
     // REQUIRES: players.size() == 8
@@ -153,15 +172,17 @@ public class Tournament implements Writable {
     //          into the quarter-finals bracket and eliminates all players
     //          who don't qualify for quarter finals
     public void makeQuarterFinals(ArrayList<Player> players) {
+        for (Player p : this.listOfPlayers) {
+            if (!players.contains(p)) {
+                p.eliminate();
+                EventLog.getInstance().logEvent(new Event(p.getName() + " has been eliminated."));
+            }
+        }
         for (int i = 0; i < 4; i++) {
             Match match = new Match("QF" + (i + 1), players.get(i * 2), players.get(i * 2 + 1));
             this.quarterFinalMatches.add(match);
         }
-        for (Player p : this.listOfPlayers) {
-            if (!players.contains(p)) {
-                p.eliminate();
-            }
-        }
+        EventLog.getInstance().logEvent(new Event("Quarter finals have been set."));
     }
 
     // MODIFIES: this
@@ -177,10 +198,13 @@ public class Tournament implements Writable {
             advancedToSF.add(m.getWinner());
             if (m.getPlayer1().equals(m.getWinner())) {
                 m.getPlayer2().eliminate();
+                EventLog.getInstance().logEvent(new Event(m.getPlayer2().getName() + " has been eliminated."));
             } else {
                 m.getPlayer1().eliminate();
+                EventLog.getInstance().logEvent(new Event(m.getPlayer1().getName() + " has been eliminated."));
             }
         }
+        EventLog.getInstance().logEvent(new Event("The quarter finals were simulated."));
         makeSemiFinals(advancedToSF);
     }
 
@@ -193,6 +217,7 @@ public class Tournament implements Writable {
             Match match = new Match("SF" + (i + 1), players.get(i * 2), players.get(i * 2 + 1));
             this.semiFinalMatches.add(match);
         }
+        EventLog.getInstance().logEvent(new Event("Semi finals have been set."));
     }
 
     // MODIFIES: this
@@ -212,7 +237,9 @@ public class Tournament implements Writable {
                 m.getPlayer1().eliminate();
             }
         }
+        EventLog.getInstance().logEvent(new Event("The semi finals were simulated."));
         this.finalMatch = new Match("F", advancedToFinals.get(0), advancedToFinals.get(1));
+        EventLog.getInstance().logEvent(new Event("The Final Match has been set: " + finalMatch.toString()));
     }
 
     // MODIFIES: this
@@ -228,6 +255,8 @@ public class Tournament implements Writable {
         } else {
             this.finalMatch.getPlayer1().eliminate();
         }
+        EventLog.getInstance().logEvent(new Event("The final match has been simulated."));
+        EventLog.getInstance().logEvent(new Event(champion.getName() + " has won " + name));
     }
 
     @SuppressWarnings("methodlength")

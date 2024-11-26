@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import javax.swing.*;
 
 import org.json.JSONException;
 
+import model.Event;
+import model.EventLog;
 import model.Match;
 import model.Player;
 import model.Tournament;
@@ -77,6 +81,16 @@ public class TableTennisTournamentSimulatorApp extends JFrame {
 
         setVisible(true);
         centreOnScreen();
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("Event log:");
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event);
+                }
+            }
+        });
     }
 
     // EFFECTS: creates a panel of the display picture and returns it

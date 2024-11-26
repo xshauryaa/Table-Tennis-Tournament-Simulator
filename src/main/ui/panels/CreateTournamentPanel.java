@@ -122,14 +122,7 @@ public class CreateTournamentPanel extends JPanel {
         if (minOvr.equals("Show all matches")) {
             matchesToDisplay = tournament.getOpeningRoundMatches();
         } else {
-            ArrayList<Match> filteredMatches = new ArrayList<Match>();
-            for (Match m : tournament.getOpeningRoundMatches()) {
-                int averageOvr = (m.getPlayer1().getOverallAbility() + m.getPlayer2().getOverallAbility()) / 2;
-                if (averageOvr > Integer.parseInt(minOvr)) {
-                    filteredMatches.add(m);
-                }
-            }
-            matchesToDisplay = filteredMatches;
+            matchesToDisplay = tournament.filterMatchesOnMinOvr(Integer.parseInt(minOvr));
         }
     }
 
