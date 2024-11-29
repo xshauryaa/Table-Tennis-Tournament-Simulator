@@ -69,3 +69,7 @@ Mon Nov 25 22:04:47 PST 2024
 The final match has been simulated.
 Mon Nov 25 22:04:47 PST 2024
 G has won TTWC
+
+# Phase 4: Task 3
+Given the chance to continue on this project, there's quite a few refactoring changes I'd introduce. 
+One major refactoring change that stands out would be creating an abstract class that extends JPanel that would be called "RoundSimulationPanel". The PlayOpeningMatchesPanel, PlayQuarterFinalMatchesPanel, and PlaySemiFinalMatchesPanel classes would extend this class, since they all have a similar structure of a title, button, and match display. This would make for a cleaner hierarchy and more cohesive design. It will be much more simpler and sorted to just override the methods according to what's needed by which particular round, and have the main design limited to one class instead of multiple replications.
