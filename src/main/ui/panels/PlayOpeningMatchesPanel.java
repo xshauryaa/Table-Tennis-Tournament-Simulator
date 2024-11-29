@@ -19,14 +19,12 @@ public class PlayOpeningMatchesPanel extends JPanel {
     private TableTennisTournamentSimulatorApp owner;
     private Tournament tournament;
     private JPanel matchDisplayPanel;
-    private ArrayList<Match> matchesToDisplay;
     
     // EFFECTS: draws the panel where opening matches are played
     public PlayOpeningMatchesPanel(TableTennisTournamentSimulatorApp owner, SideMenuPanel smp) {
         super();
         this.owner = owner;
         this.tournament = this.owner.getTournament();
-        matchesToDisplay = tournament.getOpeningRoundMatches();
         setSize(StyleGuide.PANEL_WIDTH, StyleGuide.PANEL_HEIGHT);
         setBorder(BorderFactory.createEmptyBorder(18, 18, 18, 18));
         setBackground(Color.WHITE);
@@ -80,14 +78,14 @@ public class PlayOpeningMatchesPanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: creates the panel for displaying all the matches in the opening round
     private void addMatchDisplay() {
-        double numMatches = (double) matchesToDisplay.size();
+        double numMatches = (double) tournament.getOpeningRoundMatches().size();
         int rows = (int) Math.ceil(numMatches / 4);
         matchDisplayPanel = new JPanel();
         matchDisplayPanel.setBackground(Color.WHITE);
         matchDisplayPanel.setBounds(0, 270, StyleGuide.PANEL_WIDTH, (rows * 90) + 30);
         matchDisplayPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         matchDisplayPanel.setLayout(new GridLayout(rows, 4, 12, 12));
-        for (Match m : matchesToDisplay) {
+        for (Match m : tournament.getOpeningRoundMatches()) {
             JPanel matchCard = StyleGuide.drawMatchCard(m);
             matchDisplayPanel.add(matchCard);
         }
