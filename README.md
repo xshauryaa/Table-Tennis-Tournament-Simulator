@@ -36,40 +36,6 @@ I have long been a follower of table tennis. Be it world championships or the Ol
 - You can view the ranking table by clicking on the "View Ranking Table" button on the side menu
 - You can quit the tournament stage by clicking on the "Quit Tournament" button on the side menu and choose whether or not you'd like to save your progress
 
-# Phase 4: Task 2
-
-Event log:
-Mon Nov 25 22:03:46 PST 2024
-Tournament TTWC has been created.
-Mon Nov 25 22:03:53 PST 2024
-Match O1: A vs. B has been added to the tournament TTWC.
-Mon Nov 25 22:04:01 PST 2024
-Match O2: C vs. D has been added to the tournament TTWC.
-Mon Nov 25 22:04:09 PST 2024
-Match O3: E vs. F has been added to the tournament TTWC.
-Mon Nov 25 22:04:20 PST 2024
-Match O4: G vs. H has been added to the tournament TTWC.
-Mon Nov 25 22:04:29 PST 2024
-Filtered matches with minimum average OVR as 70
-Mon Nov 25 22:04:31 PST 2024
-Filtered matches with minimum average OVR as 90
-Mon Nov 25 22:04:38 PST 2024
-Tournament TTWC has been initiated with design type 3.
-Mon Nov 25 22:04:39 PST 2024
-The opening round was simulated.
-Mon Nov 25 22:04:39 PST 2024
-Rankings were updated.
-Mon Nov 25 22:04:44 PST 2024
-Semi finals have been set.
-Mon Nov 25 22:04:45 PST 2024
-The semi finals were simulated.
-Mon Nov 25 22:04:45 PST 2024
-The Final Match has been set: F: A vs. G
-Mon Nov 25 22:04:47 PST 2024
-The final match has been simulated.
-Mon Nov 25 22:04:47 PST 2024
-G has won TTWC
-
 # Phase 4: Task 3
 Given the chance to continue on this project, there's quite a few refactoring changes I'd introduce. 
 One major refactoring change that stands out would be creating an abstract class that extends JPanel that would be called "RoundSimulationPanel". The PlayOpeningMatchesPanel, PlayQuarterFinalMatchesPanel, and PlaySemiFinalMatchesPanel classes would extend this class, since they all have a similar structure of a title, button, and match display. This would make for a cleaner hierarchy and more cohesive design. It will be much more simpler and sorted to just override the methods according to what's needed by which particular round, and have the main design limited to one class instead of multiple replications.
